@@ -1,0 +1,35 @@
+﻿@inherits LayoutComponentBase
+@inject AppTheme theme
+@inject ColorUtility colors
+
+<div class="container" style="background: @colors.Background">
+    @Body
+</div>
+
+
+@code {
+    private string style = "";
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            theme.IsDarkMode = await theme.IsBrowserDarkMode();
+            await theme.ListenForThemeChanges();
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        theme.OnChange += StateHasChanged;
+    }
+}
+
+<style>
+    .container {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        overflow: hidden; /* Prevent scrolling on body */
+    }
+</style>

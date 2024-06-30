@@ -1,0 +1,21 @@
+﻿﻿<button class="action-button" style="background-color: @Color;" @onmouseover="OnMouseOver" @onmouseout="OnMouseOut" @onclick="OnClick">
+    @ChildContent
+</button>
+
+@code {
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public EventCallback OnClick { get; set; }
+
+    private string state = "";
+    [Parameter] public string Color { get; set; } = "blue";
+
+    private void OnMouseOver()
+    {
+        state = "hover";
+    }
+
+    private void OnMouseOut()
+    {
+        state = "";
+    }
+}

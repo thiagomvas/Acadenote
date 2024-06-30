@@ -1,0 +1,48 @@
+﻿@page "/"
+@using System.Reflection
+@inject AppTheme theme
+@inject ColorUtility color;
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!</h1>
+<h3>Colors</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Color</th>
+            <th>Preview</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var color in Colors)
+        {
+            <tr>
+                <td>@color.Key</td>
+                <td>@color.Value</td>
+                <td style="background-color:@color.Value; width: 50px; height: 20px;"></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p>IsDarkMode: @(theme.IsDarkMode)</p>
+Components:
+<br />
+<Acadebutton Color="@color.Success" OnClick="ToggleTheme">Button</Acadebutton>
+<Acadebutton Color="@color.Warning" OnClick="ToggleTheme">Button</Acadebutton>
+<Acadebutton Color="@color.Error" OnClick="ToggleTheme">Button</Acadebutton>
+
+
+@code {
+    private Dictionary<string, string> Colors;
+    protected override void OnInitialized()
+    {
+        Colors = color.GetColors();
+    }
+    private void ToggleTheme()
+    {
+        theme.IsDarkMode = !theme.IsDarkMode;
+        Colors = color.GetColors();
+    }
+}
