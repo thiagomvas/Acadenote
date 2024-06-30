@@ -27,18 +27,37 @@
     </tbody>
 </table>
 <p>IsDarkMode: @(theme.IsDarkMode)</p>
-Components:
-<br />
+<h3>Buttons</h3>
 <Acadebutton Color="@color.Success" OnClick="ToggleTheme">Toggle Theme</Acadebutton>
 <Acadebutton Color="@color.Warning">Button</Acadebutton>
 <Acadebutton Color="@color.Error">Button</Acadebutton>
 
+<h3>Chips</h3>
+<Acadechip Color="@color.Success" TextColor="@color.Text.Primary" Highlightable=true>Success</Acadechip>
+<Acadechip Color="@color.Warning" TextColor="@color.Text.Primary">Warning</Acadechip>
+<Acadechip Color="@color.Error" TextColor="@color.Text.Primary">Error</Acadechip>
+<Acadechip Color="@color.Success" TextColor="@color.Success">Success</Acadechip>
+<Acadechip Color="@color.Warning" TextColor="@color.Warning">Warning</Acadechip>
+<Acadechip Color="@color.Error" TextColor="@color.Error">Error</Acadechip>
+
+
 
 @code {
     private Dictionary<string, string> Colors;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            theme.IsDarkMode = await theme.IsBrowserDarkMode();
+            await theme.ListenForThemeChanges();
+        }
+    }
+
     protected override void OnInitialized()
     {
         Colors = color.GetColors();
+        theme.OnChange += StateHasChanged;
     }
     private void ToggleTheme()
     {
