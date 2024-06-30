@@ -1,4 +1,5 @@
-﻿<Router AppAssembly="@typeof(App).Assembly">
+﻿@inject AppTheme theme
+<Router AppAssembly="@typeof(App).Assembly">
     <Found Context="routeData">
         <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
         <FocusOnNavigate RouteData="@routeData" Selector="h1" />
@@ -10,3 +11,21 @@
         </LayoutView>
     </NotFound>
 </Router>
+
+
+@code {
+    private string style = "";
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            theme.IsDarkMode = await theme.IsBrowserDarkMode();
+            await theme.ListenForThemeChanges();
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        theme.OnChange += StateHasChanged;
+    }
+}
