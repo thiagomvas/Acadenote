@@ -28,10 +28,12 @@ namespace Acadenote.Web
 
         // When changing these, also update index.html
         public string Background => theme.IsDarkMode ? "#121212" : "#dee2e6"; 
+        
 
 
         public string Primary => theme.IsDarkMode ? "#8338ec" : "#cdb4db"; 
         public string Secondary => theme.IsDarkMode ? "#3a86ff" : "#a2d2ff"; 
+        public string BackgroundAccent => theme.IsDarkMode ? "#1a1a1a" : "#cbcfd4";
 
 
         public string Success => theme.IsDarkMode ? "#388e3c" : "#81c784";

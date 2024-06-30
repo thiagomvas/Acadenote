@@ -2,12 +2,32 @@
 @inject AppTheme theme
 @inject ColorUtility colors
 
-<div class="sidebar">
-    <p>Hi</p>
-    <p>Hi</p>
-    <p>Hi</p>
-</div>
-<div class="content">
-    @Body
+<div class="container">
+    <aside class="sidebar" style="@border">
+        <Acadebutton Color="@colors.BackgroundAccent">Notes</Acadebutton>
+        <Acadebutton Color="@colors.BackgroundAccent">Algorithms & Calculators</Acadebutton>
+        <Acadebutton Color="@colors.BackgroundAccent">Guides</Acadebutton>
+    </aside>
+    <main class="content">
+        @Body
+    </main>
 </div>
 
+@code {
+    private string border => $"border-right:  2px dashed {colors.Primary}94";
+
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            theme.IsDarkMode = await theme.IsBrowserDarkMode();
+            await theme.ListenForThemeChanges();
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        theme.OnChange += StateHasChanged;
+    }
+}
