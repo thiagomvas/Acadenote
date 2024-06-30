@@ -1,0 +1,13 @@
+﻿.sidebar {
+    background-color: #f8f9fa;
+    border-right: 1px solid #e9ecef;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    z-index: 1000;
+}
+.sidebar.hidden {
+    display: none;
+}

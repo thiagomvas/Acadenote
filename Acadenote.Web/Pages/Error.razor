@@ -1,0 +1,21 @@
+﻿@page "/error"
+@inject AppTheme theme
+
+
+<h1>Error</h1>
+@code {
+    private string style = "";
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            theme.IsDarkMode = await theme.IsBrowserDarkMode();
+            await theme.ListenForThemeChanges();
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        theme.OnChange += StateHasChanged;
+    }
+}

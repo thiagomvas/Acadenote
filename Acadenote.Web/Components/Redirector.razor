@@ -1,0 +1,32 @@
+﻿@if (NewTab)
+{
+    <a href="@Destination" target="_blank">
+        @ChildContent
+    </a>
+}
+else
+{
+    <div @onclick="Navigate">
+        @ChildContent
+    </div>
+}
+
+@code {
+    [Inject] private NavigationManager NavigationManager { get; set; }
+
+    [Parameter] public string Destination { get; set; }
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public bool NewTab { get; set; } = false;
+
+    private void Navigate()
+    {
+        if (NewTab)
+        {
+            NavigationManager.NavigateTo(Destination, forceLoad: true); // open in new tab
+        }
+        else
+        {
+            NavigationManager.NavigateTo(Destination); // open in same tab
+        }
+    }
+}
