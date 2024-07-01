@@ -30,7 +30,7 @@ namespace Acadenote.Server.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred while fetching all notes.");
-                return StatusCode(500, "Internal server error.");
+                return StatusCode(500, $"Internal server error. {ex.Message}");
             }
         }
 
