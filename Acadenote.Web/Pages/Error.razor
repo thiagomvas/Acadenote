@@ -1,8 +1,10 @@
-﻿@page "/error"
+﻿@page "/404"
 @inject AppTheme theme
 
+<PageTitle>404 - Erro</PageTitle>
 
-<h1>Error</h1>
+<h1>Oops... Isso não deveria ter acontecido...</h1>
+Algo deu errado, um ID invalido ou uma pagina não existente foi aberta...
 @code {
     private string style = "";
     protected override async Task OnAfterRenderAsync(bool firstRender)

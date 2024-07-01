@@ -19,5 +19,6 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Acadenode.Core\Acadenode.Core.csproj" />
+	  <ProjectReference Include="..\Acadenote.API\Acadenote.API.csproj" />
 	</ItemGroup>
 </Project>

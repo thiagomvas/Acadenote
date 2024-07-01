@@ -1,0 +1,44 @@
+﻿@implements IDisposable
+
+<div class="loading-container">
+    <div class="loading-message">
+        <div class="loading-animation" />
+        @currentMessage@dots
+    </div>
+</div>
+
+@code {
+    private Timer _timer;
+    private string currentMessage = "";
+    private string dots = "";
+
+    protected override void OnInitialized()
+    {
+        _timer = new Timer(UpdateLoadingMessage, null, 0, 1000);
+        currentMessage = Constants.GetRandomLoadingMessage();
+    }
+
+    private void UpdateLoadingMessage(object state)
+    {
+        if (dots.Length < 3)
+        {
+            dots += ".";
+        }
+        else
+        {
+            dots = "";
+        }
+
+        if (new Random().Next(0, 100) < 2) // 2% chance to change the message
+        {
+            currentMessage = Constants.GetRandomLoadingMessage();
+        }
+
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        _timer?.Dispose();
+    }
+}

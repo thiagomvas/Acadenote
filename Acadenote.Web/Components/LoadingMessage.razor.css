@@ -1,0 +1,69 @@
+﻿.loading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-size: 24px;
+    font-family: Arial, sans-serif;
+    position: relative;
+}
+
+.loading-message {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.loading-animation {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    border-radius: 50%;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    animation: spin 2s linear infinite, colorShift 3s ease-in-out infinite, shapeShift 9s ease-in-out infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes colorShift {
+    0% {
+        background-color: #ff6b6b; /* Light Red */
+    }
+
+    20% {
+        background-color: #ffcc5c; /* Light Orange */
+    }
+
+    40% {
+        background-color: #ffeead; /* Light Yellow */
+    }
+
+    60% {
+        background-color: #88d8b0; /* Light Green */
+    }
+
+    80% {
+        background-color: #6b9ac4; /* Light Blue */
+    }
+    100% {
+        background-color: #ff6b6b; /* Light Red */
+    }
+}
+@keyframes shapeShift {
+    33% {
+        border-radius: 0;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    66% {
+        border-radius: 0;
+        clip-path: polygon(50% 0, 50% 0, 100% 100%, 0 100%);
+    }
+}

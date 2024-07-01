@@ -3,7 +3,6 @@
 @using Acadenode.Core.Repositories
 @inject AppTheme theme
 @inject ColorUtility color;
-@inject INoteRepository noteRepository
 
 <PageTitle>Home</PageTitle>
 
@@ -71,6 +70,9 @@
 <h3>Latex View</h3>
 <LatexView Content="@sampleLatex"/>
 
+<h3>Messagem de carregamento</h3>
+<LoadingMessage />
+
 @code {
     private Dictionary<string, string> Colors;
     private string sampleLatex = @"
@@ -94,8 +96,7 @@ $$\begin{align*} x &= \frac{-(-5) \pm \sqrt{(-5)^2 - 4 \cdot 1 \cdot 6}}{2 \cdot
 
     protected override async Task OnInitializedAsync()
     {
-       // await noteRepository.AddNoteAsync(new() { Id = "test001", Content = "Hello, world!", Title = "Test note" });
-        notes = await noteRepository.GetAllNotesAsync();
+       // await noteRepository.AddNoteAsync(new() { Id = "t
     }
 
     protected override void OnInitialized()
