@@ -5,10 +5,12 @@
 
 @if (notes == null)
 {
-    <p>Loading...</p>
+    <PageTitle>Carregando...</PageTitle>
+    <LoadingMessage />
 }
 else
 {
+    <PageTitle>Notes</PageTitle>
     @foreach(var note in notes)
     {
         <div class="card">

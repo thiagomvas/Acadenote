@@ -6,11 +6,12 @@
 
 @if (note == null)
 {
-    <PageTitle>Loading...</PageTitle>
-    <p>Loading...</p>
+    <PageTitle>Carregando...</PageTitle>
+    <LoadingMessage />
 }
 else
 {
+    <PageTitle>@note.Title</PageTitle>
     <NoteView Note="note" />
 }
 
