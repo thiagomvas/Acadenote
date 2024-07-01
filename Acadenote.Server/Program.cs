@@ -22,7 +22,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.Urls.Add("https://*:80");
+app.Urls.Add("http://*:80");
 
 app.UseHttpsRedirection();
 
