@@ -1,8 +1,10 @@
 ﻿@page "/"
+@using Microsoft.Extensions.Localization
 @inject AppTheme theme
 @inject ColorUtility color;
 
 <PageTitle>Home</PageTitle>
+
 
 <h1>Hello, world!</h1>
 <h3>Colors</h3>
@@ -43,25 +45,14 @@
 <Acadechip Color="@color.Success" TextColor="@color.Success">Success</Acadechip>
 <Acadechip Color="@color.Warning" TextColor="@color.Warning">Warning</Acadechip>
 <Acadechip Color="@color.Error" TextColor="@color.Error">Error</Acadechip>
-<h3>Buttons</h3>
-<Acadebutton Color="@color.Success" OnClick="ToggleTheme">Toggle Theme</Acadebutton>
-<Redirector Destination="./error">
-    <Acadebutton Color="@color.Warning">Redirect to error</Acadebutton>
-</Redirector>
-<Redirector Destination="https://google.com" NewTab=true>
-    <Acadebutton Color="@color.Error">Redirrect to google (new tab)</Acadebutton>
-</Redirector>
 
-
-<h3>Chips</h3>
-<Acadechip Color="@color.Success" TextColor="@color.Text.Primary" Highlightable=true>Success</Acadechip>
-<Acadechip Color="@color.Warning" TextColor="@color.Text.Primary">Warning</Acadechip>
-<Acadechip Color="@color.Error" TextColor="@color.Text.Primary">Error</Acadechip>
-<Acadechip Color="@color.Success" TextColor="@color.Success">Success</Acadechip>
-<Acadechip Color="@color.Warning" TextColor="@color.Warning">Warning</Acadechip>
-<Acadechip Color="@color.Error" TextColor="@color.Error">Error</Acadechip>
-
-
+<h3>Icons</h3>
+<Acadeicon Color="@color.Text.Primary" Icon="Acadeicon.IconType.Hashtag" />
+<Acadeicon Color="@color.Text.Primary" Icon="Acadeicon.IconType.Note" />
+<Acadeicon Color="@color.Text.Primary" Icon="Acadeicon.IconType.Search" />
+<Acadeicon Color="@color.Text.Primary" Icon="Acadeicon.IconType.List" />
+<Acadeicon Color="@color.Text.Primary" Icon="Acadeicon.IconType.Pencil" />
+<Acadeicon Color="@color.Text.Primary" Icon="Acadeicon.IconType.Book" />
 
 @code {
     private Dictionary<string, string> Colors;
