@@ -15,16 +15,9 @@ builder.Services.AddDbContext<AcadenoteDbContext>(o => o.UseSqlite("Data Source=
 builder.Services.AddScoped<INoteRepository, NoteRepository>();
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
 
 app.Urls.Add("http://*:80");
 
-app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
