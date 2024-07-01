@@ -23,7 +23,7 @@
         filter: brightness(1.25); 
     }
 
-    .action-button:active {
+    .action-button:active, body.dark .action-button:active {
         transform: scale(0.95); 
         box-shadow: none; 
         transition-duration: 0.05s;

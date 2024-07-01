@@ -27,7 +27,7 @@
         }
     </tbody>
 </table>
-<p>IsDarkMode: @(theme.IsDarkMode)</p>
+<p>IsDarkMode: <code>@(theme.IsDarkMode)</code></p>
 <h3>Buttons</h3>
 <Acadebutton Color="@color.Success" OnClick="ToggleTheme">Toggle Theme</Acadebutton>
 <Redirector Destination="./error">
@@ -54,8 +54,20 @@
 <Acadeicon Color="@color.Text.Primary" Icon="Acadeicon.IconType.Pencil" />
 <Acadeicon Color="@color.Text.Primary" Icon="Acadeicon.IconType.Book" />
 
+<h3>Latex View</h3>
+<LatexView Content="@sampleLatex"/>
+
 @code {
     private Dictionary<string, string> Colors;
+    private string sampleLatex = @"
+Dada a equação $ax^2 + bx + c = 0$, temos que a solução é dada por:
+
+$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$
+
+Por exemplo, para a equação $x^2 - 5x + 6 = 0$, temos que $a = 1$, $b = -5$ e $c = 6$. Substituindo na fórmula, temos:
+
+$$\begin{align*} x &= \frac{-(-5) \pm \sqrt{(-5)^2 - 4 \cdot 1 \cdot 6}}{2 \cdot 1} \\ &= \frac{5 \pm \sqrt{25 - 24}}{2}\\ &= \frac{5 \pm 1}{2}\\ x &= 3, x = 2 \end{align*}$$
+";
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {

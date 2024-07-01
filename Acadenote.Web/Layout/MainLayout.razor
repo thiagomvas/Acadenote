@@ -5,10 +5,14 @@
 <div class="container">
     <aside class="sidebar" style="@border">
         <Acadebutton Color="@colors.BackgroundAccent">
-            <Acadeicon Color="@colors.Text.Primary" Icon="Acadeicon.IconType.Note" /> Notes
+            <div><Acadeicon Color="@colors.Text.Primary" Icon="Acadeicon.IconType.Note" /></div> Notes
         </Acadebutton>
-        <Acadebutton Color="@colors.BackgroundAccent"><Acadeicon Color="@colors.Text.Primary" Icon="Acadeicon.IconType.Hashtag" /> Algorithms & Calculators</Acadebutton>
-        <Acadebutton Color="@colors.BackgroundAccent"><Acadeicon Color="@colors.Text.Primary" Icon="Acadeicon.IconType.Book" /> Guides</Acadebutton>
+        <Acadebutton Color="@colors.BackgroundAccent">
+            <div><Acadeicon Color="@colors.Text.Primary" Icon="Acadeicon.IconType.Hashtag" /></div> Algorithms & Calculators
+        </Acadebutton>
+        <Acadebutton Color="@colors.BackgroundAccent">
+            <div><Acadeicon Color="@colors.Text.Primary" Icon="Acadeicon.IconType.Book" /></div> Guides
+        </Acadebutton>
     </aside>
     <main class="content">
         @Body
