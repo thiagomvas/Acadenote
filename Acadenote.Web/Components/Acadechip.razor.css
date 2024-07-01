@@ -1,0 +1,30 @@
+﻿﻿.chip {
+    display: inline-block;
+    padding: 5px 12px;
+    background-color: transparent;
+    border-radius: 25px;
+    margin: 5px;
+    transition: background-color 0.1s;
+}
+
+.chip:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.icon {
+    display: inline-block;
+    width: 10px; /* Adjust size as needed */
+    height: 10px; /* Adjust size as needed */
+    border-radius: 50%; /* Make it a circle */
+    margin-right: 5px;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}

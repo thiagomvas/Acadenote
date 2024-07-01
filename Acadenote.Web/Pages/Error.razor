@@ -1,0 +1,23 @@
+﻿@page "/404"
+@inject AppTheme theme
+
+<PageTitle>404 - Erro</PageTitle>
+
+<h1>Oops... Isso não deveria ter acontecido...</h1>
+Algo deu errado, um ID invalido ou uma pagina não existente foi aberta...
+@code {
+    private string style = "";
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            theme.IsDarkMode = await theme.IsBrowserDarkMode();
+            await theme.ListenForThemeChanges();
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        theme.OnChange += StateHasChanged;
+    }
+}

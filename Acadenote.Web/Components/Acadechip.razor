@@ -1,0 +1,13 @@
+﻿<div class="chip @select" style="color: @TextColor; border: 2px solid @Color;">
+    <div class="icon" style="background-color: @Color;"></div>
+    @ChildContent
+</div>
+
+@code {
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public string Color { get; set; } = "blue";
+    [Parameter] public string TextColor { get; set; } = "blue";
+    [Parameter] public bool Highlightable { get; set; } = false;
+
+    private string select => Highlightable ? "" : "noselect";
+}

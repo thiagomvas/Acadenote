@@ -9,33 +9,22 @@
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 8px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, filter 0.2s ease-in-out;
 }
 
     .action-button:hover {
-        background-color: #45a049;
+        transform: scale(1.05);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        filter: brightness(0.85);
     }
-
-    .action-button:active {
-        background-color: #3e8e41;
-    }
-
-    .action-button:disabled {
-        background-color: #cccccc;
-        cursor: not-allowed;
-    }
-
-body.dark .action-button {
-    color: #000;
-}
-
     body.dark .action-button:hover {
-        background-color: #444;
+        transform: scale(1.05); 
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+        filter: brightness(1.25); 
     }
 
-    body.dark .action-button:active {
-        background-color: #222;
-    }
-
-    body.dark .action-button:disabled {
-        background-color: #555;
+    .action-button:active, body.dark .action-button:active {
+        transform: scale(0.95); 
+        box-shadow: none; 
+        transition-duration: 0.05s;
     }

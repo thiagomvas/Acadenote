@@ -2,13 +2,27 @@
 @inject AppTheme theme
 @inject ColorUtility colors
 
-<div class="container" style="background: @colors.Background">
-    @Body
+<div class="container">
+    <aside class="sidebar" style="@border">
+        <Acadebutton Color="@colors.BackgroundAccent">
+            <div><Acadeicon Color="@colors.Text.Primary" Icon="Acadeicon.IconType.Note" /></div> Notes
+        </Acadebutton>
+        <Acadebutton Color="@colors.BackgroundAccent">
+            <div><Acadeicon Color="@colors.Text.Primary" Icon="Acadeicon.IconType.Hashtag" /></div> Algorithms & Calculators
+        </Acadebutton>
+        <Acadebutton Color="@colors.BackgroundAccent">
+            <div><Acadeicon Color="@colors.Text.Primary" Icon="Acadeicon.IconType.Book" /></div> Guides
+        </Acadebutton>
+    </aside>
+    <main class="content">
+        @Body
+    </main>
 </div>
 
-
 @code {
-    private string style = "";
+    private string border => $"border-right:  2px dashed {colors.Primary}94";
+
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
@@ -23,13 +37,3 @@
         theme.OnChange += StateHasChanged;
     }
 }
-
-<style>
-    .container {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        width: 100%;
-        overflow: hidden; /* Prevent scrolling on body */
-    }
-</style>

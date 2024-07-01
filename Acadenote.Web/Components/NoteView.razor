@@ -1,0 +1,11 @@
+﻿@using Acadenode.Core.Models
+
+<div>
+    <h1>@Note.Title</h1>
+    <LatexView Content="@Note.Content" />
+
+</div>
+
+@code {
+    [Parameter] public Note Note { get; set; }
+}

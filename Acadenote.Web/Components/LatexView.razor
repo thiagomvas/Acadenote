@@ -1,0 +1,89 @@
+﻿﻿@using System.Text.RegularExpressions
+@using MathJaxBlazor
+@foreach (var line in Content.Split(Environment.NewLine))
+{
+	if (line.Trim().StartsWith("#"))
+	{
+		@((MarkupString)MarkdownTitleToHeader(line))
+		continue;
+	}
+	foreach (Match match in Regex.Matches(line, @"(\$\$.*?\$\$|\$[^$]*\$)|([^$]+)"))
+	{
+		string text = match.Value;
+		if (text.Contains("$$"))
+		{
+			<Equation Value="@text.Replace("$$", "")" />
+			continue;
+		}
+		if (text.Contains('$'))
+		{
+			<Equation Value="@text.Replace('$', ' ')" TeXDisplay=false />
+			continue;
+		}
+
+		text = MarkdownToHtml(text);
+
+		@((MarkupString)text)
+	}
+	<br />
+}
+
+@code
+{
+	[Parameter] public string Content { get; set; }
+
+	private string MarkdownTitleToHeader(string line)
+	{
+		int count = 0;
+		foreach (char c in line)
+		{
+			if (c == '#')
+			{
+				count++;
+			}
+			else
+			{
+				break;
+			}
+		}
+		return $"<h{count}>{line.TrimStart('#')}</h{count}>";
+
+	}
+
+	static string MarkdownToHtml(string markdownText)
+	{
+		string htmlText = ConvertBoldToHtml(markdownText);
+		htmlText = ConvertItalicToHtml(htmlText);
+		htmlText = ConvertUnderlineToHtml(htmlText);
+		htmlText = ConvertStrikethroughToHtml(htmlText);
+		return htmlText;
+	}
+
+	static string ConvertBoldToHtml(string markdownText)
+	{
+		// Regular expression to match Markdown bold syntax
+		string boldPattern = @"\*\*(.*?)\*\*";
+		return Regex.Replace(markdownText, boldPattern, "<b>$1</b>");
+	}
+
+	static string ConvertItalicToHtml(string markdownText)
+	{
+		// Regular expression to match Markdown italic syntax
+		string italicPattern = @"\*(.*?)\*";
+		return Regex.Replace(markdownText, italicPattern, "<i>$1</i>");
+	}
+
+	static string ConvertUnderlineToHtml(string markdownText)
+	{
+		// Regular expression to match Markdown underline syntax
+		string underlinePattern = @"__(.*?)__";
+		return Regex.Replace(markdownText, underlinePattern, "<u>$1</u>");
+	}
+
+	static string ConvertStrikethroughToHtml(string markdownText)
+	{
+		// Regular expression to match Markdown strikethrough syntax
+		string strikethroughPattern = @"~~(.*?)~~";
+		return Regex.Replace(markdownText, strikethroughPattern, "<s>$1</s>");
+	}
+}

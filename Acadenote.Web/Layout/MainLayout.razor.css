@@ -1,0 +1,42 @@
+﻿
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to next line on smaller screens */
+}
+
+.sidebar {
+    width: 200px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    color: #000
+}
+    body.dark .sidebar {
+        color: #fff
+    }
+.content {
+    flex: 1;
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+    }
+
+    .sidebar {
+        width: 100%; /* Take full width on smaller screens */
+        border-right: none; /* Remove right border on smaller screens */
+        border-bottom: 1px solid #ddd; /* Add bottom border for separation */
+    }
+}
+
+
+@media (min-width: 769px) {
+    .sidebar {
+        position: sticky;
+        top: 0;
+        height: calc(100vh - 20px); /* Adjust height based on container padding */
+        overflow-y: auto; /* Enable vertical scroll for sidebar content */
+    }
+}
