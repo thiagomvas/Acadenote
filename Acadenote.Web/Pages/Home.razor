@@ -1,9 +1,23 @@
 ﻿@page "/"
-@using Microsoft.Extensions.Localization
+@using Acadenode.Core.Models
+@using Acadenode.Core.Repositories
 @inject AppTheme theme
 @inject ColorUtility color;
+@inject INoteRepository noteRepository
 
 <PageTitle>Home</PageTitle>
+
+@foreach(var note in notes)
+{
+    <div class="card">
+        <div class="card-header">
+            @note.Title (@note.Id)
+        </div>
+        <div class="card-body">
+            @note.Content
+        </div>
+    </div>
+}
 
 
 <h1>Hello, world!</h1>
@@ -68,7 +82,7 @@ Por exemplo, para a equação $x^2 - 5x + 6 = 0$, temos que $a = 1$, $b = -5$ e 
 
 $$\begin{align*} x &= \frac{-(-5) \pm \sqrt{(-5)^2 - 4 \cdot 1 \cdot 6}}{2 \cdot 1} \\ &= \frac{5 \pm \sqrt{25 - 24}}{2}\\ &= \frac{5 \pm 1}{2}\\ x &= 3, x = 2 \end{align*}$$
 ";
-
+    private IEnumerable<Note> notes = new List<Note>();
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
@@ -76,6 +90,12 @@ $$\begin{align*} x &= \frac{-(-5) \pm \sqrt{(-5)^2 - 4 \cdot 1 \cdot 6}}{2 \cdot
             theme.IsDarkMode = await theme.IsBrowserDarkMode();
             await theme.ListenForThemeChanges();
         }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+       // await noteRepository.AddNoteAsync(new() { Id = "test001", Content = "Hello, world!", Title = "Test note" });
+        notes = await noteRepository.GetAllNotesAsync();
     }
 
     protected override void OnInitialized()

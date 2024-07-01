@@ -16,4 +16,8 @@
 	<ItemGroup>
 	  <Folder Include="Resources\" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Acadenode.Core\Acadenode.Core.csproj" />
+	</ItemGroup>
 </Project>
