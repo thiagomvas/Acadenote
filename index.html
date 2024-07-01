@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Acadenote.Web</title>
+    <base href="/" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link href="Acadenote.Web.styles.css" rel="stylesheet" />
+    <script type="text/javascript" id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<style>
+    body {
+        background-color: #dee2e6;
+        color: black;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+        body.dark {
+            background-color: #121212;
+            color: white;
+        }
+</style>
+<body>
+    <div id="app">
+        <svg class="loading-progress">
+            <circle r="40%" cx="50%" cy="50%" />
+            <circle r="40%" cx="50%" cy="50%" />
+        </svg>
+        <div class="loading-progress-text"></div>
+    </div>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script>
+        window.setDarkMode = (isDarkMode) => {
+            if (isDarkMode) {
+                window.document.body.classList.add("dark")
+            }
+            else {
+                window.document.body.classList.remove("dark")
+            }
+        }
+
+        const prefersDarkQuery = "(prefers-color-scheme: dark)"
+
+        window.isBrowserDarkMode = () => window.matchMedia(prefersDarkQuery).matches
+
+        window.addThemeEventListener = (dotnet) => {
+            window.matchMedia(prefersDarkQuery).addEventListener("change", (e) => {
+                dotnet.invokeMethodAsync("SetDarkMode", e.matches)
+            })
+        }
+    </script>
+</body>
+
+</html>

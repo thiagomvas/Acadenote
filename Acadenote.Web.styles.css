@@ -1,0 +1,176 @@
+/* /Components/Acadebutton.razor.rz.scp.css */
+.action-button[b-uxg0dx2z7v] {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, filter 0.2s ease-in-out;
+}
+
+    .action-button:hover[b-uxg0dx2z7v] {
+        transform: scale(1.05);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        filter: brightness(0.85);
+    }
+    body.dark .action-button:hover[b-uxg0dx2z7v] {
+        transform: scale(1.05); 
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+        filter: brightness(1.25); 
+    }
+
+    .action-button:active[b-uxg0dx2z7v], body.dark .action-button:active[b-uxg0dx2z7v] {
+        transform: scale(0.95); 
+        box-shadow: none; 
+        transition-duration: 0.05s;
+    }
+/* /Components/Acadechip.razor.rz.scp.css */
+.chip[b-1bfobnwfg5] {
+    display: inline-block;
+    padding: 5px 12px;
+    background-color: transparent;
+    border-radius: 25px;
+    margin: 5px;
+    transition: background-color 0.1s;
+}
+
+.chip:hover[b-1bfobnwfg5] {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.icon[b-1bfobnwfg5] {
+    display: inline-block;
+    width: 10px; /* Adjust size as needed */
+    height: 10px; /* Adjust size as needed */
+    border-radius: 50%; /* Make it a circle */
+    margin-right: 5px;
+}
+
+.noselect[b-1bfobnwfg5] {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+/* /Components/LoadingMessage.razor.rz.scp.css */
+.loading-container[b-0o3tf96x3u] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-size: 24px;
+    font-family: Arial, sans-serif;
+    position: relative;
+}
+
+.loading-message[b-0o3tf96x3u] {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.loading-animation[b-0o3tf96x3u] {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    border-radius: 50%;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    animation: spin-b-0o3tf96x3u 2s linear infinite, colorShift-b-0o3tf96x3u 3s ease-in-out infinite, shapeShift-b-0o3tf96x3u 9s ease-in-out infinite;
+}
+
+@keyframes spin-b-0o3tf96x3u {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes colorShift-b-0o3tf96x3u {
+    0% {
+        background-color: #ff6b6b; /* Light Red */
+    }
+
+    20% {
+        background-color: #ffcc5c; /* Light Orange */
+    }
+
+    40% {
+        background-color: #ffeead; /* Light Yellow */
+    }
+
+    60% {
+        background-color: #88d8b0; /* Light Green */
+    }
+
+    80% {
+        background-color: #6b9ac4; /* Light Blue */
+    }
+    100% {
+        background-color: #ff6b6b; /* Light Red */
+    }
+}
+@keyframes shapeShift-b-0o3tf96x3u {
+    33% {
+        border-radius: 0;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    66% {
+        border-radius: 0;
+        clip-path: polygon(50% 0, 50% 0, 100% 100%, 0 100%);
+    }
+}
+/* /Layout/MainLayout.razor.rz.scp.css */
+
+.container[b-onxqdbjofc] {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to next line on smaller screens */
+}
+
+.sidebar[b-onxqdbjofc] {
+    width: 200px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    color: #000
+}
+    body.dark .sidebar[b-onxqdbjofc] {
+        color: #fff
+    }
+.content[b-onxqdbjofc] {
+    flex: 1;
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .container[b-onxqdbjofc] {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+    }
+
+    .sidebar[b-onxqdbjofc] {
+        width: 100%; /* Take full width on smaller screens */
+        border-right: none; /* Remove right border on smaller screens */
+        border-bottom: 1px solid #ddd; /* Add bottom border for separation */
+    }
+}
+
+
+@media (min-width: 769px) {
+    .sidebar[b-onxqdbjofc] {
+        position: sticky;
+        top: 0;
+        height: calc(100vh - 20px); /* Adjust height based on container padding */
+        overflow-y: auto; /* Enable vertical scroll for sidebar content */
+    }
+}
