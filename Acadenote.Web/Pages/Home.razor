@@ -96,11 +96,32 @@
     </Acadecard>
 </Grid>
 
+<h3>Effects</h3>
 
+<OrbFX ShadowSpreadRadius="100">
+        <LoadingMessage />
+    </OrbFX>
+<h3>Input Fields</h3>
+<h4>Text</h4>
+<InputText class="acadenote-input-text" @bind-Value="name"/>
+<p>@name</p>
 
+<h4>Numbers</h4>
+<InputNumber class="acadenote-input-number" @bind-Value="number"/>
+<p>@number</p>
+
+<h4>Checkbox</h4>
+<label class="checkbox-btn">
+    <label for="checkbox">Test</label>
+    <input id="checkbox" type="checkbox">
+    <span class="checkmark"></span>
+</label>
 
 
 @code {
+    private bool isChecked;
+    private string name ="";
+    private double number = 0;
     private Dictionary<string, string> Colors;
     private string sampleLatex = @"
 Dada a equação $ax^2 + bx + c = 0$, temos que a solução é dada por:
