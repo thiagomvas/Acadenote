@@ -1,0 +1,21 @@
+﻿@inherits ComponentBase
+
+<div class="card" style="background: @Colors.BackgroundAccent; color: @Colors.Text.Primary">
+    <div class="card-body">
+        @ChildContent
+    </div>
+    <div class="card-footer" style="color: @Colors.Primary">
+        @Footer
+    </div>
+</div>
+
+@code {
+    [Inject] private ColorUtility Colors { get; set; }
+    [Parameter]
+    public string Header { get; set; }
+    [Parameter]
+    public string Footer { get; set; }
+
+
+    [Parameter] public RenderFragment ChildContent { get; set; }
+}
