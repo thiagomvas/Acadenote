@@ -36,7 +36,7 @@ namespace Acadenote.Server.Repositories
             catch (Exception ex)
             {
                 response.Success = false;
-                response.ErrorMessage = ex.Message;
+                response.Data = ex.Message;
             }
             return response;
         }
@@ -53,12 +53,12 @@ namespace Acadenote.Server.Repositories
             catch (DbUpdateConcurrencyException)
             {
                 response.Success = false;
-                response.ErrorMessage = "Note not found.";
+                response.Data = "Note not found.";
             }
             catch (Exception ex)
             {
                 response.Success = false;
-                response.ErrorMessage = ex.Message;
+                response.Data = ex.Message;
             }
             return response;
         }
@@ -72,7 +72,7 @@ namespace Acadenote.Server.Repositories
                 if (note == null)
                 {
                     response.Success = false;
-                    response.ErrorMessage = "Note not found.";
+                    response.Data = "Note not found.";
                 }
                 else
                 {
@@ -84,7 +84,7 @@ namespace Acadenote.Server.Repositories
             catch (Exception ex)
             {
                 response.Success = false;
-                response.ErrorMessage = ex.Message;
+                response.Data = ex.Message;
             }
             return response;
         }
