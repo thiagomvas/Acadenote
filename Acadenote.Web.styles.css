@@ -29,6 +29,41 @@
         box-shadow: none; 
         transition-duration: 0.05s;
     }
+/* /Components/Acadecard.razor.rz.scp.css */
+.card[b-yucugapayi] {
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 0;
+    background-color: #fff;
+    width: 300px;
+    height: 150px; /* Set your desired fixed height */
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s;
+    overflow: hidden; /* Hide any overflow to ensure constant height */
+}
+
+    .card:hover[b-yucugapayi] {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    }
+
+.card-footer[b-yucugapayi] {
+    padding: 10px;
+    flex-shrink: 0;
+    font-weight: bold;
+}
+
+.card-body[b-yucugapayi] {
+    padding: 10px;
+    flex-grow: 1;
+    overflow: hidden; /* Hide any overflow */
+    text-overflow: ellipsis; /* Show ellipsis for overflow */
+    white-space: normal; /* Allow text to wrap */
+    font-size: 18px;
+    font-weight: bold;
+}
 /* /Components/Acadechip.razor.rz.scp.css */
 .chip[b-1bfobnwfg5] {
     display: inline-block;
