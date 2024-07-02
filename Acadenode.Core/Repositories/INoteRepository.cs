@@ -19,6 +19,6 @@ namespace Acadenode.Core.Repositories
     public class ServiceResponse
     {
         public bool Success { get; set; }
-        public string Data { get; set; }
+        public string Message { get; set; }
     }
 }

@@ -13,6 +13,7 @@ namespace Acadenode.Core.Models
         public bool IsActive { get; set; }
         public string? Token { get; set; }
         public required string Password { get; set; }
+        public string? Email { get; set; }
 
     }
 }

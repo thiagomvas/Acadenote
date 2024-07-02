@@ -61,8 +61,8 @@ namespace Acadenote.Server.Controllers
                 var response = await _noteRepository.AddNoteAsync(note);
                 if (!response.Success)
                 {
-                    _logger.LogError("Failed to add note: {Error}", response.Data);
-                    return StatusCode(500, $"Failed to add note: {response.Data}");
+                    _logger.LogError("Failed to add note: {Error}", response.Message);
+                    return StatusCode(500, $"Failed to add note: {response.Message}");
                 }
                 return CreatedAtAction(nameof(GetNoteByIdAsync), new { id = note.Id }, note);
             }
@@ -86,8 +86,8 @@ namespace Acadenote.Server.Controllers
                 var response = await _noteRepository.UpdateNoteAsync(note);
                 if (!response.Success)
                 {
-                    _logger.LogError("Failed to update note: {Error}", response.Data);
-                    return NotFound(response.Data);
+                    _logger.LogError("Failed to update note: {Error}", response.Message);
+                    return NotFound(response.Message);
                 }
 
                 return NoContent();
@@ -107,8 +107,8 @@ namespace Acadenote.Server.Controllers
                 var response = await _noteRepository.DeleteNoteAsync(id);
                 if (!response.Success)
                 {
-                    _logger.LogError("Failed to delete note: {Error}", response.Data);
-                    return NotFound(response.Data);
+                    _logger.LogError("Failed to delete note: {Error}", response.Message);
+                    return NotFound(response.Message);
                 }
 
                 return NoContent();

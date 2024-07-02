@@ -69,7 +69,7 @@ namespace Acadenote.Server.Services
                 string token = GenerateToken(authClaims);
                 return (200, token);
             }
-            return (400, response.Data);
+            return (400, response.Message);
         }
 
         private byte[] GetHash(string input)

@@ -1,0 +1,35 @@
+﻿@page "/register"
+@using Acadenode.Core.Models
+@using Acadenode.Core.Repositories
+@inject IUserRepository repo
+
+
+<h3>Register</h3>
+
+<InputText @bind-Value="Name" Placeholder="Name" />
+<InputText @bind-Value="Username" Placeholder="Username" />
+<InputText @bind-Value="Email" Placeholder="Email" />
+<InputText @bind-Value="Password" Placeholder="Password" />
+
+<Acadebutton OnClick="RegisterUser">Register</Acadebutton>
+
+<p>@Response</p>
+
+@code {
+    private string Name, Username, Email, Password, Response = "";
+
+    private async Task RegisterUser()
+    {
+        var user = new User
+        {
+            Name = Name,
+            UserName = Username,
+            Email = Email,
+            Password = Password,
+            Role = Roles.User
+        };
+
+        var response = await repo.CreateUser(user);
+        Response = $"{(response.Success ? "Success" : "Failure")} - {response.Message}";
+    }
+}

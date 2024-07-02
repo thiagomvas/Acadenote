@@ -1,0 +1,11 @@
+﻿
+<div class="grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(@Width, 1fr)); gap: 1rem; row-gap: 2rem;">
+    @ChildContent
+</div>
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public string Width { get; set; } = "200px";
+}

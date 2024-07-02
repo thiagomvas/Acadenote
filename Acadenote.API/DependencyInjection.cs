@@ -9,6 +9,7 @@ namespace Acadenote.API
         public static void AddDatabaseAccess(this IServiceCollection services)
         {
             services.AddScoped<INoteRepository, NoteRepository>();   
+            services.AddScoped<IUserRepository, UserRepository>();
         }
     }
 }

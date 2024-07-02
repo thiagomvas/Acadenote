@@ -6,7 +6,7 @@
 
 <PageTitle>Home</PageTitle>
 
-@foreach(var note in notes)
+@foreach (var note in notes)
 {
     <div class="card">
         <div class="card-header">
@@ -68,21 +68,34 @@
 <Acadeicon Color="@color.Text.Primary" Icon="Acadeicon.IconType.Book" />
 
 <h3>Latex View</h3>
-<LatexView Content="@sampleLatex"/>
+<LatexView Content="@sampleLatex" />
 
 <h3>Messagem de carregamento</h3>
 <LoadingMessage />
 
-<h3>Cards</h3>
-<Acadecard Footer="Footer"> 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elementum nulla at commodo placerat. Curabitur sagittis venenatis suscipit. Sed consequat neque non suscipit tincidunt. Quisque ut semper augue. Proin semper eros id nunc mollis accumsan. Aenean venenatis faucibus pellentesque.
-</Acadecard>
-<Acadecard Footer="Neque porro quisquam est qui dolorem ">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elementum nulla at commodo placerat. Curabitur sagittis venenatis suscipit. Sed consequat neque non suscipit tincidunt. Quisque ut semper augue. Proin semper eros id nunc mollis accumsan. Aenean venenatis faucibus pellentesque.
-</Acadecard>
-<Acadecard Footer="Neque porro quisquam est qui dolorem ">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elementum nulla at commodo placerat. Curabitur sagittis venenatis suscipit. Sed consequat neque non suscipit tincidunt. Quisque ut semper augue. Proin semper eros id nunc mollis accumsan. Aenean venenatis faucibus pellentesque.
-</Acadecard>
+<h3>Cards & Grid</h3>
+
+<Grid Width="20vw">
+    <Acadecard Footer="Sed fermentum turpis eu nisi ultrices">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elementum nulla at commodo placerat. Curabitur sagittis venenatis suscipit. Sed consequat neque non suscipit tincidunt. Quisque ut semper augue. Proin semper eros id nunc mollis accumsan. Aenean venenatis faucibus pellentesque.
+    </Acadecard>
+    <Acadecard Header="Lorem Ipsum" Footer="Integer pulvinar diam quis neque pretium">
+        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed malesuada tincidunt leo, eu fringilla urna lacinia nec. Phasellus varius, arcu nec aliquam accumsan, ligula orci pellentesque nulla, sit amet ultrices felis sem id leo.
+    </Acadecard>
+    <Acadecard Header="Fusce sit amet "  Footer="Nam ullamcorper velit at libero gravida">
+        Fusce sit amet ex vel augue faucibus ultricies. Nulla sed pretium libero. Aliquam nec risus risus. Sed in augue maximus, efficitur enim at, vehicula leo. Cras in velit a magna venenatis consectetur. Suspendisse fringilla hendrerit felis, sed luctus velit elementum id.
+    </Acadecard>
+    <Acadecard Footer="Donec feugiat velit sed lacus scelerisque">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elementum nulla at commodo placerat. Curabitur sagittis venenatis suscipit. Sed consequat neque non suscipit tincidunt. Quisque ut semper augue. Proin semper eros id nunc mollis accumsan. Aenean venenatis faucibus pellentesque.
+    </Acadecard>
+    <Acadecard Header="Fusce sit amet ex vel augue faucibus ultricies" Footer="Fusce vel magna a mauris vehicula">
+        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed malesuada tincidunt leo, eu fringilla urna lacinia nec. Phasellus varius, arcu nec aliquam accumsan, ligula orci pellentesque nulla, sit amet ultrices felis sem id leo.
+    </Acadecard>
+    <Acadecard Footer="Phasellus in mi at est ullamcorper sagittis">
+        Fusce sit amet ex vel augue faucibus ultricies. Nulla sed pretium libero. Aliquam nec risus risus. Sed in augue maximus, efficitur enim at, vehicula leo. Cras in velit a magna venenatis consectetur. Suspendisse fringilla hendrerit felis, sed luctus velit elementum id.
+    </Acadecard>
+</Grid>
+
 
 
 
@@ -110,7 +123,7 @@ $$\begin{align*} x &= \frac{-(-5) \pm \sqrt{(-5)^2 - 4 \cdot 1 \cdot 6}}{2 \cdot
 
     protected override async Task OnInitializedAsync()
     {
-       // await noteRepository.AddNoteAsync(new() { Id = "t
+        // await noteRepository.AddNoteAsync(new() { Id = "t
     }
 
     protected override void OnInitialized()

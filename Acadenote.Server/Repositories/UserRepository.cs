@@ -25,7 +25,7 @@ namespace Acadenote.Server.Repositories
             catch (Exception ex)
             {
                 response.Success = false;
-                response.Data = ex.Message;
+                response.Message = ex.Message;
             }
             return response;
         }
@@ -39,7 +39,7 @@ namespace Acadenote.Server.Repositories
                 if (user == null)
                 {
                     response.Success = false;
-                    response.Data = "User not found.";
+                    response.Message = "User not found.";
                     return response;
                 }
                 _context.Users.Remove(user);
@@ -49,7 +49,7 @@ namespace Acadenote.Server.Repositories
             catch (Exception ex)
             {
                 response.Success = false;
-                response.Data = ex.Message;
+                response.Message = ex.Message;
             }
             return response;
         }
@@ -78,7 +78,7 @@ namespace Acadenote.Server.Repositories
             catch (Exception ex)
             {
                 response.Success = false;
-                response.Data = ex.Message;
+                response.Message = ex.Message;
             }
             return response;
         }
