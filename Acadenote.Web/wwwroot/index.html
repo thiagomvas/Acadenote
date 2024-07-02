@@ -26,11 +26,12 @@
 </head>
 <body>
     <div id="app">
-        <svg class="loading-progress">
-            <circle r="40%" cx="50%" cy="50%" />
-            <circle r="40%" cx="50%" cy="50%" />
-        </svg>
-        <div class="loading-progress-text"></div>
+        <div class="loading-container">
+            <div class="loading-message">
+                <div class="loading-animation"></div>
+                <p id="loadingMessage"></p>
+            </div>
+        </div>
     </div>
 
     <div id="blazor-error-ui">
@@ -38,7 +39,8 @@
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
-    <script src="_framework/blazor.webassembly.js"></script>
+
+    <script src="_framework/blazor.webassembly.js"></script>-
     <script>
         window.setDarkMode = (isDarkMode) => {
             if (isDarkMode) {
@@ -58,6 +60,26 @@
                 dotnet.invokeMethodAsync("SetDarkMode", e.matches)
             })
         }
+
+        const loadingMessages =
+            [
+                "Caçando pokemons...",
+                "Aguarde um momento...",
+                "Carregando...",
+                "Fazendo café...",
+                "Aguarde um instante...",
+                "Fazendo pipoca...",
+                "Fazendo bolo...",
+                "Aguarde um dia, talvez carregue...",
+                "Aguarde um mês, talvez finalmente carregue...",
+                "Tendo uma overdose de café...",
+                "Quebrando a cara com questão...",
+                "Estudando para prova...",
+                "Procrastinando...",
+            ];
+        window.setDarkMode(window.isBrowserDarkMode())
+        const randomIndex = Math.floor(Math.random() * loadingMessages.length);
+        document.getElementById('loadingMessage').textContent = loadingMessages[randomIndex];
     </script>
 </body>
 
