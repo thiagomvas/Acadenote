@@ -1,19 +1,26 @@
 ﻿using Acadenode.Core.Models;
 using Acadenode.Core.Repositories;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace Acadenote.API.Repositories
 {
-    internal class NoteRepository : INoteRepository
+    public class NoteRepository : INoteRepository
     {
         private readonly HttpClient _httpClient;
         public NoteRepository(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
-        public Task<ServiceResponse> AddNoteAsync(Note note)
+
+        public async Task<ServiceResponse> AddNoteAsync(Note note)
         {
-            throw new NotImplementedException();
+            var response = await _httpClient.PostAsync(Config.NotesEndpoint, new StringContent(JsonConvert.SerializeObject(note), Encoding.UTF8, "application/json"));
+            if (response.IsSuccessStatusCode)
+            {
+                return new ServiceResponse { Success = true };
+            }
+            return new ServiceResponse { Success = false, Message = "Failed to add note" };
         }
 
         public Task<ServiceResponse> DeleteNoteAsync(string id)

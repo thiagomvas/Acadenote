@@ -1,0 +1,29 @@
+﻿@page "/login"
+@using Acadenode.Core.Models
+@using Acadenode.Core.Services
+@inject IAuthService auth
+
+<h3>Login</h3>
+
+<InputText class="acadenote-input-text" @bind-Value="Username" Placeholder="Username" />
+<InputText class="acadenote-input-text" @bind-Value="Password" Placeholder="Password" />
+<p>@Response</p>
+
+<Acadebutton OnClick="LoginUser">Login</Acadebutton>
+
+@code {
+    private string Username, Password, Response = "";
+
+    private async Task LoginUser()
+    {
+        var model = new LoginModel
+        {
+            Username = Username,
+            Password = Password
+        };
+
+        var (code, message) = await auth.Login(model);
+
+        Response = $"{code} - {message}";
+    }
+}

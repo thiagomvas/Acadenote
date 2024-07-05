@@ -1,4 +1,4 @@
-﻿@page "/note/{id}"
+﻿@page "/anotacao/{id}"
 @using Acadenode.Core.Models
 @using Acadenode.Core.Repositories
 @inject INoteRepository _repo
@@ -7,7 +7,11 @@
 @if (note == null)
 {
     <PageTitle>Carregando...</PageTitle>
-    <LoadingMessage />
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <OrbFX ShadowSpreadRadius="100">
+            <LoadingMessage />
+        </OrbFX>
+    </div>
 }
 else
 {
@@ -24,7 +28,7 @@ else
     protected override async Task OnInitializedAsync()
     {
         note = await _repo.GetNoteByIdAsync(Id);
-        if(note == null || note.Id == Note.NotFound.Id)
+        if (note == null || note.Id == Note.NotFound.Id)
         {
             nav.NavigateTo("../404");
         }

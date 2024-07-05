@@ -1,7 +1,7 @@
 ﻿@page "/register"
 @using Acadenode.Core.Models
-@using Acadenode.Core.Repositories
-@inject IUserRepository repo
+@using Acadenode.Core.Services
+@inject IAuthService auth
 
 
 <h3>Register</h3>
@@ -29,7 +29,15 @@
             Role = Roles.User
         };
 
-        var response = await repo.CreateUser(user);
-        Response = $"{(response.Success ? "Success" : "Failure")} - {response.Message}";
+        var model = new RegistrationModel
+            {
+                Name = Name,
+                Username = Username,
+                Email = Email,
+                Password = Password
+            };
+
+        var (code, message) = await auth.Registeration(model);
+        Response = $"{code} - {message}";
     }
 }

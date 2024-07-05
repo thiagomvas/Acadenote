@@ -15,7 +15,21 @@ namespace Acadenote.Server
                 return Role.User;
             }
             return (Role)int.Parse(role.Value);
+        }
 
+        public static bool TryGetJwtToken(HttpRequest request, out string token)
+        {
+            token = request.Headers["Authorization"];
+            if (token == null)
+            {
+                return false;
+            }
+            if (token.StartsWith("Bearer"))
+            {
+                token = token.Substring("Bearer ".Length).Trim();
+            }
+
+            return true;
         }
     }
 }

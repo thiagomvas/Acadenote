@@ -1,12 +1,8 @@
 ﻿
 .container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    width: fit-content; /* Adjust to fit the content size */
-    height: fit-content; /* Adjust to fit the content size */
-    background-color: #000; /* Adjust background color as needed */
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
 }
 
 .orb {

@@ -26,5 +26,28 @@
                 }
             }
         }
+        public static bool HasRoles(this Role role, params Role[] roles)
+        {
+            foreach (var r in roles)
+            {
+                if (!role.HasFlag(r))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public static bool HasAnyRole(this Role role, params Role[] roles)
+        {
+            foreach (var r in roles)
+            {
+                if (role.HasFlag(r))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

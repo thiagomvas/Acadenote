@@ -4,15 +4,15 @@
 
 <div class="container">
     <aside class="sidebar" style="@border">
-        <Acadebutton Color="@colors.BackgroundAccent">
-            <div><Acadeicon Color="@colors.Text.Primary" Icon="Acadeicon.IconType.Note" /></div> Notes
-        </Acadebutton>
-        <Acadebutton Color="@colors.BackgroundAccent">
-            <div><Acadeicon Color="@colors.Text.Primary" Icon="Acadeicon.IconType.Hashtag" /></div> Algorithms & Calculators
-        </Acadebutton>
-        <Acadebutton Color="@colors.BackgroundAccent">
-            <div><Acadeicon Color="@colors.Text.Primary" Icon="Acadeicon.IconType.Book" /></div> Guides
-        </Acadebutton>
+            <Acadebutton OnClick="@(() => NavigateTo("/anotacao"))" Color="@colors.BackgroundAccent">
+                <div><Acadeicon Color="@colors.Text.Primary" Icon="Acadeicon.IconType.Note" /></div> Notes
+            </Acadebutton>
+        <Acadebutton OnClick="@(() => NavigateTo("/404"))" Color="@colors.BackgroundAccent">
+                <div><Acadeicon Color="@colors.Text.Primary" Icon="Acadeicon.IconType.Hashtag" /></div> Algorithms & Calculators
+            </Acadebutton>
+        <Acadebutton OnClick="@(() => NavigateTo("/404"))" Color="@colors.BackgroundAccent">
+                <div><Acadeicon Color="@colors.Text.Primary" Icon="Acadeicon.IconType.Book" /></div> Guides
+            </Acadebutton>
     </aside>
     <main class="content">
         @Body
@@ -21,7 +21,7 @@
 
 @code {
     private string border => $"border-right:  2px dashed {colors.Primary}94";
-
+    [Inject] private NavigationManager Nav { get; set; }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -35,5 +35,10 @@
     protected override void OnInitialized()
     {
         theme.OnChange += StateHasChanged;
+    }
+
+    private void NavigateTo(string path)
+    {
+        Nav.NavigateTo(path);
     }
 }

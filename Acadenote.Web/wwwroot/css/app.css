@@ -153,6 +153,7 @@ code {
 /* Custom Input Field */
 .acadenote-input-text {
     display: inline-block;
+    width: fit-content;
     position: relative;
     font-size: 16px;
     padding: 8px 12px;

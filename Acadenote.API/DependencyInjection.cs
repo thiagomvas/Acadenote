@@ -1,5 +1,7 @@
 ﻿using Acadenode.Core.Repositories;
+using Acadenode.Core.Services;
 using Acadenote.API.Repositories;
+using Acadenote.API.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Acadenote.API
@@ -10,6 +12,7 @@ namespace Acadenote.API
         {
             services.AddScoped<INoteRepository, NoteRepository>();   
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IAuthService, AuthService>();
         }
     }
 }

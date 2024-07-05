@@ -53,6 +53,13 @@ namespace Acadenote.Server.Services
                 Password = GetHashString(model.Password),
                 Role = Roles.User,
             };
+
+            var userExists = await _userRepository.GetUserByUsername(user.UserName);
+            if (userExists != null)
+            {
+                return (400, "User already exists.");
+            }
+
             var response = await _userRepository.CreateUser(user);
             if (response.Success)
             {

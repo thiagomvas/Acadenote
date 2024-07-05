@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acadenote.Server", "Acadeno
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acadenote.API", "Acadenote.API\Acadenote.API.csproj", "{AA216B34-167E-46DD-8F4C-72131C113955}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Acadenote.Console", "Acadenote.Console\Acadenote.Console.csproj", "{EC96847A-F4A7-4760-94D5-B7B3C76A6893}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{AA216B34-167E-46DD-8F4C-72131C113955}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA216B34-167E-46DD-8F4C-72131C113955}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA216B34-167E-46DD-8F4C-72131C113955}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC96847A-F4A7-4760-94D5-B7B3C76A6893}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC96847A-F4A7-4760-94D5-B7B3C76A6893}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC96847A-F4A7-4760-94D5-B7B3C76A6893}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC96847A-F4A7-4760-94D5-B7B3C76A6893}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
