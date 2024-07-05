@@ -66,6 +66,12 @@ namespace Acadenote.Server.Repositories
             return user;
         }
 
+        public async Task<string[]> GetUserIds()
+        {
+            var users = await _context.Users.ToArrayAsync();
+            return users.Select(u => u.UserName).ToArray();
+        }
+
         public async Task<ServiceResponse> UpdateUser(User user)
         {
             var response = new ServiceResponse();

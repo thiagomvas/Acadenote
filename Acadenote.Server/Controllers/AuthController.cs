@@ -69,15 +69,17 @@ namespace Acadenote.Server.Controllers
 
             var handler = new JwtSecurityTokenHandler();
             JwtSecurityToken jwt = handler.ReadJwtToken(token);
-            
-            // Get the role integer
-            var role = Utils.GetRoleFromJwtToken(token);
-
-            // If token owner is not the same as username, unauthorize
-            if(jwt.Claims.FirstOrDefault(c => c.Type.ToLower() == "name").Value != username && !role.HasFlag(Role.Admin))
+            if(Utils.TryGetJwtToken(Request, out string t))
             {
-                return Unauthorized();
+                var r = await Utils.GetRoleFromJwtToken(t, _userRepository);
+                if(!r.HasFlag(Role.Admin))
+                {
+                    return Unauthorized();
+                }
             }
+            // Get the role integer
+            var role = await Utils.GetRoleFromJwtToken(token, _userRepository);
+
 
             var user = await _userRepository.GetUserByUsername(username);
             if (user == null)
@@ -137,13 +139,13 @@ namespace Acadenote.Server.Controllers
             // Gets "Admin" role from the token, if it exists return success, else return unauthorized
             var handler = new JwtSecurityTokenHandler();
             JwtSecurityToken jwt = handler.ReadJwtToken(token);
-            var role = jwt.Claims.FirstOrDefault(c => c.Type.ToLower() == "admin");
+            var role = await Utils.GetRoleFromJwtToken(token, _userRepository);
             if (role == null)
             {
                 return Unauthorized();
             }
             
-            if(role.Value.ToLower() == "admin")
+            if(role.HasFlag(Role.Admin))
             {
                 return Ok("You are an Admin");
             }

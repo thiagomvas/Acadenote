@@ -14,5 +14,6 @@ namespace Acadenode.Core.Repositories
         Task<ServiceResponse> CreateUser(User user);
         Task<ServiceResponse> UpdateUser(User user);
         Task<ServiceResponse> DeleteUser(string username);
+        Task<string[]> GetUserIds();
     }
 }

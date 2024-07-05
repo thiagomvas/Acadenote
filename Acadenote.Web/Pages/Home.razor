@@ -1,24 +1,22 @@
 ﻿@page "/"
 @using Acadenode.Core.Models
 @using Acadenode.Core.Repositories
+@using Acadenode.Core.Services
+@using Newtonsoft.Json
 @inject AppTheme theme
-@inject ColorUtility color;
+@inject ColorUtility color
+@inject ILocalStorageService localStorage
 
 <PageTitle>Home</PageTitle>
 
-@foreach (var note in notes)
+@if (user != null)
 {
-    <div class="card">
-        <div class="card-header">
-            @note.Title (@note.Id)
-        </div>
-        <div class="card-body">
-            @note.Content
-        </div>
-    </div>
+    <h1>Welcome @user.UserName!</h1>
 }
-
-<h1>Hello, world!</h1>
+else
+{
+    <h1>Hello, world!</h1>
+}
 <h3>Colors</h3>
 <table class="table">
     <thead>
@@ -40,6 +38,8 @@
     </tbody>
 </table>
 <p>IsDarkMode: <code>@(theme.IsDarkMode)</code></p>
+
+
 <h3>Buttons</h3>
 <Acadebutton Color="@color.Success" OnClick="ToggleTheme">Toggle Theme</Acadebutton>
 <Redirector Destination="./error">
@@ -126,7 +126,9 @@ Por exemplo, para a equação $x^2 - 5x + 6 = 0$, temos que $a = 1$, $b = -5$ e 
 
 $$\begin{align*} x &= \frac{-(-5) \pm \sqrt{(-5)^2 - 4 \cdot 1 \cdot 6}}{2 \cdot 1} \\ &= \frac{5 \pm \sqrt{25 - 24}}{2}\\ &= \frac{5 \pm 1}{2}\\ x &= 3, x = 2 \end{align*}$$
 ";
-    private IEnumerable<Note> notes = new List<Note>();
+
+    private User? user;
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
@@ -138,7 +140,7 @@ $$\begin{align*} x &= \frac{-(-5) \pm \sqrt{(-5)^2 - 4 \cdot 1 \cdot 6}}{2 \cdot
 
     protected override async Task OnInitializedAsync()
     {
-        // await noteRepository.AddNoteAsync(new() { Id = "t
+        user = await localStorage.GetItem<User>("user");
     }
 
     protected override void OnInitialized()

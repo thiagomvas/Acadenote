@@ -13,10 +13,12 @@ namespace Acadenote.Server.Controllers
     public class NotesController : ControllerBase
     {
         private readonly INoteRepository _noteRepository;
+        private readonly IUserRepository _userRepository;
         private readonly ILogger<NotesController> _logger;
 
-        public NotesController(INoteRepository noteRepository, ILogger<NotesController> logger)
+        public NotesController(INoteRepository noteRepository, IUserRepository userRepository, ILogger<NotesController> logger)
         {
+            _userRepository = userRepository;
             _noteRepository = noteRepository;
             _logger = logger;
         }
@@ -60,7 +62,8 @@ namespace Acadenote.Server.Controllers
         [HttpPost]
         public async Task<ActionResult> AddNoteAsync([FromBody] Note note)
         {
-            if(!Utils.TryGetJwtToken(Request , out string token) && !Utils.GetRoleFromJwtToken(token).HasAnyRole(Role.Admin, Role.Writer))
+            
+            if(!Utils.TryGetJwtToken(Request , out string token) &&  !(await Utils.GetRoleFromJwtToken(token, _userRepository)).HasAnyRole(Role.Admin, Role.Writer))
             {
                 return Unauthorized();
             }
@@ -87,7 +90,7 @@ namespace Acadenote.Server.Controllers
         public async Task<ActionResult> UpdateNoteAsync(string id, Note note)
         {
 
-            if (!Utils.TryGetJwtToken(Request, out string token) && !Utils.GetRoleFromJwtToken(token).HasAnyRole(Role.Admin, Role.Writer))
+            if (!Utils.TryGetJwtToken(Request, out string token) && !(await Utils.GetRoleFromJwtToken(token, _userRepository)).HasAnyRole(Role.Admin, Role.Writer))
             {
                 return Unauthorized();
             }
@@ -118,7 +121,7 @@ namespace Acadenote.Server.Controllers
         public async Task<ActionResult> DeleteNoteAsync(string id)
         {
 
-            if (!Utils.TryGetJwtToken(Request, out string token) && !Utils.GetRoleFromJwtToken(token).HasAnyRole(Role.Admin, Role.Writer))
+            if (!Utils.TryGetJwtToken(Request, out string token) && !(await Utils.GetRoleFromJwtToken(token, _userRepository)).HasAnyRole(Role.Admin, Role.Writer))
             {
                 return Unauthorized();
             }

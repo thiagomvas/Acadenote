@@ -4,6 +4,8 @@ using Acadenote.API;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using System.Globalization;
+using Acadenode.Core.Services;
+using Acadenote.Web.Services;
 
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -15,6 +17,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 
 builder.Services.AddSingleton<AppTheme>();
 builder.Services.AddSingleton<ColorUtility>();
+builder.Services.AddSingleton<ILocalStorageService, LocalStorageService>();
 builder.Services.AddDatabaseAccess();
 
 CultureInfo.DefaultThreadCurrentCulture = CultureInfo.GetCultureInfo("pt-BR");

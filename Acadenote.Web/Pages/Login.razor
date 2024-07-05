@@ -1,29 +1,75 @@
 ﻿@page "/login"
 @using Acadenode.Core.Models
 @using Acadenode.Core.Services
+@using Newtonsoft.Json
 @inject IAuthService auth
+@inject ColorUtility Color
+@inject AppTheme theme
+@inject NavigationManager nav
+@inject ILocalStorageService storage
 
-<h3>Login</h3>
+<div class="centered-container">
+    <div class="form-container">
+        <h1>Login</h1>
 
-<InputText class="acadenote-input-text" @bind-Value="Username" Placeholder="Username" />
-<InputText class="acadenote-input-text" @bind-Value="Password" Placeholder="Password" />
-<p>@Response</p>
+        <InputText class="acadenote-input-text" @bind-Value="Username" Placeholder="Username" />
+        <InputText type="password" class="acadenote-input-text" @bind-Value="Password" Placeholder="Password" />
+        <p>@Response</p>
+        <Acadebutton OnClick="LoginUser" Color="@Color.Primary">Login</Acadebutton>
+    </div>
+</div>
 
-<Acadebutton OnClick="LoginUser">Login</Acadebutton>
 
 @code {
     private string Username, Password, Response = "";
 
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            theme.IsDarkMode = await theme.IsBrowserDarkMode();
+            await theme.ListenForThemeChanges();
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        theme.OnChange += StateHasChanged;
+    }
+
     private async Task LoginUser()
     {
         var model = new LoginModel
-        {
-            Username = Username,
-            Password = Password
-        };
+            {
+                Username = Username,
+                Password = Password
+            };
 
         var (code, message) = await auth.Login(model);
 
         Response = $"{code} - {message}";
+
+        if (code == 200)
+        {
+            var user = JsonConvert.DeserializeObject<User>(message);
+            storage.SetItem("user", user);
+            nav.NavigateTo("/");
+        }
     }
 }
+
+
+<style>
+    .centered-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Make the container full height of viewport */
+    }
+
+    .form-container {
+        width: 300px; /* Adjust width as needed */
+        padding: 20px;
+    }
+</style>

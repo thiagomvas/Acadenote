@@ -1,0 +1,55 @@
+﻿@page "/editor/anotacao/{Id}"
+@using Acadenode.Core.Models
+@using Acadenode.Core.Repositories
+@using Acadenode.Core.Services
+@using Newtonsoft.Json
+@inject INoteRepository _repo
+@inject ColorUtility Color
+@inject ILocalStorageService storage
+@inject NavigationManager nav
+
+@if (note == null)
+{
+    <PageTitle>Carregando...</PageTitle>
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <OrbFX ShadowSpreadRadius="100">
+            <LoadingMessage />
+        </OrbFX>
+    </div>
+}
+else
+{
+    <PageTitle>Edit Note</PageTitle>
+    <div style="display: flex; flex-direction: column; align-items: center;">
+        <InputText class="acadenote-input-text" @bind-Value="Title" placeholder="Title" />
+        <InputText class="acadenote-input-text" @bind-Value="Content" placeholder="Content" />
+        <p>@Response</p>
+    </div>
+}
+@code
+{
+    private Note? note;
+    private string Title, Content;
+    private IEnumerable<string> Tags;
+    private string Response = "";
+    [Parameter] public string Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var user = await storage.GetItem<User>("user");
+        if(user == null || !user.Role.HasFlag(Role.Writer))
+        {
+            nav.NavigateTo("/404");
+            return;
+        }
+
+        note = await _repo.GetNoteByIdAsync(Id);
+        if(note == null)
+        {
+            nav.NavigateTo("/404");
+            return;
+        }
+    }
+
+
+}

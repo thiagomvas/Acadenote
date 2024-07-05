@@ -52,6 +52,11 @@ namespace Acadenote.API.Repositories
             throw new NotImplementedException();
         }
 
+        public Task<string[]> GetUserIds()
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<ServiceResponse> UpdateUser(User user)
         {
             throw new NotImplementedException();
