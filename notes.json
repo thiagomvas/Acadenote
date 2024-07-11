@@ -1,0 +1,336 @@
+[
+  {
+    "Id": "sentenças-abertas",
+    "Title": "Sentenças abertas",
+    "Content": "#### Definição\nÉ uma que envolve uma ou mais variáveis e que torna-se uma <a href=\"./anotacao/cálculo-proposicional\" target=\"_blank\">cálculo proposicional</a> ao atribuirmos valores a essas variáveis. Por exemplo:\n$$p(x): x \\in \\mathbb{R}, x \\geq 0$$\n$$\\left \\{\\begin{align*}p(1) &= V\\\\p(2) &= V\\\\p(-1) &= F\\end{align*} \\right.$$\n\n***Quantificador universal*** ( $\\forall$ )\n\n\nEscrevemos $(\\forall x \\in \\mathbb{R}, p(x))$ quando $p(x)$ for verdadeiro para todo $x \\in \\mathcal{U}$ \n$$r(x) : x^{2} + 1 = 0, \\forall x \\in \\mathbb{R}, x^{2}+1>0$$\n\n\n**Quantificador existencial **( $\\exists$ )\n\nEscrevemos $(\\exists x \\in \\mathcal{U}, p(x))$ quando pelo menos um $a \\in \\mathcal{U}$ tal que $p(a)$ é verdadeiro\n$$r(x): x^{2}+ 1 = 0; \\exists x \\in \\mathbb{R}, x^{2}- 1 = 0$$\n\n#### Propriedades\n- $\\lnot(\\forall x \\in \\mathcal{U}, p(x)) \\equiv \\exists x \\in \\mathcal{U}, \\lnot p(x)$\n- $\\lnot (\\exists x \\in \\mathcal{U}, p(x)) \\equiv \\forall x \\in \\mathcal{U}, \\lnot p(x)$\n\n#### Regras de validade de argumentos com quantificação\n1. Se $(\\forall x \\in \\mathcal{U}; p(x))$ for verdadeira, então $p(a)$ é verdadeira para todo $a \\in \\mathcal{U}$\n2. Se $(\\exists x \\in \\mathcal{U}; p(x))$ for verdadeiro, então existe $a \\in \\mathcal{U}$ tal que $p(a)$ é verdadeira\n\n#### Exemplos e Exercícios\n- Todos os atletas são fortes. André é um atleta. Portanto, André é forte\n\t$a(x):$ x é atleta\n\t$f(x)$ : x é forte\t$$\\forall x, a(x) \\Rightarrow f(x); \\ a(A) \\mapsto f(A)$$\n\t$$\\begin{align*}1)& \\forall x, a(x) \\Rightarrow f(x)\\\\2)& a(A)\\\\3)& a(a) \\Rightarrow f(A) (R1)\\\\4)& f(a) (2, 3 MP)\\end{align*}$$\n\n",
+    "Tags": [
+      "Matemática",
+      "Fundamentos Elementares da Matemática",
+      "Sentenças abertas",
+      "Notação"
+    ]
+  },
+  {
+    "Id": "funções-hiperbólicas",
+    "Title": "Funções Hiperbólicas",
+    "Content": "## Definições\n• $sinh (x) = \\dfrac{e^{x}-e^{-x}}{2}$  \n• $cosh(x) = \\dfrac{e^{x} + e^{-x}}{2}$\n• $tgh(x) = \\dfrac{senh(x)}{cosh(x)} = \\dfrac{\\dfrac{e^{x}-e^{-x}}{2}}{\\dfrac{e^{x}+e^{-x}}{2}}= \\dfrac{e^{x}-e^{-x}}{e^{x}+e^{-x}}$ \n• $sech(x) = \\dfrac{1}{cosh(x)}$\n• $cossech(x) = \\dfrac{1}{senh(x)}$\n• $cotgh(x) = \\dfrac{e^{x}+e^{-x}}{e^{x}-e^{-x}}$\n\n## Identidades\n• $senh(-x) = -senh(x)$\n• $cosh(-x) = cosh(x)$\n• $cosh^{2}(x) - senh^{2}(x) = 1$\n• $1 - tgh^{2}(x) = sech^{2}(x)$\n• $senh(x + y) = senh(x)cosh(y) + cosh(x)senh(y)$\n• $cosh(x + y) = cosh(x)cosh(y) + senh(x)senh(y)$  \n\n## Derivadas\n• $\\dfrac{d}{dx}senh(x) = cosh(x)$\n• $\\dfrac{d}{dx}cosh(x) = senh(x)$\n• $\\dfrac{d}{dx} tgh(x) = sech^{2}(x)$\nAs inversas das funções trigonométricas se aplicam nas hiperbólicas\n\n## Exemplos e Exercícios\n• Derive $cosh(\\sqrt{x})$\n$$\\begin{align*} \\dfrac{d}{dx} cosh(\\sqrt{x}) &= cosh'(\\sqrt{x}) \\cdot (\\sqrt{x})'\\\\ &= senh(\\sqrt{x}) \\cdot \\frac{1}{2\\sqrt{x}}\\\\ &= \\frac{senh(\\sqrt{x});..}{2\\sqrt{x}} \\end{align*}$$\n• Derive $e^{x}\\cdot senh(x^{2})$\n$$\\begin{align*} \\dfrac{d}{dx}f(x) &= e^{x}\\cdot cosh(x^{2})\\cdot 2x + e^{x}senh(x^{2})\\\\ &= e^{x}(2xcosh(x^{2})+ senh(x^{2})) \\end{align*}$$\n",
+    "Tags": [
+      "Matematica",
+      "Cálculo",
+      "Geometria",
+      ""
+    ]
+  },
+  {
+    "Id": "primitivas",
+    "Title": "Primitivas",
+    "Content": "A primitiva de uma função é um conceito fundamental em cálculo que está relacionado à operação inversa da derivada. Quando falamos em primitiva, estamos procurando a função original cuja derivada é a função dada.\n\n## Definição\nUma função $F$ é primitiva de $f$ em um intervalo $I$ (normalmente em $\\mathbb{R}$) se, e somente se,\n$$F'(x) = f(x), \\forall x \\in I$$\n\nEm termos mais simples,  a primitiva de uma função é a função original a partir da qual a função dada é derivada. Isso pode ser útil em diversos contextos, como calcular áreas sob curvas ou resolver problemas relacionados a taxas de variação.\n\nAlém disto, é utilizada em Integrais Definidas, através do Teorema Fundamental do Cálculo.\n\n## Teorema\nSe $F$ é uma primitiva de $f$ então $F(x) + C$ é uma primitiva de $f$ para todo $C$. Por exemplo, $f(x) = \\frac{1}{x} \\Rightarrow F(x) = \\ln |x| + C$ \n\n## Primitiva de um polinômio\nDado um polinômio da forma $f(x) = x^n$, sua primitiva será dada por $F(x) = \\frac{1}{n + 1} x^{n+1}$\nSe analizarmos, por exemplo, a primitiva de $x^2$, teremos $F(x) = \\frac{x^3}{3}$. Ao derivarmos, perceberemos que, realmente, $F'(x) = x^2$.\n\n## Exemplos\n• Dado $f''(x) = x, f'(3) = 0, f(6) = 20$ encontre $f(x)$\n$$\\begin{align*} f''(x) = x \\Rightarrow f'(x) = \\frac{x^2}{2} + C\\\\ f'(3) = 0 \\Rightarrow \\frac{9}{2} + C = 0 \\Rightarrow C = -\\frac{9}{2}\\\\ f'(x) = \\frac{x^2}{2} -\\frac{9}{2} \\Rightarrow f(x) = \\frac{x^3}{6} -\\frac{9x}{2} + D \\\\ f(6) = 36 - 18 + D = 20 \\Rightarrow D = 2 \\\\ f(x) =  \\frac{x^3}{6} -\\frac{9x}{2} + 2\\end{align*}$$\nPercebe-se então a importância das constantes acrescentadas a primitiva, pois elas alteram as futuras primitivas.\n \n",
+    "Tags": [
+      "Matematica",
+      "Cálculo",
+      "Derivadas",
+      "Integração"
+    ]
+  },
+  {
+    "Id": "regra-de-derivação-do-quociente",
+    "Title": "Regra de Derivação do Quociente",
+    "Content": "Considere $f$ e $g$ funções deriváveis e $g(x) \\neq 0$ e $g'(x) \\neq 0$. Desde que $$\\dfrac{f(x)}{g(x)} = f(x) \\cdot \\dfrac{1}{g(x)}$$\n\nEntao $$\\begin{align*}\\dfrac{d}{dx}\\dfrac{f(x)}{g(x)} &= \\dfrac{d}{dx}  \\left( f(x) \\cdot \\dfrac{1}{g(x)}\\right)\\\\ &= f(x) \\dfrac{d}{dx}\\dfrac{1}{g(x)} + \\dfrac{1}{g(x)} \\dfrac{d}{dx}f(x)\\\\ &= f(x) \\dfrac{d}{dx}(g(x))^{-1} +   \\dfrac{1}{g(x)} \\cdot f(x)\\end{align*}$$",
+    "Tags": [
+      "Matematica",
+      "Cálculo A",
+      "Derivadas",
+      "Regra de Derivação do Quociente"
+    ]
+  },
+  {
+    "Id": "propriedades-de-limites",
+    "Title": "Propriedades de Limites",
+    "Content": "Suponha $f$ e $g$ funções, $c$ um numero real e que os <a href=\"./anotacao/limites\" target=\"_blank\">limites</a> $\\underset{x \\to a}{\\lim} f(x) = L_1$ e $\\underset{x \\to a}{\\lim} g(x) = L_2$ . Então, são validas as seguintes propriedades:\n\n## Propriedades básicas: \n- **Limite da soma de funções:** $\\underset{x \\to a}{\\lim} ( f(x) + g(x)) = \\underset{x \\to a}{\\lim}f(x) + \\underset{x \\to a}{\\lim}g(x)$\n- **Limite da subtração de funções:** $\\underset{x \\to a}{\\lim} (f(x) - g(x)) = \\underset{x \\to a}{\\lim} f(x) - \\underset{x \\to a}{\\lim}g(x)$\n- **Limite do produto de função com numero real:**  $\\underset{x \\to a}{\\lim} c \\cdot f(x) = c \\cdot \\underset{x \\to a}{\\lim} f(x)$  \n- **Limite do produto de duas funções:** $\\underset{x \\to a}{\\lim} f(x) \\cdot g(x) = (\\underset{x \\to a}{\\lim} f(x)) \\cdot (\\underset{x \\to a}{\\lim} g(x))$\n- **Limite da divisão de funções:** $\\underset{x \\to a}{\\lim} \\dfrac{f(x)}{g(x)} = \\dfrac{\\underset{x \\to a}{\\lim} f(x)}{\\underset{x \\to a}{\\lim} g(x)}, L_2 \\neq 0$\n- **Limite da função com expoente:** $\\underset{x \\to a}{\\lim} [f(x)]^n = [\\underset{x \\to a}{\\lim} f(x)]^n$\n## Utilização das propriedades acima:\nSabendo que $\\underset{x \\to a}{\\lim} f(x) = 1, \\underset{x \\to a}{\\lim} g(x) = 5, \\underset{x \\to a}{\\lim} h(x) = 3$, calcule o limite $\\underset{x \\to a}{\\lim} (4f(x) - \\frac{2 \\cdot h(x)}{3 \\cdot g(x)})$\n$$\\begin{align*} \\lim_{x \\to a} \\left (4 \\cdot f(x) - \\dfrac{2 \\cdot h(x)}{3 \\cdot g(x)} \\right ) =&  \\lim_{x \\to a} 4 \\cdot f(x) - \\dfrac{\\underset{x \\to a}{\\lim} 2 \\cdot h(x)}{\\underset{x \\to a}{\\lim} 3 \\cdot g(x)} \\\\ =& \\ 4 \\cdot \\underset{x \\to a}{\\lim} f(x) - \\dfrac{2 \\cdot \\underset{x \\to a}{\\lim} h(x)}{3 \\cdot \\underset{x \\to a}{\\lim} g(x)} \\\\ =& \\ 4 \\cdot 1 - \\dfrac{2 \\cdot 3}{3 \\cdot 5} \\\\ =& \\ 4 - \\dfrac{2}{5} \\\\ =& \\ 3.6 \\end{align*}$$\n## Regra da substituição direta\nSe $f(x)$ é um polinômio ou uma função racional e $f(a)$ existe, então $\\underset{x \\to a}{\\lim}f(x) = f(a)$\n### Propriedades que seguem essa regra:\n- $\\underset{x \\to a}{\\lim} c = c$\n- $\\underset{x \\to a}{\\lim} x = a$\n- $\\underset{x \\to a}{\\lim} x^n = a^n$\n- $\\underset{x \\to a}{\\lim} \\sqrt[n]{x} = \\sqrt[n]{a}$, se $n$ for par,  então $a > 0$\n- $\\underset{x \\to a}{\\lim} \\sqrt[n]{f(x)} = \\sqrt[n]{\\underset{x \\to a}{\\lim} f(x)}$\n\n## Teorema:\nSe $f(x) = g(x)$ quando $x \\neq a$, $\\underset{x \\to a}{\\lim} f(x) = \\underset{x \\to a}{\\lim} g(x)$ quando um dos limites existem.\n### Exemplo:\nCalcule $\\underset{x \\to 1}{\\lim} \\frac{x-1}{x^2 - 1}$.\nNote que $f(1)$ não existe, mas considere agora $g(x) = \\frac{1}{x + 1}$. Calculando $g(1)$ temos $0.5$. Então, note que:\n$$f(x) = \\dfrac{x-1}{x^2 - 1} = \\dfrac{x - 1}{(x - 1) \\cdot (x + 1)} = \\dfrac{1}{x + 1} = g(x)$$\nEntão,\n\n$$\\underset{x \\to 1}{\\lim} f(x) = \\underset{x \\to 1}{\\lim} g(x) = \\dfrac{1}{1 + 1} = 0.5$$\n## Teorema da desigualdade\nSe $f(x) \\leq g(x)$ para $x$ próximo de $a$, então $\\underset{x \\to a}{\\lim} f(x) \\leq \\underset{x \\to a}{\\lim} g(x)$\n\n## Teorema do confronto\nSe $f(x) \\leq g(x) \\leq h(x)$, para $x$ próximo de $a$, então:\n$$\\begin{align*} & \\underset{x \\to a}{\\lim} f(x) = L = \\underset{x \\to a}{\\lim} h(x)\\\\ & \\Rightarrow \\underset{x \\to a}{\\lim} g(x) = L \\end{align*}$$\n### Exemplo:\n$\\underset{x \\to 0}{\\lim} (x^2 \\cdot \\sin{x}) = \\ ?$\n\nNote que $-1 \\leq \\sin{x} \\leq 1$ e $x^2 \\geq 0$. Então:\n$$\\begin{align*} &x^2 \\cdot (-1) \\leq x^2 \\sin{x} \\\\ &\\Rightarrow -x^2 \\leq x^2 \\cdot \\sin{x} \\leq x^2 \\end{align*}$$Agora:\n$$\\underset{x \\to 0}{\\lim} -x^2 = 0 = \\lim_{x \\to 0} x^2 \\Rightarrow \\lim_{x \\to 0} x^2 \\sin{x} = 0$$",
+    "Tags": [
+      "Matematica",
+      "Cálculo A",
+      "Propriedades de Limites"
+    ]
+  },
+  {
+    "Id": "aproximação-linear",
+    "Title": "Aproximação Linear",
+    "Content": "## Definição\n\nDada uma função $f(x)$ <a href=\"./anotacao/derivadas\" target=\"_blank\">derivável</a> em $x = a$ ,  podemos escrever a reta tangente à $f(a)$ no ponto $(a,f(a))$ por $$ L(x) = f'(a) \\cdot (x-a) + f(a) $$ de modo que $$ f(x) \\approx f'(a) \\cdot (x-a) + f(a) $$ Assim, $L(x)$ é chamado de aproximação linear pela reta tangente de $f$ em $a$. \n\n##Exemplos e Exercícios\n\nEncontre a linearização de $f(x)$ = $\\sqrt{ x+3}$ em $a$ = $1$ e use-a para aproximar os valores de $\\sqrt{3.98}$ e $\\sqrt {4.05}$ \n$$\\begin{align*} f(x) &= (x + 3)^{\\frac{1}{2}}\\\\ f'(x) &= \\dfrac{1}{2\\sqrt{x + 3}}\\\\ f(1) &= 2\\ f'(1) = \\frac{1}{4}\\\\ \\Rightarrow L(x) &= \\frac{1}{4}\\cdot (x - 1) + 2 = \\frac{x + 7}{4}\\\\ \\sqrt{3.98} \\approx L(0.98) &= \\frac{7.98}{4}= 1.995 \\\\ \\sqrt{4.95} \\approx L(1.05) &= \\frac{8.05}{4}=2.0125 \\end{align*}$$",
+    "Tags": [
+      "Matematica",
+      "Calculo A",
+      "Aproximação Linear"
+    ]
+  },
+  {
+    "Id": "limites-infinitos",
+    "Title": "Limites Infinitos",
+    "Content": "Como forma de introdução à ideia de <a href=\"./anotacao/limites\" target=\"_blank\">limite</a> infinito, consideramos a função $f(x) = \\frac{1}{|x|}$. Note que $f(x)$ quando $x = 0$ não existe, ou seja, não esta no domínio de $f$. Isso nos induz ao estudo do que acontece com $f$ com valores próximos a $x = 0$. Ao calcularmos com esses valores, percebemos que na medida que $x \\to 0$, o valor de $f(x)$ cresce cada vez mais. Logo:\n$$x \\to 0 \\Rightarrow f(x) \\to \\infty \\Rightarrow \\lim_{x \\to 0} f(x) = \\infty$$\n## Definição: \nConsidere $f$ definido em ambos os lados de $a$, exceto em $a$. Então, se $\\underset{x \\to a}{\\lim} f(x) = \\infty$ acontece, significa que os valores de $f(x)$ ficam arbitrariamente grandes na medida que $x \\to a$. Além disso, Limites Infinitos geram [[Assíntotas#Assíntota Vertical|assíntotas verticais]] no ponto onde $\\underset{x \\to a}{\\lim}f(x) \\to \\infty$\n\n## Limites Infinitos Negativos\nQuando definimos $\\underset{x \\to a}{\\lim} f(x) = -\\infty$, a mesma definição se aplica, porem, os valores da função crescem no sentido negativo. \n**Exemplo:** $\\underset{x \\to 0}{\\lim} \\frac{1}{-x^2} = -\\infty$",
+    "Tags": [
+      "Matematica",
+      "Cálculo",
+      "Limites"
+    ]
+  },
+  {
+    "Id": "testes-de-convergência-de-séries",
+    "Title": "Testes de Convergência de Séries",
+    "Content": "Dado uma série $\\sum a_n$, para saber se ela converge podemos fazer os seguintes testes:\n\n## 1. Calcula-se o limite\nSe $\\underset{n \\to \\infty} \\lim a_n \\neq 0$, a série diverge.\n\n## 2. Verifica se a série é de um dos seguintes tipos\n### i) Série geométrica\nSe a série for do tipo $ \\sum^\\infty_{n=1} a \\cdot r^n$, ela converse para $\\frac{a_1}{1 - r}$ se $|r| < 1$, caso contrário ela diverge.\n\n### ii) Série P\nSe a série for do tipo $ \\sum^\\infty_{n=1} \\frac{1}{n^p}$, ela converse se $p > 1$, caso contrário ela diverse.\n\n### iii) Série alternada\nSe a série for do tipo $ \\sum^\\infty_{n=1} (-1)^n b_n$ ou $ \\sum^\\infty_{n=1} (-1)^{n+1} b_n$, onde $b_n \\geq 0$, ela converge se $b_{n + 1} \\leq b_n$ e $\\underset{n \\to \\infty} \\lim b_n = 0$\n\n## 3. Testes de comparação\n### i) Teste da comparação da sequência\nSejam $\\sum a_n$ e $\\sum b_n$ séries com termos positivos.\n• Se $\\sum b_n$ converge e $\\forall n, a_n \\leq b_n$ então $\\sum a_n$ converge.\n• Se $\\sum b_n$ diverge e $\\forall n, b_n \\leq a_n$ então $\\sum a_n$ diverge.\n\n\n### ii) Teste da comparação do limite.\nSejam $\\sum a_n$ e $\\sum b_n$ séries com termos positivos.\n• Se $\\underset{n \\to \\infty} \\lim \\frac{a_n}{b_n} = c > 0$, então $\\sum a_n$ converge.\n• Se $\\underset{n \\to \\infty} \\lim \\frac{a_n}{b_n} = 0$ e $\\sum b_n$ converge, então $\\sum a_n$ converge.\n• Se $\\underset{n \\to \\infty} \\lim \\frac{a_n}{b_n} = \\infty$ e $\\sum b_n$ diverge, então $\\sum a_n$ diverge.\n\n## 4. Teste da razão\n• Se $\\underset{n \\to \\infty} \\lim \\left | \\frac{a_{n+1}}{a_n} \\right | = L < 1$ então $\\sum a_n$ é absolutamente convergente.\n• Se $\\underset{n \\to \\infty} \\lim \\left | \\frac{a_{n+1}}{a_n} \\right | = L > 1$ ou $\\underset{n \\to \\infty} \\lim \\left | \\frac{a_{n+1}}{a_n} \\right | = \\infty$  então $\\sum a_n$ diverge.\n• Se $\\underset{n \\to \\infty} \\lim \\left | \\frac{a_{n+1}}{a_n} \\right | = 1$ então nada pode ser dito sobre $\\sum a_n$\n\n## 5. Teste da raiz\n• Se $\\underset{n \\to \\infty} \\lim \\sqrt[n]{|a_n|} = L < 1$ então a série é absolutamente convergente\n• Se $\\underset{n \\to \\infty} \\lim \\sqrt[n]{|a_n|} = L > 1$ ou $L = \\infty$ então ela diverge.\n• Se $\\underset{n \\to \\infty} \\lim \\sqrt[n]{|a_n|} = 1$ então nada pode ser dito sobre a série\n\n## 6. Teste da integral\nSe $a_n = f(n)$, $f(x) \\geq 0$ e for decrescente, então $\\sum a_n$ converge se $\\int_1^\\infty f(x) dx$ converge",
+    "Tags": [
+      "Matemática",
+      "Cálculo",
+      "Séries"
+    ]
+  },
+  {
+    "Id": "limites",
+    "Title": "Limites",
+    "Content": "Vamos iniciar a introdução de limite de através de um exemplo. Considere $f(x) = x^2 - x + 2$. A medida que calculamos valores para $x$ cada vez mais próximos de $2$, o resultado dessa função se aproximará de 4. Sabendo disso, pode-se dizer que o limite de $f(x)$ quando $x \\to 2$ é igual a $4$\n\n<h2> Notação: </h2>\n$$\\underset{x \\to 2}{\\lim} (x^2 - x + 2)$$\n\n<h2> Definição: </h2>\nSuponha $f(x)$ uma função definida que possa ser calculada em valores próximos à um valor $a$, não sendo necessário que $f(a)$ seja um valor possível de calcular. Escrevemos $\\underset{x\\to a}{\\lim} f(x) = L$ que significa \"O limite de $f(x)$, quando $x$ tende à $a$ é igual a $L$\". Simbolicamente:\n$$\\begin{matrix}\\underbrace{a \\to x \\Longleftrightarrow f(x) \\to L}\\\\ \\underset{x \\to a}{\\lim} f(x) = L\\end{matrix}$$\n\n<h2> Exemplo: </h2>\n$$\\underset{x\\to 1}{\\lim} \\frac{x - 1}{x^2 - 1}$$ \nNessa função, se $x = 1$, teremos $\\frac{0}{0}$, que é indefinido, então vamos calcular para valores cada fez mais próximos de $1$.\n$$\\begin{bmatrix} f(0.9) & \\cdots & 0.52631 \\\\ f(0.99) & \\cdots & 0.50251 \\\\ f(0.999) & \\cdots & 0.50025 \\\\ f(1.001) & \\cdots & 0.49975 \\\\ \\end{bmatrix}$$\nPercebemos que quando $x \\rightarrow 1, f(x) \\rightarrow 0.5$, então, temos que $\\underset{x\\to 1}{\\lim} \\frac{x - 1}{x^2 - 1} = \\frac{1}{2}$. De outra forma, manipulando a equação, podemos obter :\n$$\\dfrac{x - 1}{x^2 - 1} = \\dfrac{(x - 1) \\cdot 1}{(x - 1) \\cdot (x + 1)}, |x| \\neq 1. = \\dfrac{1}{x + 1}$$\nSubstituindo $x = 1$ nesta equação, obtemos o mesmo resultado. Isto indica que podemos manipular algebricamente a função de modo que possamos simplesmente substituir na equação.",
+    "Tags": [
+      "Matemática",
+      "Cálculo",
+      "Limites"
+    ]
+  },
+  {
+    "Id": "séries-de-potência",
+    "Title": "Séries de potência",
+    "Content": "Uma série de potência em $x-a$ é uma série $\\sum c_n \\cdot (x-a)^n = c_0 + c_1(x-a) + c_2(x-a)^2 + c_3(x-a)^3 + \\cdots$ onde $x$ é uma variável e $c_n$ uma constante. \n**OBS:** $(x-a)^0 = 1$ mesmo se $x = a$\n\nSe $a=0$ temos uma série de potência em x\n$$\\sum_{n = 0}^\\infty c_nx^n = c_0 + c_1x + c_2x^2 + c_3x^3 + \\cdots$$\nAlém disso, cada série representa uma função $f(x) = \\sum c_n(x-a)^n$ onde o domínio é o conjunto de todo $x$ tal que a série converge. Por exemplo, se $f(x) = \\sum x^n = 1 + x + x^2 + x^3 + \\cdots$ apenas converge se $|x| < 1$. Além disso, esta mesma série representa a função $f(x) = \\frac{1}{1 - x}$ para $x \\in (-1, 1)$ onde a mesma pode ser manipulada de modo a obter a série de outra função. \n\nTome $f(x) = \\frac{3}{4 + 16x}$, como encontrar sua série de potência?\n\n Podemos obter a série de potência dessa função da seguinte forma:\n$$\\begin{align*} \\frac{3}{4 + 16x} &= \\frac{3}{4} \\cdot \\frac{1}{1 + 4x} \\\\ \\frac{1}{1+x} = \\frac{1}{1 - (-x)} &= \\sum (-x)^n = \\sum (-1)^n x^n & |x| < 1 \\\\ \\frac{1}{1 + 4x} = \\frac{1}{1 - (-4x)} &= \\sum (-4x)^n = \\sum (-4)^n x^n & |4x| < 1\\\\ f(x) &= \\frac{3}{4} \\sum (-4)^n x^n \\end{align*}$$\n\nNote que a inequação mudou para $|4x| < 1$, isso implica que $|x| < \\frac{1}{4}$, ou seja, o intervalo de $x$ em que essa série converge foi reduzido. Chamamos este espaço de **Raio de Convergência**, onde neste caso, o raio de convergência $R = \\frac{1}{4}$, cujo implica que $x \\in (-\\frac{1}{4}, \\frac{1}{4})$\n\nMas e se tivermos uma série e queremos descobrir seu raio de convergência? Para isso, podemos aplicar os vários testes de convergência de séries e calcular para quais valores de $x$ a função vai convergir. Note que sempre irá convergir ou em um intervalo, um único valor de $x$ ou em nenhum valor.\n\n### Exemplo:\nPara quais valores de $x$ a seguinte série converge:\n$$\\sum_{n = 0}^\\infty n! x^n$$\nTome $a_n = n! x^n$,  utilizando o teste da razão temos que\n$$\\begin{align*} \\left | \\frac{a_{n+1}}{a_n} \\right | &= \\frac{(n+1)! \\cdot x^{n+1}}{n! x^n} \\\\ &= \\frac{(n + 1) \\cdot n! \\cdot x \\cdot x^n}{n! \\cdot x^n} \\\\ &= (n + 1) \\cdot x \\\\ \\lim_{n \\to \\infty} \\left | \\frac{a_{n+1}}{a_n} \\right | &= \\lim_{n \\to \\infty} (n+1) \\cdot x\\end{align*}$$\n\nAssim, percebemos que para $x \\neq 0, \\underset{n \\to \\infty} \\lim (n + 1) \\cdot x = \\infty$ e para $x = 0, \\underset{n \\to \\infty} \\lim (n + 1) \\cdot x = 0$. Assim, a série apenas converge para $x = 0$, tendo assim um raio de convergência $R = 0$\n\n## Derivadas da série de potência\nSe a série $\\sum c_n(x-a)^n$ tem raio de convergência $R$ então $f(x) = \\sum c_n(x-a)^n$ é derivável em $x \\in (a - R, a + R)$ e $f'(x) = \\sum n c_n (x-a)^(n-1)$.\n\n### Exemplos:\n$$f(x) = \\frac{1}{1 - x} = \\sum_{n = 0}^\\infty x^n, f'(x) = n x^{n-1}$$\n$$f(x) = e^x = \\sum_{n = 0}^\\infty \\frac{x^n}{n!}, f'(x) = \\frac{x^(n-1)}{(n-1)!}$$\n\n## Integrais de séries de potência\nSe a série $\\sum c_n(x-a)^n$ tem raio de convergência $R$ então $f(x) = \\sum c_n(x-a)^n$ é integrável em $x \\in (a - R, a + R)$ e $\\int f(x) \\ dx = \\sum \\frac{c_n (x-a)^(n+1)}{n+1}$.\n\n### Exemplos:\n$$\\ln(1 + x) = \\int_0^x \\frac{1}{1+t} \\ dt = \\int_0^x \\sum_{n = 0}^\\infty (-1)^n t^n = \\sum_{n = 0}^\\infty \\frac{(-1)^n x^{n+1}}{n+1}$$\n",
+    "Tags": [
+      "Matemática",
+      "Cálculo",
+      "Séries"
+    ]
+  },
+  {
+    "Id": "concavidade",
+    "Title": "Concavidade",
+    "Content": "## Definição\n\nSe o gráfico de uma função estiver acima de todas as suas tangentes no intervalo $I$ , então $f$ é dita  *Côncava para Cima em* $I$. E, se estiver abaixo de suas tangentes, então $f$ é dita *Côncava para baixo em* $I$.\n\n##Teste de concavidade \n\nSeja $f$ função e $f''$ sua segunda <a href=\"./anotacao/derivadas\" target=\"_blank\">derivada</a>, então \n\n Se $\\forall x \\in I$ , $f''(x)$ > 0 ,  então $f$ é côncava para cima em $I$.\n\nSe $\\forall x \\in I$ , $f''(x)$ < 0 , então $f$ é côncava para baixo em $I$.\n\n##Ponto de Inflexão \n\nUm ponto $P$ ∈ $f$ é dito *Ponto de inflexão* se $f$ é continua e a curva mudar de concavidade em $P$. Por exemplo, para $f(x)$ = $sin( x)$,  seus pontos e inflexão serão $x$ = $0$ , $x$ = $π$ , $x$ = $2π$....",
+    "Tags": [
+      "Matematica",
+      "Calculo A",
+      "Concavidade"
+    ]
+  },
+  {
+    "Id": "derivadas-comuns",
+    "Title": "Derivadas comuns",
+    "Content": "#### Constante\n$$ \\frac{d}{dx} (c) = 0 $$\n#### Derivada da Potência\n$$ \\frac{d}{dx} (x^n) = nx^{n-1} $$\n\n#### Derivada da Soma/Diferença\n$$ \\frac{d}{dx} [f(x) \\pm g(x)] = \\frac{d}{dx} f(x) \\pm \\frac{d}{dx} g(x) $$\n\n#### Derivada do Produto\n$$ \\frac{d}{dx} [f(x) \\cdot g(x)] = f'(x) \\cdot g(x) + f(x) \\cdot g'(x) $$\n\n#### Derivada do Quociente \n$$ \\frac{d}{dx} \\left( \\frac{f(x)}{g(x)} \\right) = \\frac{f'(x) \\cdot g(x) - f(x) \\cdot g'(x)}{g(x)^2} $$\n\n#### Derivada da Cadeia\n$$ \\frac{d}{dx} [f(g(x))] = f'(g(x)) \\cdot g'(x) $$\n\n#### Derivada da Função Exponencial\n$$ \\frac{d}{dx} (e^{u(x)}) = u'(x) \\cdot e^{u(x)} $$\n\n#### Derivada do Logaritmo Natural\n$$ \\frac{d}{dx} (\\ln(u(x))) = \\frac{u'(x)}{u(x)} $$\n\n#### Derivadas das Funções Trigonométricas\n$$ \\frac{d}{dx} (\\sin(x)) = \\cos(x) $$\n$$ \\frac{d}{dx} (\\cos(x)) = -\\sin(x) $$\n$$ \\frac{d}{dx} (\\tan(x)) = \\sec^2(x) $$\n$$ \\frac{d}{dx} (\\cot(x)) = -\\csc^2(x) $$\n$$ \\frac{d}{dx} (\\sec(x)) = \\sec(x) \\tan(x) $$\n$$ \\frac{d}{dx} (\\csc(x)) = -\\csc(x) \\cot(x) $$\n\n#### Derivadas das Funções Trigonométricas Inversas\n$$ \\frac{d}{dx} (\\arcsin(x)) = \\frac{1}{\\sqrt{1 - x^2}} $$\n$$ \\frac{d}{dx} (\\arccos(x)) = -\\frac{1}{\\sqrt{1 - x^2}} $$\n$$ \\frac{d}{dx} (\\arctan(x)) = \\frac{1}{1 + x^2} $$\n$$ \\frac{d}{dx} (\\text{arccot}(x)) = -\\frac{1}{1 + x^2} $$\n$$ \\frac{d}{dx} (\\text{arcsec}(x)) = \\frac{1}{|x|\\sqrt{x^2 - 1}} $$\n$$ \\frac{d}{dx} (\\text{arccsc}(x)) = -\\frac{1}{|x|\\sqrt{x^2 - 1}} $$\n\n",
+    "Tags": [
+      "Matemática",
+      "Cálculo",
+      "Derivadas"
+    ]
+  },
+  {
+    "Id": "teorema-do-valor-médio",
+    "Title": "Teorema do Valor Médio",
+    "Content": "Se $f$ é uma função que satisfaz\n- $f$ <a href=\"./anotacao/continuidade\" target=\"_blank\">Continua</a> em $[a, b]$\n- $f$ <a href=\"./anotacao/derivadas\" target=\"_blank\">Derivavel</a> em $(a, b)$\n\nEntão, $\\exists c \\in (a, b)$ tal que $$\\dfrac{f(b) - f(a)}{b - a} = f'(c)$$\n\n## Exemplos\n1. $f(x) = x^{3}- x$ no intervalo $[0, 2]$\n$$\\begin{align*} \\dfrac{f(2) - f(0)}{2 - 0} &= \\frac{6}{2} = 3\\\\ f'(x) &= 3x^{2}-1\\\\ f'(c) &= 3\\\\ &\\Rightarrow 3c^{2}- 1 = 3\\\\ &\\Rightarrow 3c^{2}=4\\\\ &\\Rightarrow c^{2}=\\frac{4}{3}\\\\ &\\Rightarrow c=\\frac{2\\sqrt{3}}{3} \\end{align*}$$\n",
+    "Tags": [
+      "Matematica",
+      "Cálculo A",
+      "Teorema do Valor Médio"
+    ]
+  },
+  {
+    "Id": "teorema-de-rolle",
+    "Title": "Teorema de Rolle",
+    "Content": "#### Definição\nSeja $f$ função que satisfaz:\n- $f$ <a href=\"./anotacao/continuidade\" target=\"_blank\">Continua</a> no intervalo $[a, b]$\n- $f$ <a href=\"./anotacao/derivadas\" target=\"_blank\">Derivavel</a> no intervalo $[a, b]$\n- $f(a) = f(b)$\n\nEntão, existe $c \\in (a, b)$ tal que $f'(c) = 0$\n\n####Exemplos e Exercícios\n- Verifique que a seguinte equação tem uma **única** raiz: $x^{3}+ x - 1$\n\nNote que $f(x)$ é continua para $x \\in \\mathbb{R}$ e que $f(0) = -1, f(1) = 1 \\Rightarrow f(0) < 0, f(1) > 0$. Logo, pelo Teorema do Valor Intermediário, $\\exists x_{0} \\in [0, 1], f(x) = 0$. \n\nPara garantir unicidade, imagine outra raiz $x_{1}$. Então $$f(x_{0}) = 0 = f(x_{1}), x_{1}\\neq x_{0}$$\n\nAssim temos um intervalo $[x_{0}, x_{1}]$, então:\n\n- $f(x)$ é continua em $[x_{0}, x_{1}]$\n- $f(x)$ é derivável em $(x_{0}, x_{1})$\n- $f(x_{0}) = f(x_{1}) \\star$\n \nEntão, pelo Teorema de Rolle, existe $c \\in (x_{0}, x_{1})$ tal que $f'(c) = 0$. $$f'(x) = 3x^{2} + 1 = 0$$\nComo $3x^{2} > 0$, não existe $c \\in \\mathbb{R}$ tal que $3c^{2}=-1$. Logo, não pode existir outra raiz\n\n",
+    "Tags": [
+      "Matematica",
+      "Cálculo A",
+      "Teorema de Rolle"
+    ]
+  },
+  {
+    "Id": "regra-de-derivacao-do-produto",
+    "Title": "Regra de Derivacao do Produto",
+    "Content": "Vamos iniciar considerando como exemplo: $f(x) = x^{2}$ e $g(x) = x$. Já conhecemos  $$\\dfrac{d}{dx}(6 \\cdot f(x)) = 6 \\cdot \\dfrac{d}{dx} f(x)$$ $$\\dfrac{d}{dx}(f(x) + g(x)) = \\dfrac{d}{dx}f(x) + \\dfrac{d}{dx}g(x)$$\n\nMas como sera $\\dfrac{d}{dx}(f(x) \\cdot g(x))$? \n\nNote que $$f(x) \\cdot g(x) = x^{3}$$\n\nAlém disso, $$\\begin{align*} \\dfrac{d}{dx}f(x) &= 2x\\\\ \\dfrac{d}{dx}g(x) &= 1\\\\ \\dfrac{d}{dx} x^{3} &= 3x^{2}\\\\ \\end{align*}$$\n\nTeremos então $$\\dfrac{d}{dx}(f(x) \\cdot g(x)) = 3x^{2} \\neq 2x \\cdot 1 = \\dfrac{d}{dx}f(x) \\cdot \\dfrac{d}{dx}g(x)$$ e isto mostra que a derivada de um produto **não e o produto das derivadas.**\n\nPara descobrir uma regra, vamos olhar novamente para a definição $$\\dfrac{d}{dx} \\Big ( f(x) \\cdot g(x)\\Big) = \\underset{h \\to 0} \\lim \\dfrac{f(a + h) \\cdot g(a + h) - f(a)\\cdot f(g)}{h}$$ \n\nReescrevendo os objetos, temos que $$\\begin{align*} \\Delta x &= h\\\\ \\Delta u &= f(x + \\Delta x) - f(x)\\\\ \\Delta v &= g(x + \\Delta x) - g(x)\\\\ u &= f(x)\\\\ v &= g(x) \\end{align*}$$\n\nImaginando um retângulo de comprimento $(u + \\Delta u)$ e altura $(v + \\Delta v)$, e outro de lados $u$ e $v$, a área do retângulo menor seria $u \\cdot v$, enquanto a do maior seria $(u + \\Delta u) \\cdot (v + \\Delta v)$.\n\n A variação desse retângulo será $\\Delta(u \\cdot v)$ $$\\begin{align*}\\Delta(u \\cdot v) &=  (u + \\Delta u ) (v + \\Delta v) - uv\\\\ &= uv + u \\cdot \\Delta v + v \\cdot \\Delta v + \\Delta u \\cdot \\Delta v - uv\\\\ &=  u \\cdot \\Delta v + v \\cdot \\Delta u + \\Delta u \\cdot \\Delta v\\\\ \\end{align*}$$\n\nDessa forma,  $$\\dfrac{\\Delta (u \\cdot v)}{\\Delta x} = u \\cdot \\dfrac{\\Delta v}{h} + v\\cdot \\dfrac{\\Delta u}{h} + \\dfrac{\\Delta u \\cdot \\Delta v}{h}$$ $$\\begin{align*} \\dfrac{\\Delta u}{\\Delta x} &= \\dfrac{d}{dx}f(x)\\\\ \\dfrac{\\Delta v}{\\Delta h} &= \\dfrac{d}{dx}g(x)\\\\ \\dfrac{\\Delta u \\Delta v}{h} &= \\underset{\\Delta x \\to 0} \\lim \\dfrac{\\Delta u}{h} \\underset{\\Delta x \\to 0} \\lim \\Delta v = 0  \\end{align*}$$ $$\\dfrac{\\Delta (u \\cdot v)}{h} = u \\cdot \\dfrac{d}{dx}f(x) + v \\cdot \\dfrac{d}{dx}g(x) $$",
+    "Tags": [
+      "Matematica",
+      "Cálculo A",
+      "Derivadas",
+      "Regra de Derivação do Produto"
+    ]
+  },
+  {
+    "Id": "argumentos-e-regras-de-inferência",
+    "Title": "Argumentos e regras de Inferência",
+    "Content": "\nSejam $P_{1}, P_{2},P_{3},...,P_{n}$ e $Q$ <a href=\"./anotacao/cálculo-proposicional\" target=\"_blank\">proposições</a> quaisquer. Um argumento de inferência é uma afirmação em que as proposições $P_{1}, P_{2},..., P_{n}$ tem como consequência ou acarretam $Q$.\n\n#### Notação\n$$P_{1,}P_{2}, P_{3},..., P_{n} \\mapsto Q$$\n#### Definição:\n$P_{1,}P_{2}, P_{3},..., P_{n} \\mapsto Q$ é valido se e somente se $Q$ é verdadeiro sempre que suas premissas são verdadeiras. Isto é, $P_{1}\\land P_{2}\\land ... \\land P_{n}\\Rightarrow Q$ é tautologia\n\n#### Regras de Inferência\n<li> 1. **Adição (AD): ** $p \\mapsto p \\lor q$\n\n<li> 2. **Simplificação (Simp.) : ** $p \\land q \\mapsto p$ ou $p \\land q \\mapsto q$\n\n<li> 3. **Conjunção (Conj.) : ** $p, q \\mapsto p \\land q$\n\n<li> 4. **Modus Ponens (MP) : ** $p \\Rightarrow q, p \\mapsto q$\n\n<li> 5. **Modus Tollens (MT) : ** $p \\Rightarrow q, \\lnot q \\mapsto \\lnot p$\n\n<li> 6. **Absorção (ABS) : ** $p \\Rightarrow q \\mapsto p \\Rightarrow (p \\land q)$\n\n<li> 7. **Silogismo Disjuntivo (SD) : ** $p \\lor q, \\lnot q \\mapsto p$\n\n<li> 8. **Silogismo Hipotético (SH) :** $p \\Rightarrow q, q \\Rightarrow r \\mapsto p \\Rightarrow q$\n\n<li> 9. **Dilema Construtivo (DC) : ** $p \\Rightarrow q, r \\Rightarrow s, p \\lor r \\mapsto q\\lor s$\n\n<li> 10. **Dilema Destrutivo (DD) : ** $p \\Rightarrow q, r \\Rightarrow s, \\lnot q \\lor \\lnot s \\mapsto \\lnot p \\lor \\lnot s$\n\n\n## Exemplos\n\n#### Prove que as seguinte expressões são validas:\n• $p \\Rightarrow q, r \\lor \\lnot q, \\lnot r, \\mapsto \\lnot p$\n\n\t1) $p \\Rightarrow q$\n\t2) $r \\lor \\lnot q$\n\t3) $\\lnot r$\n\t4) $q \\Rightarrow r$ ($\\equiv 2$)\n\t5) $p \\Rightarrow r$ (1, 4: SH)\n\t6) $\\lnot p$ (3, 5: MT)\n\n• $p \\Rightarrow q, q \\Rightarrow (r \\lor s), (r \\lor s) \\Rightarrow t, (p \\Rightarrow t) \\Rightarrow u \\mapsto u$\n\n\t1) $p \\Rightarrow q$\n\t2) $q \\Rightarrow (r \\lor s)$\n\t3) $(r \\lor s) \\Rightarrow t$\n\t4) $(p \\Rightarrow t) \\Rightarrow u$\n\t5) $p \\Rightarrow (r \\lor s)$ (1, 2: SH)\n\t6) $p \\Rightarrow t$ (3, 5: SH)\n\t7) $u$ (4, 6: MP)\n\n• $(p \\to q) \\to r, \\lnot r, (\\lnot p \\lor \\lnot q) \\lor s \\mapsto s$**\n\n\t1. $(p \\to q) \\to r$\n\t2. $\\lnot r$\n\t3. $(\\lnot p \\lor \\lnot q) \\lor s$\n\t4. $\\lnot  (p \\to q)$\n\t5. $\\lnot (p \\land q) \\lor s$\n\t6. $(p \\land q) \\to s$ ",
+    "Tags": [
+      "Matemática",
+      "Fundamentos Elementares da Matemática",
+      "Argumentos e regras de Inferência"
+    ]
+  },
+  {
+    "Id": "integração-por-frações-parciais",
+    "Title": "Integração por frações parciais",
+    "Content": "Suponha uma integral cujo integrando é uma função racional no formato $f(x) = \\frac{P(x)}{Q(x)}$ onde $P(x)$ e $Q(x)$ são polinomios. Temos duas situações:\n\n### Situação 1: Grau de P é maior que o grau de Q\nSe o grau de $P(x)$ é maior que $Q(x)$, aplica-se a divisão de polinomios de $P$ por $Q$ de modo que $f(x) = \\frac{P(x)}{Q(x)} = S(x) + \\frac{R(x)}{Q(x)}$ onde o grau de $S$ é menor que o de $Q$\n\nPor exemplo, suponha $f(x) = \\frac{x^3 + x}{x - 1}$. Ao realizar a divisão de polinomios, obtemos que\n$$x^3 + x = (x-1)(x^2+x+2) \\Rightarrow  \\left \\{ \\begin{align*} S(x) &= x^2 + x + 2 \\\\ R(x) &= 2\\\\ \\end{align*} \\right.$$\n\n$$I = \\int \\frac{x^3 + x}{x - 1} dx = \\int x^2 + x + 2 + \\frac{2}{x-1} dx = \\frac{x^3}{3} + \\frac{x^2}{2} + 2x + 2 ln|x-1| + C$$\n\n### Situação 2: Grau de P é menor que o grau de Q.\nSe o grau de $Q$ for maior que o grau de $P$, será necessário fatorar $Q(x)$ o máximo possivel. Por exemplo, $x^4 - 16 = (x^2 + 4)(x^2 - 4) = (x^2 + 4)(x+2)(x-2)$.\nNeste caso, aparecerá fatores da forma $ax + b$ e $ax^2 + bx + c$ com $b^2 - 4ac < 0$. Em seguida, expresse $f$ como uma soma de frações parciais da forma $\\frac{A}{(ax + b)^i}$ ou $\\frac{Ax + B}{(ax^2 + bx + c)^j}$. Para isso, teremos 4 casos distintos:\n\n#### Caso 1\n$Q(x)$ é um produto de fatores lineares distintos $Q(x) = (a_1x + b_1)(a_2x + b_2) \\cdots (a_kx + b_k)$ onde $k$ é igual ao grau de $Q$. Podemos escrever\n$$\\frac{P(x)}{Q(x)} = \\frac{A_1}{a_1x + b} + \\cdots + \\frac{A_n}{a_nx + b_n}$$\n\n##### Exemplo:\nEncontre $\\int \\frac{x^2 + 2x -1}{2x^3 + 3x^2 - 2x} dx$\n $$Q(x) = x(x^2 + 3x -2) = x \\cdot (x + 2) \\cdot (2x - 1)$$\n$$\\frac{P(x)}{Q(x)} = \\frac{A}{x} + \\frac{B}{2x - 1} + \\frac{C}{x+2} = \\frac{A(2x-1)(x+2) + Bx(x+2) + Cx(2x-1)}{x(2x-1)(x+2)}$$\n$$\\begin{align*}P(x) &= A(2x-1)(x+2) + Bx(x+2) + Cx(2x-1) = x^2 + 2x - 1\\\\ &= A(2x^2 + 3x -2) + B(x^2 + 2x) + C(2x^2 - x)\\\\ &=x^2 \\cdot(2A + B + 2C) + x \\cdot (3A + 2B - C) - 2A = x^2 + 2x - 1 \\end{align*}$$\nMontando e resolvendo o sistema linear:\n\n$$\\left \\{ \\begin{align*} 2A + B + 2C &= 1\\\\ 3A + 2B - C &= 2\\\\ -2A &= -1\\end{align*} \\right. \\Rightarrow A = \\frac{1}{2}$$\nSubstituindo no sistema\n$$\\left \\{ \\begin{align*} B + 2C &= 0\\\\ 2B - C &= \\frac{1}{2} \\end{align*} \\right. \\Rightarrow B = \\frac{1}{5}, C = -\\frac{1}{10}$$\nFinalmente, substituindo na integral original e resolvendo-a\n$$\\begin{align*} \\int f(x) dx &= \\frac{A}{x} + \\frac{B}{2x - 1} + \\frac{C}{x+2}dx\\\\ &= \\frac{\\frac{1}{2}}{x} + \\frac{\\frac{1}{5}}{2x-1} - \\frac{\\frac{1}{10}}{x+2}dx\\\\ &= \\frac{1}{2}\\int \\frac{1}{x} dx + \\frac{1}{5}\\int \\frac{1}{2x - 1} dx - \\frac{1}{10} \\int \\frac{1}{x + 2} dx\\\\ &= \\frac{1}{2} ln|x| + \\frac{1}{5} ln|2x-1| - \\frac{1}{10}lm|x+2| + C \\end{align*}$$\n\n",
+    "Tags": [
+      "Matematica",
+      "Cálculo",
+      "Integrais",
+      "Tecnicas de Integração"
+    ]
+  },
+  {
+    "Id": "assíntotas",
+    "Title": "Assíntotas",
+    "Content": "## Assíntota Vertical\nA reta $x = a$ é chamada de assíntota vertical da curva $f(x)$ quando acatar algum dos casos de limites infinitos.\n\n### Exemplos:\n$f(x) = \\frac{1}{x - 1}$ tem assíntota vertical $x = 1$. De fato:\n$x \\to 1^- \\Rightarrow x \\to 1, x < 1 \\Rightarrow x - 1 < 0 \\Rightarrow \\frac{1}{x - 1} < 0 \\Rightarrow \\underset{x \\to 1}{\\lim} \\frac{x}{x - 1} = -\\infty$\n\n$f(x) = \\tan{x} = \\frac{\\sin{x}}{\\cos{x}}$\nSabemos que $\\cos{x} \\Longleftrightarrow x = \\frac{\\pi}{2}$. No caso entre $-\\frac{\\pi}{2}$ e $\\frac{\\pi}{2}$, temos:\n- $\\underset{x \\to \\frac{\\pi}{2}}{\\lim} \\tan{x} = \\infty$\n- $\\underset{x \\to -\\frac{\\pi}{2}}{\\lim} \\tan{x} = -\\infty$\nPor ser uma função periódica, todo múltiplo de $\\frac{\\pi}{2}$ será uma assíntota.\n\n<code> TBA: GRAFICO DA TANGENTE </code>\n\nTendo $g(x) = \\dfrac{1}{x}$, seu limite sendo infinito e sua assíntota $x = 0$.\n\n## Assíntota Horizontal\nA reta $y = L$ é chamada de assíntota horizontal quando $\\underset{x \\to \\infty} \\lim f(x) = L$ ou $\\underset{x \\to -\\infty} \\lim f(x) = L$\n\n### Exemplo:\nPara $f(x) = \\frac{1}{x}$, a assíntota horizontal será $y = 0$ para $\\underset{x \\to \\infty} \\lim f(x)$\n\n## Assíntota Obliqua\nUma função $f(x)$ tem assíntota $y = mx + b$ quando\n$$\\underset{x \\to \\infty} \\lim [f(x) - (mx + b)] = 0$$",
+    "Tags": [
+      "Matematica",
+      "Cálculo",
+      "Limites"
+    ]
+  },
+  {
+    "Id": "equivalência-lógica",
+    "Title": "Equivalência Lógica",
+    "Content": "Dizemos que uma <a href=\"./anotacao/cálculo-proposicional\" target=\"_blank\">cálculo proposicional</a> $P$ é logicamente equivalente a $Q$ se elas possuem a mesma tabela-verdade.\n\n#### Notação\n$$P \\equiv Q$$\n#### Exemplo\n- $(p \\Rightarrow p \\land q) \\equiv p \\Rightarrow q$ \n$$\\begin{bmatrix}p & q & p \\land q & p \\Rightarrow p \\land q & p \\Rightarrow q \\\\V & V & V & V & V \\\\V & F & F & F & F \\\\F & V & F & V & V \\\\F & F & F & V & V \\end{bmatrix}$$\nÉ perceptível como os valores lógicos de $p \\Rightarrow p \\land q$ são idênticos a $p \\Rightarrow q$, logo, são **equivalentes**\n\n\n## Propriedades\n\n#### Exemplo:\n- $\\lnot (p \\lor q) \\equiv \\lnot p \\land \\lnot q$\n$$\\begin{bmatrix}p & q & p \\lor q & \\lnot (p \\lor q) & \\lnot p & \\lnot q & \\lnot p \\land \\lnot q \\\\V & V & V & F & F & F & F \\\\V & F & V & F & F & V & F \\\\F & V & V & F & V & F & F \\\\F & F & F & V & V & V & V \\end{bmatrix} $$\n\nLogo, essa equivalência está correta.",
+    "Tags": [
+      "Matemática",
+      "Fundamentos Elementares da Matemática",
+      "Equivalência Lógica"
+    ]
+  },
+  {
+    "Id": "limites-laterais",
+    "Title": "Limites Laterais",
+    "Content": "Para entender <a href=\"./anotacao/limites\" target=\"_blank\">Limites</a> Laterais, vamos considerar o exemplo da função\n$$H(t) = \\left \\{ \\begin{matrix} 0, & \\mbox{se }t < 0 \\\\ 1, & \\mbox{se }t \\geq 0 \\end{matrix} \\right. \\qquad \\lim_{t \\to 0} H(t) = ?$$\n\nCalculando o limite pelo \"lado esquerdo\", isto é, quando $t \\rightarrow 0, t < 0$, temos que $\\underset{t < 0}{t \\to 0} \\Rightarrow H(t) = 0$ e pelo \"lado direito\" temos que $\\underset{t > 0}{t \\to 0} \\Rightarrow H(t) = 1$\n\n## Notação:\n- $t \\to 0^-$ quando $t < 0$\n- $t \\to 0^+$ quando $t > 0$\n\n## Definição:\nEscrevemos $\\underset{x \\to a^-}{\\lim} f(x) = L$ quando $x$ tende à $a$ da esquerda e $\\underset{x \\to a^+}{\\lim}f(x) = L$ quando $x$ tende à $a$ da direita\n\n## Teorema:\n$$\\lim_{x \\to a} f(x) = L \\Longleftrightarrow \\lim_{x \\to a^-}f(x) = L \\mbox{ e} \\lim_{x \\to a^+}f(x) = L$$\nIsto é, $\\underset{x \\to a}{\\lim} f(x) = L$ se, e somente se, $\\underset{x \\to a^-}{\\lim} f(x) = L \\mbox{ e} \\underset{x \\to a^+}{\\lim}f(x) = L$\nDessa forma, $\\underset{t \\to 0}{\\lim} H(t)$ não existe, pois viola o teorema\n\n## Limites Laterais Infinitos\nQuando uma função de <a href=\"./anotacao/limites-infinitos\" target=\"_blank\">Limites Infinitos</a> não converge em uma infinita positiva ou negativa, temos de calcular o limite lateral de cada lado de $a$\n\nConsidere a função $f(x) = \\frac{1}{x}, x \\neq 0$. Nesse caso, teremos que calcular seus **limites laterais**:\n$$\\lim_{x \\to a^-} f(x) = -\\infty \\mbox{ e} \\lim_{x \\to 0^+} f(x) = +\\infty$$\nSabendo disso, podem existir 4 casos de limites laterais infinitos\n- $\\underset{x \\to a^-}{\\lim} f(x) = \\infty$\n- $\\underset{x \\to a^-}{\\lim} f(x) = -\\infty$\n- $\\underset{x \\to a^+}{\\lim} f(x) = \\infty$\n- $\\underset{x \\to a^+}{\\lim} f(x) = -\\infty$",
+    "Tags": [
+      "Matematica",
+      "Cálculo",
+      "Limites"
+    ]
+  },
+  {
+    "Id": "identidades-trigonométricas",
+    "Title": "Identidades trigonométricas",
+    "Content": "Identidades trigonométricas são usadas em várias áreas e situações, saindo de trigonometria básica para derivação e integração. Dito isso, temos as seguintes identidades que são as mais utilizadas:\n$$\\begin{align*} \\sin(\\alpha \\pm \\beta) &= \\sin\\alpha \\cdot \\cos \\beta \\pm \\cos \\alpha \\cdot \\sin\\beta\\\\ \\cos(\\alpha \\pm \\beta) &= \\cos \\alpha \\cdot \\cos \\beta \\mp \\sin\\alpha \\cdot \\sin\\beta\\\\ \\sin^2x + \\cos^2x &= 1 \\\\ \\tan^2x + 1 &= \\sec^2x\\\\ 1 + \\cot^2x &= \\csc^2x  \\\\ \\sin{2x} &= 2 \\cdot \\sin x \\cdot \\cos x \\\\ \\sin^2 x &=  \\frac{1 - \\cos 2x}{2} \\\\ \\cos 2x &= \\cos^2x - \\sin^2 x \\\\ \\cos^2x &= \\frac{1 + \\cos 2x}{2} \\end{align*}$$\n\nAbaixo, estão algumas provas e demonstrações de como chegar à algumas destas identidades.\n\n## Operações\n$$\\begin{align*} \\sin(\\alpha \\pm \\beta) &= \\sin\\alpha \\cdot \\cos \\beta \\pm \\cos \\alpha \\cdot \\sin\\beta\\\\ \\cos(\\alpha \\pm \\beta) &= \\cos \\alpha \\cdot \\cos \\beta \\mp \\sin\\alpha \\cdot \\sin\\beta\\\\ \\end{align*}$$\nNote que o sinal será invertido no cosseno, se estiver somando ângulos, a identidade será a subtração, e vice-versa\n\n## Identidade Pitagórica\n$$\\sin^2x + \\cos^2x = 1$$\nA partir desta identidade, é possível adquirir outras dividindo a equação por $\\sin^2x$ e $\\cos^2x$:\n$$\\begin{align*}\\frac{\\sin^2x}{\\cos^2x} + \\frac{\\cos^2x}{\\cos^2x} = \\frac{1}{\\cos^2x} &\\Rightarrow \\tan^2x + 1 = \\sec^2x\\\\\\frac{\\sin^2x}{\\sin^2x} + \\frac{\\cos^2x}{\\sin^2x} = \\frac{1}{\\sin^2x} &\\Rightarrow 1 + \\cot^2x = \\csc^2x \\end{align*}$$\n\n## Identidade do arco duplo do seno e do cosseno\nA partir da **Soma e subtração** de ângulos dentro do seno, podemos obter as seguintes propriedades\n$$\\begin{align*} \\sin{2x} &= \\sin x \\cos x + \\cos x \\sin x\\\\&=2 \\cdot \\sin x \\cdot \\cos x\\\\ \\cos{2x} &= \\cos x \\cdot \\cos x - \\sin x \\cdot \\sin x\\\\&=\\cos^2x - \\sin^2 x \\end{align*}$$\nAgora, para as próximas duas identidades do arco duplo complica um pouco, mas em poucos passos é chegado nelas:\n$$\\begin{align*} \\cos 2x &= \\cos^2x - \\sin^2x \\\\ \\cos^2 x &= \\sin^2 x + \\cos 2x & \\cos^2 x + \\sin^2 x = 1 \\Rightarrow \\sin^2 x = 1 - \\cos^2 x \\\\ \\cos^2 x &= 1 - \\cos^2x + \\cos 2x\\\\ 2 \\cdot \\cos^2 x &= 1 + \\cos 2x\\\\ \\cos^2 x &= \\frac{1 + \\cos 2x}{2}\\end{align*}$$\nPara provar a próxima, requer um pouco mais de abstração:\n$$\\begin{align*}  sin^2x &= \\frac{1}{2} \\cdot (2 \\cdot \\sin^2x)\\\\ &= \\frac{1}{2}(\\sin^2x + sin^2x)\\\\ &= \\frac{1}{2} \\cdot (1 - \\cos^2x + \\sin^2x) \\\\&= \\frac{1 - \\cos 2x}{2} \\end{align*}$$\nAssim, temos no final das contas, as seguintes identidades trigonométricas:\n\n$$\\begin{align*} \\sin{2x} &= 2 \\cdot \\sin x \\cdot \\cos x \\\\ \\sin^2 x &=  \\frac{1 - \\cos 2x}{2} \\\\ \\cos 2x &= \\cos^2x - \\sin^2 x \\\\ \\cos^2x &= \\frac{1 + \\cos 2x}{2} \\end{align*}$$\n\n",
+    "Tags": [
+      "Matemática",
+      "Algebra",
+      "Trigonometria",
+      "Identidades",
+      "Demonstração"
+    ]
+  },
+  {
+    "Id": "derivação-implícita",
+    "Title": "Derivação Implícita",
+    "Content": "## Definição\nDado uma função cujo não seja possivel escrever-la no formato $y = f(x)$, temos que sua <a href = \"./anotacao/derivadas\" target=\"_blank\">derivada</a> será calculada substituindo $y$ por uma função $f(x)$, deriva-se os dois \"lados\" e manipula-se a equação para encontrar $f'(x)$. \n\n### Exemplos: \nDerive $x^{3}+y^{3}= 6xy$\n$$\\begin{align*} x^{3}+y^{3}&= 6xy\\\\ x^{3}+ [y(x)]^{3}&= 6x\\cdot f(x)\\\\ \\dfrac{d}{dx}\\Big(x^{3}+ [y(x)]^{3}\\Big) &= \\dfrac{d}{dx}\\Big(6 \\cdot x \\cdot [y(x)]\\Big)\\\\ \\dfrac{d}{dx}x^{3}+ \\dfrac{d}{dx}[y(x)]^{3}&= y(x) \\cdot \\dfrac{d}{dx}6x + 6x \\dfrac{d}{dx}y(x)\\\\ 3x^{2}+ 3[y(x)]^{2}\\cdot \\dfrac{d}{dx}y(x) &= 6 \\cdot [y(x)] + 6x[y'(x)]\\\\ 3[y(x)]^{2}\\dfrac{d}{dx}[y(x)] - 6x \\dfrac{d}{dx}[y(x)] &= 6\\cdot[y(x)] - 3x^{2}\\\\ \\dfrac{d}{dx}y(x) \\cdot (3[y(x)]^{2}- 6x) &= 6[y(x)] - 3x^{2}\\\\ \\dfrac{d}{dx}y(x) &= \\dfrac{6[y(x)] - 3x^{2}}{3[y(x)]^{2}- 6x} \\end{align*}$$\n\n",
+    "Tags": [
+      "Matematica",
+      "Cálculo",
+      "Derivadas"
+    ]
+  },
+  {
+    "Id": "lei-de-l'hopital",
+    "Title": "Lei de L'hopital",
+    "Content": "A **Lei de L'hopital** geralmente é usada para resolver casos de <a href=\"https://thiagomvas.github.io/StudyProject/anotacao/formas-indeterminadas\" target=\"_blank\"> Formas Indeterminadas </a>\n## Definição\nSuponha $f$ e $g$ funções derivaveis e $g'(x) \\neq 0$ para $x$ num intervalo aberto que tem $a$ (exceto possivelmente o próprio $a$). Se\n$$\\underset{x \\to a} \\lim f(x) = 0, \\underset{x \\to a} \\lim g(x)=0$$\nou\n$$\\underset{x \\to a} \\lim f(x) = \\pm \\infty, \\underset{x \\to a} \\lim g(x)=\\pm \\infty$$\nEntão\n$$\\underset{x \\to a} \\lim \\dfrac{f(x)}{g(x)} = \\underset{x \\to a} \\lim \\dfrac{f'(x)}{g'(x)}$$ quando o segundo limite existir ou seja $\\pm \\infty$.\n",
+    "Tags": [
+      "Matematica",
+      "Calculo",
+      "Limites",
+      "Derivadas"
+    ]
+  },
+  {
+    "Id": "propriedades-de-cálculo-proposicional",
+    "Title": "Propriedades de Cálculo Proposicional",
+    "Content": "***Todas as propriedades são referentes à <a href=\"./anotacao/cálculo-proposicional\" target=\"_blank\">Cálculo Proposicional</a> e <a href=\"./anotacao/equivalência-lógica\" target=\"_blank\">Equivalência Lógica</a>***\n\n#### Propriedades Fundamentais\n$$\\begin{align*}p \\Rightarrow q &\\equiv \\lnot p \\lor q\\\\p \\Leftrightarrow q &\\equiv (p \\Rightarrow q) \\land (q \\Rightarrow p)  \\equiv (\\lnot p \\lor q)\\land (\\lnot q \\lor p)\\\\\\end{align*}$$\n\n#### Conjunção:\n$$\\begin{align*}p \\land p &\\equiv p\\\\p \\land q &\\equiv q \\land p\\\\p \\land (q \\land r) &\\equiv (p \\land q) \\land r\\\\p \\land T &\\equiv p\\\\p \\land C &\\equiv C\\end{align*}$$\n\n#### Disjunção\n$$\\begin{align*}p \\lor p &\\equiv p\\\\p \\lor q &\\equiv q \\lor p\\\\p \\lor (q \\lor r) &\\equiv (p \\lor q ) \\lor r\\\\p \\lor C &\\equiv p\\\\p \\lor T &\\equiv T\\end{align*}$$\n\n#### Negações\n$$\\begin{align*}p \\downarrow q &\\equiv \\lnot p \\land \\lnot q \\equiv \\lnot(p \\lor q)\\\\p \\uparrow q &\\equiv \\lnot p \\lor \\lnot q \\equiv \\lnot(p \\land q)\\\\\\lnot(p \\Rightarrow q) &\\equiv p \\land \\lnot q\\\\\\lnot (p \\Leftrightarrow q) &\\equiv (p \\lor \\lnot q) \\land (\\lnot q \\lor p)\\end{align*}$$\n\n#### Distributiva\n $$p \\lor (q \\land r) \\equiv (p \\land q) \\lor (p \\land r)$$\n\n#### Absorção\n$$p \\land (p \\lor q) \\equiv p$$ $$p \\lor (p \\land q) \\equiv p$$\n\n#### De Morgan\n$$\\lnot (p \\land q) \\equiv \\lnot  p \\lor \\lnot q$$ $$\\lnot (p \\lor q) \\equiv \\lnot p \\land \\lnot q$$\n\n#### Equivalência da Implicação\n$$p \\rightarrow q \\equiv \\lnot p \\lor q$$\n\n\n\n\n",
+    "Tags": [
+      "Matemática",
+      "Fundamentos Elementares da Matemática",
+      "Propriedades de Cálculo Proposicional",
+      "Propriedades"
+    ]
+  },
+  {
+    "Id": "cálculo-proposicional",
+    "Title": "Cálculo Proposicional",
+    "Content": "\n#### Proposição:\nUma proposição é uma sentença declarativa que é, sem ambiguidade, **verdadeira** ou **falsa**. \nA propriedade de uma proposição possuir um desses valores chama-se **Valor Lógico**\n\n#### Predicado:\nÉ uma sentença que envolve uma ou mais variáveis. O predicado se torna proposição quando se atribui valor às variáveis. Por exemplo:\n$$5x - 7 = 18 \\Rightarrow \\mbox{Não é proposição}$$\n$$4x + 2 = 30, x = 6 \\Rightarrow \\mbox{É proposição}$$\n\n#### Regras que fundamentam a lógica matemática:\n- **Principio da não contradição**: Não pode existir ambiguidade na sentença\n- **Principio do terceiro excluído**: Uma sentença pode apenas ser **verdadeira** ou **falsa**, sem nenhum outro terceiro valor.\n\n#### Tipos de proposições:\n- **Simples**: Possui apenas uma afirmação. Ex: A luz está acesa\n- **Compostas:** Possui mais de uma afirmação, sendo menos que infinitas. Ex: A luz está acesa **e** está chovendo\n\n#### Notação:\n- $p, q, r, s, ...$: Proposições simples ou atômicas\n- $P, Q, R, S,...$: Proposições compostas ou moleculares\n- $\\land$: \"e\". Retorna verdadeiro se **ambos são verdadeiros**\n- $\\lor$: \"ou\" inclusivo. Retorna verdadeiro se **um ou mais são verdadeiros**\n- $\\underline{\\lor}$: \"ou\" exclusivo. Retorna verdadeiro se **um e apenas um são verdadeiros**\n- $\\neg$ ou $\\sim$: \"não\". O oposto de uma condição.\n- $\\rightarrow$ ou $\\Rightarrow$: \"se..., então...\". Falso se $p\\Rightarrow q$ em que $p = T$ e $q = F$. Verdadeiro nos demais casos\n- $\\leftrightarrow$ ou $\\Leftrightarrow$: \"se, e somente se\". Retorna verdadeiro se **ambos forem iguais**\n\n#### Tautologia\nUma tautologia é uma proposição composta cujo valor logico é sempre verdadeiro.\n\n#### Contradição\nUma contradição é uma proposição composta cujo valor logico é sempre falso.\n\n#### Contingência\nUma contingência é uma proposição composta que não é nem **tautologia** ou **contradição**. \n\n\n",
+    "Tags": [
+      "Matemática",
+      "Fundamentos Elementares da Matemática",
+      "Cálculo Proposicional",
+      "Notações"
+    ]
+  },
+  {
+    "Id": "teorema-fundamental-do-cálculo",
+    "Title": "Teorema fundamental do cálculo",
+    "Content": "Seja $f$ função no intervalo $[a, b]$, então a função\n$$g(x) = \\int_a^x f(t) dt, x \\in [a, b]$$\ncontinua em $[a, b]$ e derivável em $(a, b)$ de modo que $g'(x) = f(x)$. Além disso\n$$\\int_a^b f(x) dx = F(b) - F(a) =: F(x) \\Bigg |_a^b$$\nonde $F$ é primitiva de $f$, ou seja, $F'(x) = f(x)$.\n\n## Exemplos\n• $\\int_0^1 x^2 dx$\n$$F(x) = \\frac{x^3}{3} \\Rightarrow \\int_0^1 x^2 dx = \\frac{x^3}{3} \\Bigg |_0^1 = \\frac{1^3}{3} - \\frac{0^3}{3} = \\frac{1}{3}$$\n\n• $g(x) = \\int_0^x \\sqrt{1 + t^2} dt$\n$$g'(x) = \\sqrt{1 + x^2}$$\n\n• $f(x) = \\int_1^{x^4} \\sec t \\ dt$\nReescrevendo $f(x)$ como $g\\big(h(x)\\big)$ tal que $g(x) = \\int_0^x \\sec t \\ dt$ e $h(x) = x^4$. Aplicando a regra da cadeia temos que\n$$f'(x) = g'\\big(h(x)\\big) \\cdot h'(x) = \\sec x^4 \\cdot 4x^3$$ \n\n• Encontre a derivada de $g(x)$ tal que\n$$g(x) = \\int_{x^2}^{x^3} e^{-t^2} dt$$\n\nUtilizando propriedades de integrais, temos que\n$$\\int_{x^2}^{x^3} e^{-t^2} dt = - \\int_0^{x^2} e^{-t^2} dt + \\int_0^{x^3} e^{-t^2} dt$$\n\nAssim, de forma similar ao exemplo anterior,\n$$\\begin{align*} f(x) &= \\int_0^x e^{-t^2} dt\\\\ h(x) &= x^2\\\\ l(x) &= x^3\\\\ g(x) &=  -f\\big(h(x)\\big) + f\\big(l(x)\\big)\\\\ g'(x) &= -f'\\big(h(x)\\big) \\cdot h'(x) + f'\\big(l(x)\\big) \\cdot l'(x)\\\\ &= -2xe^{-x^4} + 3x^2e^{-x^6}  \\end{align*} $$",
+    "Tags": [
+      "Matematica",
+      "Cálculo",
+      "Integrais",
+      "Derivadas"
+    ]
+  },
+  {
+    "Id": "formas-indeterminadas",
+    "Title": "Formas Indeterminadas",
+    "Content": "\n\n## Definição\nSão casos em que não podemos calcular o <a href=\"./anotacao/limites\" target=\"_blank\">Limite</a> devido à nos dar uma forma que não existe um valor, que chamamos de forma indeterminada. Dentre elas, temos\n- $\\frac{0}{0}$\n- $\\dfrac{\\pm \\infty}{\\pm \\infty}$\n- $0 \\cdot \\infty$\n- $\\infty \\pm \\infty$\n- $0^{0}$\n- $\\infty^{0}$\n- $1^\\infty$\n\nA seguir existem exemplos de como solucionar estes casos \n\n- **Caso** : $\\dfrac{0}{0}$  $$ \\underset{x \\to 1} \\lim \\dfrac{\\ln(x)}{x - 1} = ? $$\n\nNote que: $$\\begin{align*} f(x) &= \\ln(x) . g(x) = x - 1, f(1) = 0 ,g(1) = 0  \\end{align*}$$\n\nEntão, aplicando a <a href=\"./anotacao/lei-de-l'hopital\" target=\"_blank\">Lei de L'Hospital</a>\n$$\\begin{align*}\\underset{x \\to 1} \\lim \\dfrac{\\ln(x)}{x - 1} = \\dfrac{\\frac{d}{dx}\\ln x}{\\frac{d}{dx}(x - 1)} = \\underset{x \\to 1} \\lim \\dfrac{\\frac{1}{x}}{1} = \\underset{x \\to 1} \\lim \\frac{1}{x} = 1 \\end{align*}$$\n\n- **Caso** : $\\frac{\\infty}{\\infty}$ $$\\underset{x \\to \\infty} \\lim \\dfrac{x^{2}-1}{2x^2+1}$$\n\nNote que $$\\begin{align*} \\underset{x \\to \\infty} \\lim x^{2}-1 &= \\infty \\underset{x \\to \\infty} \\lim 2x^{2}+1 = \\infty \\end{align*}$$\n\nEntão, aplicando a  $$\\begin{align*} \\underset{x \\to \\infty} \\lim \\dfrac{x^{2}-1}{2x^{2}+1} = \\underset{x \\to \\infty} \\lim \\dfrac{(x^{2}-1)'}{(2x^{2}+1)'} = \\underset{x \\to \\infty} \\lim \\frac{2x}{4x} = \\frac{1}{2} \\end{align*}$$\n\n- **Caso** : $0 \\cdot \\infty$\n\nNo geral, se $$\\underset{x \\to a} \\lim g(x) = \\infty$$ devemos observar que $$f(x)\\cdot g(x) = \\dfrac{f(x)}{\\frac{1}{g(x)}}$$\n\npodendo assim aplicar L'Hopital. $$\\begin{align*} \\underset{x \\to 0} \\lim x \\ln x = \\underset{x \\to 0} \\lim \\dfrac{\\ln x}{\\frac{1}{x}} = \\underset{x \\to 0} \\lim \\frac{(\\ln x)'}{(\\frac{1}{x})'} = \\underset{x \\to 0} \\lim \\frac{\\frac{1}{x}}{\\frac{-1}{x^{2}}} = \\underset{x \\to 0} \\lim \\frac{-x^{2}}{x} = \\underset{x \\to 0} \\lim -x = 0 \\end{align*}$$\n\n- **Caso** : $\\infty \\pm \\infty$ $$\\underset{x \\to \\frac{\\pi}{2}^{-}} \\lim (\\sec x - \\tan x)$$\n\nNote que, $$\\underset{x \\to \\frac{\\pi}{2}^{-}} \\lim (\\sec x - \\tan x) = \\underset{x \\to \\frac{\\pi}{2}^{-}} \\lim \\frac{1}{\\cos x}- \\frac{\\sin x}{\\cos x} = \\underset{x \\to \\frac{\\pi}{2}^{-}} \\lim \\frac{1- \\sin x}{\\cos x}= \\frac{0}{0}$$\n\nAplicando a <a href=\"./anotacao/lei-de-l'hopital\" target=\"_blank\">Lei de L'Hospital</a> $$\\begin{align*} \\underset{x \\to \\frac{\\pi}{2}^{-}} \\lim \\frac{1- \\sin x}{\\cos x} = \\underset{x \\to \\frac{\\pi}{2}^{-}} \\lim \\frac{(1- \\sin x)'}{(\\cos x)'} = \\underset{x \\to \\frac{\\pi}{2}^{-}} \\lim \\frac{-\\cos x}{- \\sin x}=0 \\end{align*}$$\n\n- **Caso de potencia ** :\n\nNos 3 casos de potência, devemos considerar $$\\begin{align*} y = [f(x)]^{g(x)} \\ln y = ln[f(x)]^{g(x)} = g(x) \\cdot \\ln (f(x)) \\Rightarrow e^{\\ln y} = e^{g(x)\\cdot \\ln(f(x))} y = e^{g(x)\\cdot \\ln(f(x))} [f(x)]^{g(x)}&= e^{g(x)\\cdot \\ln(f(x))} \\underset{x \\to a} \\lim [f(x)]^{g(x)}  = \\underset{x \\to a} \\lim e^{g(x)\\cdot \\ln(f(x))} \\end{align*}$$",
+    "Tags": [
+      "Matematica",
+      "Cálculo A",
+      "Formas Indeterminadas"
+    ]
+  },
+  {
+    "Id": "derivadas-comuns-e-regras",
+    "Title": "Derivadas Comuns e Regras",
+    "Content": "(Veja <a href=\"./anotacao/derivadas\" target=\"_blank\">Derivadas</a>)\n\n#### Constante\n$$ \\frac{d}{dx} (c) = 0 $$\n####  Regra da Potência\n$$ \\frac{d}{dx} (x^n) = nx^{n-1} $$\n\n####  Regra da Soma/Diferença\n$$ \\frac{d}{dx} [f(x) \\pm g(x)] = \\frac{d}{dx} f(x) \\pm \\frac{d}{dx} g(x) $$\n\n####  Regra do Produto ( <a href=\"./anotacao/regra-de-derivacao-do-produto\" target=\"_blank\">Prova</a>)\n$$ \\frac{d}{dx} [f(x) \\cdot g(x)] = f'(x) \\cdot g(x) + f(x) \\cdot g'(x) $$\n\n####  Regra do Quociente \n$$ \\frac{d}{dx} \\left( \\frac{f(x)}{g(x)} \\right) = \\frac{f'(x) \\cdot g(x) - f(x) \\cdot g'(x)}{g(x)^2} $$\n\n####  Regra da Cadeia\n$$ \\frac{d}{dx} [f(g(x))] = f'(g(x)) \\cdot g'(x) $$\n\n####  Regra da Função Exponencial\n$$ \\frac{d}{dx} (e^{u(x)}) = u'(x) \\cdot e^{u(x)} $$\n\n#### Regra do Logaritmo Natural\n$$ \\frac{d}{dx} (\\ln(u(x))) = \\frac{u'(x)}{u(x)} $$\n\n#### Regras das Funções Trigonométricas\n$$ \\frac{d}{dx} (\\sin(x)) = \\cos(x) $$\n$$ \\frac{d}{dx} (\\cos(x)) = -\\sin(x) $$\n$$ \\frac{d}{dx} (\\tan(x)) = \\sec^2(x) $$\n$$ \\frac{d}{dx} (\\cot(x)) = -\\csc^2(x) $$\n$$ \\frac{d}{dx} (\\sec(x)) = \\sec(x) \\tan(x) $$\n$$ \\frac{d}{dx} (\\csc(x)) = -\\csc(x) \\cot(x) $$\n\n####  Regras das Funções Trigonométricas Inversas\n$$ \\frac{d}{dx} (\\arcsin(x)) = \\frac{1}{\\sqrt{1 - x^2}} $$\n$$ \\frac{d}{dx} (\\arccos(x)) = -\\frac{1}{\\sqrt{1 - x^2}} $$\n$$ \\frac{d}{dx} (\\arctan(x)) = \\frac{1}{1 + x^2} $$\n$$ \\frac{d}{dx} (\\text{arccot}(x)) = -\\frac{1}{1 + x^2} $$\n$$ \\frac{d}{dx} (\\text{arcsec}(x)) = \\frac{1}{|x|\\sqrt{x^2 - 1}} $$\n$$ \\frac{d}{dx} (\\text{arccsc}(x)) = -\\frac{1}{|x|\\sqrt{x^2 - 1}} $$\n",
+    "Tags": [
+      "Matematica",
+      "Cálculo A",
+      "Derivadas",
+      "Derivadas Comuns e Regras"
+    ]
+  },
+  {
+    "Id": "continuidade",
+    "Title": "Continuidade",
+    "Content": "###Definição\nUma função $f$ é continua em $a$ quando o [[Limite]] $\\underset{x \\to a}{\\lim} f(x) = f(a)$. Para que isso aconteça, deverá atender 3 pré-requisitos:\n\n• $a$ precisa estar no domínio de $f$, ou seja, $f(a)$ deve existir\n\n• O <a href=\"./anotacao/limites\" target=\"_blank\">limite</a> $\\underset{x \\to a}{\\lim} f(x) = L$ \u007Fdeverá existir\n\n• $f(a) = L$\n\nNa falha de uma das condições acima, dizemos que $f$ é descontinua em $a$.\n\n####Exemplo\nConsidere a função $f(x) = \\dfrac{x^2 - x - 2}{x - 2}$\n$$f(1) = \\dfrac{1^2 - 1 - 2}{1 - 2} =2 \\Rightarrow \\lim_{x \\to 1} f(x) = 2 = f(1)$$\nLogo, $f$ é continua em $x = 1$\n\n####Continuidade lateral\nA continuidade lateral possui a mesma ideia de **Continuidade**, porém tendo em mente a noção de [[Limites Laterais]]. Uma função é continua em uma das laterais quando seu respectivo limite for $f(a)$. Ou seja:\n$$\\lim_{x \\to a^+} f(x) = f(a) \\mbox{ ou } \\lim_{x \\to a^-} f(x) = f(a)$$",
+    "Tags": [
+      "Matematica",
+      "Cálculo A",
+      "Continuidade"
+    ]
+  },
+  {
+    "Id": "séries-de-taylor",
+    "Title": "Séries de Taylor",
+    "Content": "Se $f$ é uma função que possui derivadas de todas as ordens e possui alguma representação em série de potência, então ela pode ser escrita de uma das seguintes formas:\n$$f(x) = \\sum_{n = 0}^\\infty \\frac{f^{(n)}(a) \\cdot (x - a)^n}{n!} = f(a) + \\frac{f'(a) \\cdot (x - a)}{1!} + \\frac{f''(a) \\cdot (x - a)^2}{2!} + \\frac{f'''(a) \\cdot (x - a)^3}{3!} + \\cdots, |x| < R$$\n$$f(x) = \\sum_{n = 0}^\\infty \\frac{f^{(n)}(0) \\cdot x^n}{n!} = f(0) + \\frac{f'(0) \\cdot x}{1!} + \\frac{f''(0) \\cdot x^2}{2!} + \\frac{f'''(0) \\cdot x^3}{3!} + \\cdots$$\nonde $R$ é o raio de convergência da série de potência. Além disso, a primeira equação é chamada de **Série de Taylor** enquanto a segunda é chamada de **Série de Maclaurin**\n\n## Séries de Taylor/Maclaurin comuns\n$$\\begin{align*} e^x &= \\sum_{n = 0}^\\infty \\frac{x^n}{n!} \\\\ x^n &= \\sum_{n = 0}^\\infty \\frac{1}{1 - x}, |x| < 1\\\\ \\ln{1 + x} &= \\sum_{n = 0}^\\infty (-1)^n \\frac{x^n}{n}, x \\in (-1, 1]\\end{align*}$$\n\n## Polinômio de Taylor\nDefina \n$$T_n(x) = \\sum^n_{i=1} \\frac{f^{(i)}(x) \\cdot (x - a)^i}{i!}$$\nonde $T_n(x)$ é chamado de **Polinômio de Taylor de ordem N**. Defina $R_n(x) = f(x) - T_n(x)$ onde $R_n(x)$ é o resto. Se $\\underset{n \\to \\infty} \\lim R_n(x) = 0$ para $|x - a| < R$ então $f$ é igual a soma de sua Série de Taylor no intervalo $(a - R, a + R)$.\n\n## Desigualdade de Taylor\nSe $|f^{(n + 1)}(x)| \\leq M$ para $|x - a| < d$, então $|R_n(x)| \\leq \\frac{M \\cdot |x - a|^{n + 1}}{(n + 1)!}$ para $|x - a| \\leq d$.\n\n\n## Exemplos\n• $f(x) = e^x$\n$$\\begin{align*} T_n(x) &= 1 + x + \\frac{x^2}{2} + \\frac{x^3}{6} + \\cdots \\\\ f^{(n)}(0) = 1 &\\Rightarrow |R_n(x)| \\leq \\frac{|x|^{n+1}}{(n+1)!} \\\\ |x| \\leq d &\\Rightarrow  \\underset{n \\to \\infty} \\lim |R_n(x)| = 0 \\\\ \\Rightarrow f(x) = e^x &= \\sum^\\infty_{n = 0} \\frac{x^n}{n!} \\end{align*}$$\n\n• $f(x) = \\sin x, x = a$\n$$\\begin{matrix} f(x) = \\sin x & f(0) = 0 \\\\ f'(x) = \\cos x & f'(0) = 1 \\\\ f''(x) = -\\sin x & f''(0) = 0 \\\\ f'''(x) = -\\cos x & f'''(0) = -1 \\\\ f''''(x) = \\sin x & f''''(0) = 0\\\\ \\vdots & \\vdots\\end{matrix}$$\n\nDesta forma, temos que \n$$\\begin{align*} T_n(x) &= 0 + x + \\frac{0 \\cdot x^2}{2} - \\frac{x^3}{6} + \\frac{0 \\cdot x^4}{24} + \\frac{x^5}{120} + \\cdots \\\\ &= \\frac{x}{1!} - \\frac{x^3}{3!} + \\frac{x^5}{5!} + \\frac{x^7}{7!} + \\cdots\\end{align*}$$\nObtendo assim a série $\\sin x = \\sum (-1)^n \\cdot \\frac{x^{2n + 1}}{(2n + 1!)}$. Mas agora precisamos checar se realmente a função seno equivale à série encontrada. Para isso precisamos usar a Desigualdade de Taylor.\n\nNote que $|f^{(n)}(x)| \\leq 1 \\Rightarrow |R_n(x)| \\leq \\frac{|x-a|^{n+1}}{(n+1)!}$. Se $|x - a|^{n+1} \\leq d$ então\n$$\\begin{align*} \\underset{n \\to \\infty} \\lim |R_n(x)| &\\leq \\underset{n \\to \\infty} \\lim \\frac{d^{n+1}}{(n+1)!} = 0 \\\\ &\\Rightarrow \\underset{n \\to \\infty} \\lim |R_n(x) = 0 \\\\ &\\Rightarrow f(x) = \\sum_{n = 0}^\\infty \\frac{f^{(n)}(a) \\cdot (x - a)^n}{n!}, \\forall x \\in \\mathbb{R} \\end{align*}$$",
+    "Tags": [
+      "Matemática",
+      "Cálculo",
+      "Séries"
+    ]
+  },
+  {
+    "Id": "autovalores-e-autovetores",
+    "Title": "Autovalores e Autovetores",
+    "Content": "Dado um operador linear $T:V \\to R$, um **autovalor** de $T$ é um escalar $\\lambda \\in \\mathbb{R}$ tal que existe um vetor $\\vec{v} \\neq \\vec{0}$ satisfazendo $T(\\vec{v}) = \\lambda \\vec{v}$. Chamamos este vetor de **autovetor**.\n\nO objetivo é determinar uma base de autovetores. Digamos $B = \\{ \\vec{v_1}, \\vec{v_2}, \\vec{v_3} \\}$ onde $T(\\vec{v_1}) = \\lambda_1 \\vec{v_1},T(\\vec{v_2}) = \\lambda_2 \\vec{v_2},T(\\vec{v_3}) = \\lambda_3 \\vec{v_3}$.\n$$\\begin{align*} [T] &= \\begin{pmatrix} [T( \\vec{v_1} ) ] & [T( \\vec{v_2}] & [T( \\vec{v_3} )] \\end{pmatrix}\\\\ &=  \\begin{pmatrix} [ \\lambda_1 \\vec{v_1}  ] & [\\lambda_2 \\vec{v_2}] & [\\lambda_3 \\vec{v_3}] \\end{pmatrix}\\\\ &= \\begin{pmatrix} \\lambda_1 & 0 & 0 \\\\ 0 & \\lambda_2 & 0 \\\\ 0 & 0 & \\lambda_3 \\\\ \\end{pmatrix} \\end{align*}$$\n\nNuma forma matricial, $T(\\vec{v}) = \\lambda \\vec{v} $ é tal que $[T]_{B_1B_1} \\cdot [\\vec{v}]_{B_1} = \\lambda [\\vec{v}]_{B_1}$, onde $B_1$ é uma base qualquer. Deste modo, temos um sistema linear homogêneo\n$$([T]_{B_1B_1} - \\lambda I)[\\vec{v}]_{B_1} = [\\vec{0}]$$\nonde $I$ é a matriz identidade da mesma dimensão que a matriz da transformação linear.\n\nAlém disso, autovetores podem ser escritos como combinação linear de si mesmos e continuar como autovetores. Se $\\vec{v} = (1, 1)$ é autovetor, então $c\\vec{v} = (c, c), c \\in \\mathbb{R}$ também é um autovetor relacionado ao mesmo autovalor.\n\n## Exemplos\nSeja $T : \\mathbb{R}^2 \\to \\mathbb{R}^2$ dado por $T(x, y) = (-2x + 3y, -10x + 9y)$, então, seja \\vec{v} um autovetor, $T(\\vec{v}) = \\lambda \\vec{v}$ é tal que\n$$ (-2x + 3y, -10x + 9y) \\Longrightarrow \\left \\{ \\begin{align} -2x + 3y &= \\lambda x \\\\ -10x + 9y &= \\lambda y  \\end{align} \\right. \\Longrightarrow \\begin{pmatrix} -2 & 3 \\\\ -10 & 9\\end{pmatrix} \\begin{pmatrix} x \\\\ y\\end{pmatrix} = \\lambda \\begin{pmatrix} x \\\\ y\\end{pmatrix}$$\n$$\\Longrightarrow \\left [ \\begin{pmatrix} -2 & 3 \\\\ -10 & 9 \\end{pmatrix} - \\lambda \\cdot \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix} \\right ] \\cdot \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix}$$\n$$\\Longrightarrow \\begin{pmatrix} -2 - \\lambda & 3 \\\\ -10 & 9 - \\lambda \\end{pmatrix} \\cdot  \\begin{pmatrix} x \\\\ y\\end{pmatrix} = \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix} $$\n\nPara termos soluções não nulas, vamos impor que o determinante da matriz será 0, isto é, $det \\begin{pmatrix} -2 - \\lambda & 3 \\\\ -10 & -9 - \\lambda \\end{pmatrix} = 0$. Desse modo, temos que\n$$\\begin{align*} &(-2 - \\lambda)(9 - \\lambda) + 30 = 0\\\\ &\\lambda^2 - 7\\lambda + 12 = 0 \\\\ \\lambda = &\\frac{7 \\pm \\sqrt{49 - 48}}{2} = \\frac{7 \\pm 1}{2} \\\\ &\\lambda_1 = 4, \\lambda_2 = 3 \\end{align*}$$\n\nLogo, temos dois **autovalores** em que cada um terá pelo menos um autovetor. \n\nPara $\\lambda = 4$, substituindo na matriz anterior cujo determinante é $0$ teremos o seguinte:\n$$ \\begin{pmatrix} -6 & 3 \\\\ -10 & 5 \\end{pmatrix} \\cdot  \\begin{pmatrix} x \\\\ y\\end{pmatrix} = \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix}$$\nonde forma um sistema de equação que, resolvendo ele, obteremos o autovetor relacionado à $\\lambda = 4$\n$$\\left \\{ \\begin{align*} -6x + 3y &= 0 \\\\ -10x + 5y &= 0\\end{align*} \\right . \\Rightarrow y = 2x \\Rightarrow [\\vec{v}] = \\begin{pmatrix} x \\\\ 2x \\end{pmatrix} = x \\cdot \\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}$$\nAssim, obtemos o autovetor $\\vec{v_1} = (1, 2)$\n\nDe forma análoga, para $\\lambda = 3$, obtemos o autovetor $\\vec{v_2} = (1, \\frac{5}{3}) = (3, 5)$, que ficamos com a base de autovetores $B = \\{ (1, 2), (3, 5)\\}$\n\nPara verificar que eles são realmente autovetores, basta calcular o resultado de suas transformações\n$$\\begin{align*} T(1, 2) = (4,8) &= 4 \\cdot (1, 2) + 0 \\cdot (3,5) \\\\ T(3, 5) = (9, 15) &= 0 \\cdot (1,2) + 3 \\cdot (3, 5) \\end{align*}$$\n\nNote que os autovalores aparecem como a solução da combinação linear para a base de autovetores.",
+    "Tags": [
+      "Matemática",
+      "Algebra Linear",
+      "Transformações Lineares",
+      "Autovetores"
+    ]
+  },
+  {
+    "Id": "derivadas",
+    "Title": "Derivadas",
+    "Content": "## Definição\nUma função $f$ é derivável ou diferenciavel em $a$ quando $f'(a)$ existir. Dizemos ainda que $f$ é derivável em um intervalo $(a, b)$ ou $[(-\\infty, a), (a, \\infty) \\mbox{ ou } (-\\infty, \\infty)]$ quando $f$ é derivável em cada numero do intervalo.\n\n## Notação\nDado que a reta tangente à $y = f(x)$ no ponto $P$ é a reta que passa por $P$ com inclinação $\\underset{x \\to a} \\lim \\dfrac{f(x) - f(a)}{x - a} = \\underset{h \\to 0} \\lim \\dfrac{f(a + h) - f(a)}{h}$ quando o <a href=\"./anotacao/limites\">limite</a> existir, escrevemos então que:\n$$\\left. \\begin{matrix}f'(x) \\\\ \\\\  y' \\\\ \\\\  \\dfrac{dy}{dx} \\\\ \\\\  \\dfrac{df}{dx}\\end{matrix} \\right \\} = \\underset{h \\to 0} \\lim \\dfrac{f(a + h) - f(a)}{h}$$\nOnde $\\underset{h \\to 0} \\lim \\dfrac{f(a + h) - f(a)}{h}$ é como se calcula uma derivada pela \"definição\"\n\n## Propriedades\n- $\\dfrac{d}{dx} (f(x) + g(x)) = \\dfrac{d}{dx}f(x) + \\dfrac{d}{dx}g(x)$\n- $\\dfrac{d}{dx}(f(x) - g(x)) = \\dfrac{d}{dx}f(x) - \\dfrac{d}{dx}g(x)$\n- $\\dfrac{d}{dx} (c \\cdot f(x)) = c \\cdot \\left ( \\dfrac{d}{dx} f(x) \\right)$  \n- $\\dfrac{d}{dx}\\Big ( f(x) \\cdot g(x) \\Big ) = f(x) \\cdot \\dfrac{d}{dx} g(x) + g(x) \\cdot \\dfrac{d}{dx}f(x)$\n\nPara mais propriedades, veja <a href=\"./anotacao/derivadas-comuns\" target=\"_blank\">Derivadas Comuns </a>\n\n## Exemplos e Exercícios\n1. Dado $f(x) = x^{2} - 8x + 9$, calcule $f'(a)$\n$$\\begin{align*} f'(a) &= \\underset{h \\to 0} \\lim \\dfrac{f(a + h) - f(a)}{h}\\\\ f(a + h) &= (a+h)^{2}- 8(a+h) + 9 \\\\ &= a^{2}+2ah+h^{2}-8a-8h+9\\\\ f(a) &= a^{2}- 8a + 9\\\\ f(a + h) - f(a) &= a^{2}+ 2ah+h^{2}-8a-8h+9-a^2+8a-9\\\\ &=2ah+h^2-8h\\\\ &= h(2a+h-8)\\\\ \\underset{h \\to 0} \\lim f'(a) &= \\underset{h \\to 0} \\lim \\dfrac{h(2a+h-8)}{h}\\\\ &= \\underset{h \\to 0} \\lim 2a + h - 8\\\\ &= 2a - 8 \\end{align*}$$\n\n2. $f(x) = |x|$, quais os intervalos que $f$ é derivável?\n$$\\dfrac{dy}{dx} f(x)= \\underset{h \\to 0} \\lim \\dfrac{|x + h| - |x|}{h}$$\n$$\\begin{align*} x < 0&: x + h < 0 \\Rightarrow \\dfrac{-(x + h) + x}{h} = \\dfrac{-h}{h} = -1\\\\ x > 0 &: x + h > 0 \\Rightarrow \\dfrac{x + h - x}{h} =\\dfrac{h}{h} = 1 \\\\ x = 0&: \\underset{h \\to 0^{-}} \\lim \\dfrac{|0 + h| - |0|}{h} = -1, \\underset{h \\to 0^{+}} \\lim \\dfrac{|0+h| - |0|}{h} =1 \\end{align*} $$\nLogo, $f$ é derivável para todo $x \\neq 0$ \n\n3.  $\\dfrac{d}{dx}\\Big (f(x) \\cdot g(x) \\Big) = ?, f(x) = x^{2}, g(x) = x$\n$$\\begin{align*} \\dfrac{d}{dx}\\Big (f(x) \\cdot g(x) \\Big) &= f(x) \\cdot \\dfrac{d}{dx}g(x) + g(x) \\cdot \\dfrac{d}{dx}f(x)\\\\ &= x^{2}\\cdot 1 + x \\cdot 2x\\\\ &= 3x^{2} \\end{align*}$$\n\n4. Derive $f(x) = x e^{x}$\nNote que $f(x)$ e um produto, dito isso, podemos dividir a função $f$ em 2: $g(x) = x$ e $h(x) = e^{x}$ . Dito isso:\n$$\\begin{align*} \\dfrac{d}{dx}\\Big ( g(x) \\cdot h(x) \\Big) &= x \\cdot \\dfrac{d}{dx}e^{x} + e^{x} \\cdot x\\\\ &= x \\cdot e^{x} + e^{x}\\cdot 1\\\\ &= e^{x}(x + 1) \\end{align*}$$\n",
+    "Tags": [
+      "Matematica",
+      "Cálculo",
+      "Derivadas"
+    ]
+  }
+]

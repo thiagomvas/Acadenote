@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Acadenote.Web</title>
     <base href="/Acadenote/" />
-    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/app.css?version=0.2"/>
     <link href="Acadenote.Web.styles.css" rel="stylesheet" />
     <script type="text/javascript" id="MathJax-script" async
             src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
@@ -22,15 +22,98 @@
                 background-color: #121212;
                 color: white;
             }
+
+        .loading-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loading-orb {
+            width: 1px; /* Adjust as needed */
+            height: 1px; /* Adjust as needed */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            transform-origin: top left;
+        }
+
+            .loading-orb.orb1 {
+                background-color: #000; /* Red */
+                animation: orbit 4s linear infinite;
+                animation-delay: -1s;
+                box-shadow: 0 0 100px 60px #4cc9f0;
+            }
+
+            .loading-orb.orb2 {
+                background-color: #000; /* Red */
+                animation: orbit 5s linear infinite;
+                animation-delay: -3s;
+                box-shadow: 0 0 100px 60px #4361ee;
+                animation-direction: reverse;
+            }
+
+            .loading-orb.orb3 {
+                background-color: #000; /* Red */
+                animation: orbit 6s linear infinite;
+                animation-delay: -2s;
+                box-shadow: 0 0 100px 60px #3a0ca3;
+            }
+
+            .loading-orb.orb4 {
+                background-color: #000; /* Red */
+                animation: orbit 7s linear infinite;
+                animation-delay: -5s;
+                box-shadow: 0 0 100px 60px #7209b7;
+            }
+
+            .loading-orb.orb5 {
+                background-color: #000; /* Red */
+                animation: orbit 5s linear infinite;
+                animation-delay: -1s;
+                box-shadow: 0 0 100px 60px #f72585;
+                animation-direction: reverse;
+            }
+
+        .loading-center-text {
+            position: absolute;
+            height: fit-content;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        @keyframes orbit {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg) translate(100px) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg) translate(100px) rotate(-360deg);
+            }
+        }
+
+        .loading-message {
+            z-index: 1;
+        }
     </style>
 </head>
 <body>
     <div id="app">
-        <svg class="loading-progress">
-            <circle r="40%" cx="50%" cy="50%" />
-            <circle r="40%" cx="50%" cy="50%" />
-        </svg>
-        <div class="loading-progress-text"></div>
+        <div class="loading-container">
+            <div class="loading-orb orb1"></div>
+            <div class="loading-orb orb2"></div>
+            <div class="loading-orb orb3"></div>
+            <div class="loading-orb orb4"></div>
+            <div class="loading-orb orb5"></div>
+            <div class="loading-message">
+                <div class="loading-animation"></div>
+                <p id="loadingMessage"></p>
+            </div>
+        </div>
     </div>
 
     <div id="blazor-error-ui">
@@ -38,6 +121,7 @@
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
+
     <script src="_framework/blazor.webassembly.js" autostart="false"></script>
     <script>
         window.setDarkMode = (isDarkMode) => {
@@ -58,6 +142,64 @@
                 dotnet.invokeMethodAsync("SetDarkMode", e.matches)
             })
         }
+
+        const loadingMessages =
+            [
+                "Caçando pokemons...",
+                "Aguarde um momento...",
+                "Carregando...",
+                "Fazendo café...",
+                "Aguarde um instante...",
+                "Fazendo pipoca...",
+                "Fazendo bolo...",
+                "Aguarde um dia, talvez carregue...",
+                "Aguarde um mês, talvez finalmente carregue...",
+                "Tendo uma overdose de café...",
+                "Quebrando a cara com questão...",
+                "Estudando para prova...",
+                "Procrastinando...",
+                "Pescando ideias...",
+                "Tirando um cochilo rápido...",
+                "Contando estrelas...",
+                "Pensando na vida...",
+                "Perguntando ao Google...",
+                "Consultando os astros...",
+                "Fazendo um bolo de 5 andares...",
+                "Fugindo do bug...",
+                "Arrumando a bagunça...",
+                "Desligando e ligando de novo...",
+                "Caçando wumpus...",
+                "Jogando paciência...",
+                "Ensinando um papagaio a falar...",
+                "Verificando a previsão do tempo...",
+                "Fazendo malabarismo...",
+                "Viajando na maionese...",
+                "Contando pixels...",
+                "Colocando o esqueleto para dançar...",
+                "Fazendo amizade com os bytes...",
+                "Ajustando a realidade...",
+                "Esperando o Wi-Fi melhorar...",
+                "Calibrando a bússola...",
+                "Verificando os cabos...",
+                "Desenrolando o novelo de lã...",
+                "Brincando com o gato...",
+                "Tentando entender o universo...",
+                "Descobrindo a fórmula da diversão...",
+                "Devorando um livro...",
+                "Sonhando acordado...",
+                "Procurando inspiração...",
+                "Cuidando do jardim...",
+                "Resolvendo quebra-cabeças...",
+                "Imaginando novos mundos...",
+                "Explorando o espaço sideral...",
+                "Limpando o cache...",
+                "Descompactando a realidade...",
+                "Varrendo para debaixo do tapete...",
+                "Dando uma festa com os bits..."
+            ];
+        window.setDarkMode(window.isBrowserDarkMode())
+        const randomIndex = Math.floor(Math.random() * loadingMessages.length);
+        document.getElementById('loadingMessage').textContent = loadingMessages[randomIndex];
     </script>
     <script src="brotliloader.min.js" type="module"></script>
 </body>

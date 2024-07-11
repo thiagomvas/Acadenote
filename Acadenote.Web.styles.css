@@ -30,39 +30,41 @@
         transition-duration: 0.05s;
     }
 /* /Components/Acadecard.razor.rz.scp.css */
-.card[b-yucugapayi] {
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 10px;
-    padding: 0;
-    background-color: #fff;
-    width: 300px;
-    height: 150px; /* Set your desired fixed height */
-    display: flex;
-    flex-direction: column;
-    transition: 0.3s;
-    overflow: hidden; /* Hide any overflow to ensure constant height */
+/* InfoCard.razor.css */
+.info-card[b-yucugapayi] {
+    border-radius: 6px;
+    padding: 10px;
+    height: 100%;
+    transition: all 0.3s ease;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    transition: all 0.1s ease-in-out;
 }
-
-    .card:hover[b-yucugapayi] {
-        transform: scale(1.05);
-        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    .info-card:hover[b-yucugapayi] {
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        transform: scale(1.1);
     }
 
-.card-footer[b-yucugapayi] {
-    padding: 10px;
-    flex-shrink: 0;
-    font-weight: bold;
+.info-header[b-yucugapayi] {
+    margin-bottom: 6px;
 }
 
-.card-body[b-yucugapayi] {
-    padding: 10px;
-    flex-grow: 1;
-    overflow: hidden; /* Hide any overflow */
-    text-overflow: ellipsis; /* Show ellipsis for overflow */
-    white-space: normal; /* Allow text to wrap */
-    font-size: 18px;
-    font-weight: bold;
+.info-header h3[b-yucugapayi] {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.info-body[b-yucugapayi] {
+    margin-bottom: 6px;
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.info-footer[b-yucugapayi] {
+    font-size: 0.8rem;
+    color: #888;
+    text-align: right;
 }
 /* /Components/Acadechip.razor.rz.scp.css */
 .chip[b-1bfobnwfg5] {
@@ -164,6 +166,75 @@
     66% {
         border-radius: 0;
         clip-path: polygon(50% 0, 50% 0, 100% 100%, 0 100%);
+    }
+}
+/* /Components/OrbFX.razor.rz.scp.css */
+
+.container[b-97foy7zmh5] {
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+}
+
+.orb[b-97foy7zmh5] {
+    width: 1px; /* Adjust as needed */
+    height: 1px; /* Adjust as needed */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    transform-origin: top left;
+}
+
+.orb.orb1[b-97foy7zmh5] {
+    background-color: #000; /* Red */
+    animation: orbit-b-97foy7zmh5 4s linear infinite;
+    animation-delay: -1s;
+    animation-direction: reverse;
+}
+
+.orb.orb2[b-97foy7zmh5] {
+    background-color: #000; /* Red */
+    animation: orbit-b-97foy7zmh5 5s linear infinite;
+    animation-delay: -3s;
+}
+
+.orb.orb3[b-97foy7zmh5] {
+    background-color: #000; /* Red */
+    animation: orbit-b-97foy7zmh5 6s linear infinite;
+    animation-delay: -2s;
+}
+
+.orb.orb4[b-97foy7zmh5] {
+    background-color: #000; /* Red */
+    animation: orbit-b-97foy7zmh5 7s linear infinite;
+    animation-delay: -5s;
+}
+
+.orb.orb5[b-97foy7zmh5] {
+    background-color: #000; /* Red */
+    animation: orbit-b-97foy7zmh5 5s linear infinite;
+    animation-delay: -1s;
+    animation-direction: reverse;
+}
+
+.center-text[b-97foy7zmh5] {
+    position: absolute;
+    height: fit-content;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+@keyframes orbit-b-97foy7zmh5 {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg) translate(100px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg) translate(100px) rotate(-360deg);
     }
 }
 /* /Layout/MainLayout.razor.rz.scp.css */
