@@ -1,45 +1,70 @@
-﻿using Acadenode.Core.Models;
-using Acadenote.API.Repositories;
-using Acadenote.Console.StudyProject.Core.ArticleAggregate;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SQLite;
+using System.IO;
+using System.Text.Json;
+using System.Text.RegularExpressions;
+using Acadenode.Core.Models;
 using Newtonsoft.Json;
-using System.Text;
 
+string databaseFilePath = @"C:\Users\Thiago\source\repos\Acadenote\Acadenote.Console\acadenote.db";
+string outputJsonFilePath = "notes.json";
 
-static async Task ExtractFromFirebase()
+NoteConverter.ConvertNotesTableToJson(databaseFilePath, outputJsonFilePath);
+
+Console.WriteLine("Notes have been successfully converted to JSON.");
+public static class NoteConverter
 {
-    var http = new HttpClient();
-    NoteRepository repo = new NoteRepository(http);
-
-    var result = await http.GetStringAsync("https://wikiforum-6f73d-default-rtdb.firebaseio.com/articles.json?shallow=true&print=pretty");
-
-    var articles = JsonConvert.DeserializeObject<Dictionary<string, bool>>(result);
-
-    foreach (var id in articles)
+    public static void ConvertNotesTableToJson(string databaseFilePath, string outputJsonFilePath)
     {
-        var article = await http.GetStringAsync($"https://wikiforum-6f73d-default-rtdb.firebaseio.com/articles/{id.Key}.json?print=pretty");
-        var articleObject = JsonConvert.DeserializeObject<Article>(article);
-        if (articleObject == null)
-            continue;
+        var notes = new List<Note>();
 
-        string[] tags = [.. articleObject.DisciplineIds, .. articleObject.SubjectIds, .. articleObject.TopicIds];
+        // Connection string for SQLite database
+        string connectionString = $"Data Source={databaseFilePath};Version=3;";
 
-        var note = new Note
+        using (var connection = new SQLiteConnection(connectionString))
         {
-            Id = id.Key,
-            Title = articleObject.Title,
-            Content = articleObject.Content,
-            Tags = tags,
+            connection.Open();
+
+            string query = "SELECT Id, Title, Content, Tags FROM Notes";
+            using (var command = new SQLiteCommand(query, connection))
+            {
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var tagsString = reader["Tags"]?.ToString()
+                            .Replace("[", "")
+                            .Replace("\"", "")
+                            .Replace("]", "")
+                            .Replace(@"\\", @"\");
+                        var tagsArray = string.IsNullOrEmpty(tagsString) ? new string[0] : tagsString.Split(',');
+                        tagsArray = tagsArray.Select(t => Regex.Unescape(t.Replace(@"\\", @"\"))).ToArray();
+                        var note = new Note
+                        {
+                            Id = reader["Id"].ToString(),
+                            Title = reader["Title"].ToString(),
+                            Content = reader["Content"].ToString(),
+                            Tags = tagsArray
+                        };
+                        notes.Add(note);
+                    }
+                }
+            }
+        }
+
+        // Configure JSON optionsvar options = new JsonSerializerOptions
+        var options = new JsonSerializerOptions
+        {
+            WriteIndented = true,
+            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
         };
 
-        var response = await repo.AddNoteAsync(note);
+        // Convert list of notes to JSON
+        string json = System.Text.Json.JsonSerializer.Serialize(notes, options);
 
-        if (!response.Success)
-        {
-            Console.WriteLine($"Failed to add note for article {articleObject.Id} - {response.Message}");
-        }
-        else
-        {
-            Console.WriteLine($"Added note for article {articleObject.Id}");
-        }
+        // Write JSON to file
+        File.WriteAllText(outputJsonFilePath, json);
+        Console.WriteLine(json);
     }
 }

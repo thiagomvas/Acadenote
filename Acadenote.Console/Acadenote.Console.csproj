@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Acadenode.Core\Acadenode.Core.csproj" />
     <ProjectReference Include="..\Acadenote.API\Acadenote.API.csproj" />
   </ItemGroup>

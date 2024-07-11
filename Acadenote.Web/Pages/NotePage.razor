@@ -1,8 +1,10 @@
 ﻿@page "/anotacao/{id}"
 @using Acadenode.Core.Models
 @using Acadenode.Core.Repositories
+@using Acadenode.Core.Services
 @inject INoteRepository _repo
 @inject NavigationManager nav
+@inject ColorUtility Color
 
 @if (note == null)
 {
@@ -17,6 +19,12 @@ else
 {
     <PageTitle>@note.Title</PageTitle>
     <NoteView Note="note" />
+    @if (canEdit)
+    {
+        <Redirector Destination="@($"/editor/anotacao/{Id}")">
+            <Acadebutton Color="@Color.Primary">Editar</Acadebutton>
+        </Redirector>
+    }
 }
 
 @code {
@@ -24,6 +32,9 @@ else
     public string Id { get; set; }
 
     private Note? note;
+    //[Inject] private ILocalStorageService _storage { get; set; }
+    //[Inject] private IAuthService _auth { get; set; }
+    private bool canEdit = false;
 
     protected override async Task OnInitializedAsync()
     {
@@ -32,5 +43,20 @@ else
         {
             nav.NavigateTo("../404");
         }
+
+        //
+        //var cacheduser = await _storage.GetItem<User>("user");
+        //if (cacheduser != null)
+        //{
+        //    Console.WriteLine("Usuário encontrado no cache!");
+        //    if (await _auth.Validate(cacheduser.Token))
+        //    {
+        //        Console.WriteLine("Usuário logado!");
+        //        if (cacheduser.Role.HasFlag(Role.Writer))
+        //        {
+        //            canEdit = true;
+        //        }
+        //    }
+        //}
     }
 }

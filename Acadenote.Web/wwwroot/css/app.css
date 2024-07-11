@@ -159,7 +159,6 @@ code {
     padding: 8px 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -185,7 +184,6 @@ code {
     padding: 8px 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -294,3 +292,30 @@ code {
     }
 }
 
+.acadenote-textarea {
+    display: block;
+    width: 100%; /* Set width to 100% or adjust as needed */
+    height: 700px; /* Adjust height as needed */
+    position: relative;
+    font-size: 16px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    resize: vertical; /* Allow vertical resizing */
+}
+
+    .acadenote-textarea:focus {
+        outline: none;
+        border-color: #6c5ce7; /* Adjust to your primary color */
+        box-shadow: 0 0 8px rgba(108, 92, 231, 0.6); /* Adjust shadow color and intensity */
+    }
+
+    .acadenote-textarea::placeholder {
+        color: #999; /* Adjust placeholder text color */
+    }
+
+    .acadenote-textarea:hover {
+        border-color: #aaa; /* Adjust hover border color */
+    }

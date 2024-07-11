@@ -92,7 +92,7 @@
                 Password = Password
             };
 
-        var (code, message) = await auth.Registeration(model);
+        var (code, message) = await auth.Registration(model);
         Response = $"{code} - {message}";
     }
 }

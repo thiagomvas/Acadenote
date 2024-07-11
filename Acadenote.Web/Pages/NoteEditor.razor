@@ -20,36 +20,81 @@
 else
 {
     <PageTitle>Edit Note</PageTitle>
-    <div style="display: flex; flex-direction: column; align-items: center;">
-        <InputText class="acadenote-input-text" @bind-Value="Title" placeholder="Title" />
-        <InputText class="acadenote-input-text" @bind-Value="Content" placeholder="Content" />
-        <p>@Response</p>
+    <div style="display: flex; flex-direction: row;">
+        <Acadebutton Color="@(tab == Tab.Edit ? Color.Primary : Color.BackgroundAccent)" OnClick="@(() => tab = Tab.Edit)">Editar</Acadebutton>
+        <Acadebutton Color="@(tab == Tab.Preview ? Color.Primary : Color.BackgroundAccent)" OnClick="@(() => tab = Tab.Preview)">Preview</Acadebutton>
+        <Acadebutton Color="@(tab == Tab.Guide ? Color.Primary : Color.BackgroundAccent)" OnClick="@(() => tab = Tab.Guide)">Guia</Acadebutton>
     </div>
+    <div style="width: 100%; border-top: 2px dashed @Color.Primary; margin: 10px"></div>
+
+    @switch(tab)
+    {
+        case Tab.Edit:
+            <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+                <div style="display: flex; align-items: center; width: 100%;">
+                    <label for="searchInput" style="margin-right: 10px; flex: 0 0 auto;">Titulo</label>
+                    <InputText id="searchInput" class="acadenote-input-text" style=@($"background-color: {Color.BackgroundAccent}; color: {Color.Text.Primary}; flex: 1; margin-right: 10px;") @bind-Value="Title" />
+                    <div style="flex: 0 0 auto;"></div>
+                </div>
+                <InputTextArea @bind-Value="Content" class="acadenote-textarea" style=@($"background-color: {Color.BackgroundAccent}; color: {Color.Text.Primary}; width: 100%;") />
+            </div>
+            break;
+        case Tab.Preview:
+            <NoteView Note="note" />
+            break;
+        case Tab.Guide:
+            break;
+    }
 }
 @code
 {
+    private Tab tab = Tab.Edit;
     private Note? note;
     private string Title, Content;
     private IEnumerable<string> Tags;
     private string Response = "";
     [Parameter] public string Id { get; set; }
+    [Inject] private ILocalStorageService _storage { get; set; }
+    [Inject] private IAuthService _auth { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        var user = await storage.GetItem<User>("user");
-        if(user == null || !user.Role.HasFlag(Role.Writer))
+        var cacheduser = await _storage.GetItem<User>("user");
+        if (cacheduser == null)
         {
             nav.NavigateTo("/404");
             return;
         }
+        if (!cacheduser.Role.HasFlag(Role.Writer))
+        {
+            nav.NavigateTo("/404");
+            return;
+        }
+        if (await _auth.Validate(cacheduser.Token) == false)
+        {
+            nav.NavigateTo("/404");
+            return;
+
+        }
+
+
+
 
         note = await _repo.GetNoteByIdAsync(Id);
-        if(note == null)
+        if (note == null)
         {
             nav.NavigateTo("/404");
             return;
         }
+
+        Title = note.Title;
+        Content = note.Content;
     }
 
-
+    enum Tab
+    {
+        Edit,
+        Preview,
+        Guide
+    }
 }

@@ -9,7 +9,8 @@ namespace Acadenode.Core.Services
 {
     public interface IAuthService
     {
-        Task<(int, string)> Registeration(RegistrationModel model);
+        Task<(int, string)> Registration(RegistrationModel model);
         Task<(int, string)> Login(LoginModel model);
+        Task<bool> Validate(string token);
     }
 }

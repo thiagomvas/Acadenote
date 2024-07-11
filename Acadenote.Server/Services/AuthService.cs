@@ -44,7 +44,7 @@ namespace Acadenote.Server.Services
             return (200, token);
         }
 
-        public async Task<(int, string)> Registeration([FromBody] RegistrationModel model)
+        public async Task<(int, string)> Registration([FromBody] RegistrationModel model)
         {
             User user = new User()
             {
@@ -111,6 +111,24 @@ namespace Acadenote.Server.Services
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateToken(descriptor);
             return tokenHandler.WriteToken(token);
+        }
+
+        public async Task<bool> Validate(string token)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(Secrets.JwtKey);
+            tokenHandler.ValidateToken(token, new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(key),
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidIssuer = Secrets.JwtIssuer,
+                ValidAudience = Secrets.JwtAud,
+                ValidateLifetime = true
+            }, out _);
+
+            return true;
         }
     }
 }

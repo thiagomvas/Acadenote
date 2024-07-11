@@ -40,7 +40,7 @@ namespace Acadenote.Server.Controllers
         [Route("auth/register")]
         public async Task<ActionResult> Register([FromBody] RegistrationModel model)
         {
-            var (status, token) = await _authService.Registeration(model);
+            var (status, token) = await _authService.Registration(model);
             if (status == 200)
             {
                 var user = await _userRepository.GetUserByUsername(model.Username);
@@ -153,5 +153,27 @@ namespace Acadenote.Server.Controllers
             return Unauthorized();
         }
 
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("auth/validate")]
+        public async Task<ActionResult> Validate()
+        {
+            string token = Request.Headers["Authorization"];
+            if (token == null)
+            {
+                return Unauthorized();
+            }
+            if (token.StartsWith("Bearer"))
+            {
+                token = token.Substring("Bearer ".Length).Trim();
+            }
+
+            var valid = await _authService.Validate(token);
+            if (valid)
+            {
+                return Ok("Token is valid.");
+            }
+            return Unauthorized();
+        }
     }
 }

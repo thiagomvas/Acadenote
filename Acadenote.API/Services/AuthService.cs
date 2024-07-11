@@ -19,10 +19,20 @@ namespace Acadenote.API.Services
             return ((int)response.StatusCode, await response.Content.ReadAsStringAsync());
         }
 
-        public async Task<(int, string)> Registeration(RegistrationModel model)
+        public async Task<(int, string)> Registration(RegistrationModel model)
         {
             var response = await _httpClient.PostAsJsonAsync(Path.Combine(Config.AuthEndpoint, "register"), model);
             return ((int)response.StatusCode, await response.Content.ReadAsStringAsync());
+        }
+
+        public async Task<bool> Validate(string token)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, Path.Combine(Config.AuthEndpoint, "validate"));
+            request.Headers.Add("Authorization", $"Bearer {token}");
+
+            var response = await _httpClient.SendAsync(request);
+
+            return (int)response.StatusCode == 200;
         }
     }
 }
