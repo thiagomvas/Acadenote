@@ -1,34 +1,124 @@
-﻿@page "/note"
+﻿@page "/anotacao"
 @using Acadenode.Core.Models
 @using Acadenode.Core.Repositories
+@using Acadenode.Core.Services
+@using System.Linq
 @inject INoteRepository _repo
+@inject ColorUtility Color
 
 @if (notes == null)
 {
     <PageTitle>Carregando...</PageTitle>
-    <LoadingMessage />
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <OrbFX ShadowSpreadRadius="100">
+            <LoadingMessage />
+        </OrbFX>
+    </div>
 }
 else
 {
     <PageTitle>Notes</PageTitle>
-    @foreach(var note in notes)
-    {
-        <div class="card">
-            <div class="card-header">
-                @note.Title (@note.Id)
-            </div>
-            <div class="card-body">
-                @note.Content
-            </div>
+    <div style="display: flex; align-items: center;">
+        <label for="searchInput" style="margin-right: 10px;">Busca:</label>
+        <InputText id="searchInput" class="acadenote-input-text" style=@($"background-color: {Color.BackgroundAccent}; color: {Color.Text.Primary}; flex: 1; margin-right: 10px;") @bind-Value="searchQuery" />
+        <div for="searchButton" style="margin-right: 10px;">
+            <Acadebutton OnClick="FilterNotes" Color="@Color.BackgroundAccent">
+                <Acadeicon Icon="Acadeicon.IconType.Search" Color="@Color.Text.Primary"/>
+            </Acadebutton>
         </div>
-    }
+    </div>
+
+
+    <div style="display: flex; align-items: center;">
+        <label for="searchInput" style="margin-right: 10px;">Tags (Separadas por ','):</label>
+        <InputText id="searchInput" class="acadenote-input-text" style=@($"background-color: {Color.BackgroundAccent}; color: {Color.Text.Primary};") @bind-Value="tagsQuery" />
+        <div for="searchButton" style="margin-right: 10px;">
+            <Acadebutton OnClick="@(() => OrQuery = !OrQuery)" Color="@Color.BackgroundAccent">
+                @LogicQuery
+            </Acadebutton>
+        </div>
+    </div>
+    <div style="width: 100%; border-top: 2px dashed @Color.Primary; margin: 10px"></div>
+    <Grid Width="20vw">
+        @foreach (var note in filteredNotes)
+        {
+            <div style="cursor: pointer;">
+                <Redirector Destination="@($"/anotacao/{note.Id}")">
+                    <Acadecard Footer="@(string.Join(", ", note.Tags))">
+                        <h3>
+                            @note.Title
+                        </h3>
+                    </Acadecard>
+                </Redirector>
+            </div>
+        }
+    </Grid>
 }
 
 @code {
     private IEnumerable<Note>? notes;
+    private IEnumerable<Note>? filteredNotes;
+    private string searchQuery = "";
+    private string tagsQuery = "";
+
+    bool OrQuery;
+    private string LogicQuery => OrQuery ? "Uma das tags" : "Todas as tags";
+
 
     protected override async Task OnInitializedAsync()
     {
         notes = await _repo.GetAllNotesAsync();
+        FilterNotes();
     }
+
+    private void FilterNotes()
+    {
+        if (notes == null)
+            return;
+        IEnumerable<Note> filtered = notes;
+        if (!string.IsNullOrWhiteSpace(tagsQuery))
+        {
+            var filterTags = tagsQuery.Split(',').Select(t => RemoverAcentos(t).Trim());
+            if (OrQuery)
+                filtered = notes.Where(n => n.Tags.Any(t => filterTags.Any(f => t.Contains(f, StringComparison.OrdinalIgnoreCase))));
+            else
+                filtered = notes.Where(n => filterTags.All(f => n.Tags.Any(t => t.Contains(f, StringComparison.OrdinalIgnoreCase))));
+        }
+
+        if(string.IsNullOrWhiteSpace(searchQuery))
+        {
+            filteredNotes = filtered;
+            return;
+        }
+
+        filteredNotes = filtered.Where(n => n.Title.Contains(searchQuery, StringComparison.OrdinalIgnoreCase));
+    }
+
+    private string RemoverAcentos(string texto)
+    {
+        Dictionary<string, string> acentosDict = new Dictionary<string, string>()
+        {
+            { "á", "a" }, { "à", "a" }, { "ã", "a" }, { "â", "a" },
+            { "é", "e" }, { "ê", "e" },
+            { "í", "i" },
+            { "ó", "o" }, { "ô", "o" }, { "õ", "o" },
+            { "ú", "u" }, { "ü", "u" },
+            { "ç", "c" }, { "ñ", "n" },
+            { "Á", "A" }, { "À", "A" }, { "Ã", "A" }, { "Â", "A" },
+            { "É", "E" }, { "Ê", "E" },
+            { "Í", "I" },
+            { "Ó", "O" }, { "Ô", "O" }, { "Õ", "O" },
+            { "Ú", "U" }, { "Ü", "U" },
+            { "Ç", "C" }, { "Ñ", "N" }
+        };
+
+        foreach(var (com, sem) in acentosDict)
+        {
+            texto = texto.Replace(com, sem);
+        }
+
+        return texto;
+    }
+
+
 }

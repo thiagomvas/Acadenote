@@ -1,5 +1,6 @@
 ﻿﻿@using System.Text.RegularExpressions
 @using MathJaxBlazor
+
 @foreach (var line in Content.Split(Environment.NewLine))
 {
 	if (line.Trim().StartsWith("#"))
@@ -27,10 +28,10 @@
 	}
 	<br />
 }
-
 @code
 {
 	[Parameter] public string Content { get; set; }
+	[Inject] private ColorUtility Colors { get; set; }
 
 	private string MarkdownTitleToHeader(string line)
 	{
@@ -87,3 +88,9 @@
 		return Regex.Replace(markdownText, strikethroughPattern, "<s>$1</s>");
 	}
 }
+
+<style>
+	a {
+		color: @Colors.Primary;
+	}
+</style>

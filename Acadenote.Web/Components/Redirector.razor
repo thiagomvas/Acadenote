@@ -1,16 +1,14 @@
 ﻿@if (NewTab)
 {
-    <div>
-        <a href="@Destination" target="_blank">
+    <a href="@Destination" target="_blank">
             @ChildContent
-        </a>
-    </div>
+    </a>
 }
 else
 {
-    <div @onclick="Navigate">
+    <a @onclick="Navigate">
         @ChildContent
-    </div>
+    </a>
 }
 
 @code {

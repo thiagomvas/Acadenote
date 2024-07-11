@@ -1,0 +1,153 @@
+﻿@page "/tests"
+@using Acadenode.Core.Models
+@using Acadenode.Core.Repositories
+@using Acadenode.Core.Services
+@using Newtonsoft.Json
+@inject AppTheme theme
+@inject ColorUtility color
+@inject ILocalStorageService localStorage
+
+<PageTitle>Home</PageTitle>
+
+<h1>Essa é uma pagina de teste para componentes de UI, ignore ao usar.</h1>
+<h3>Colors</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Color</th>
+            <th>Preview</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var color in Colors)
+        {
+            <tr>
+                <td>@color.Key</td>
+                <td>@color.Value</td>
+                <td style="background-color:@color.Value; width: 50px; height: 20px;"></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p>IsDarkMode: <code>@(theme.IsDarkMode)</code></p>
+
+
+<h3>Buttons</h3>
+<Acadebutton Color="@color.Success" OnClick="ToggleTheme">Toggle Theme</Acadebutton>
+<Redirector Destination="./error">
+    <Acadebutton Color="@color.Warning">Redirect to error</Acadebutton>
+</Redirector>
+<Redirector Destination="https://google.com" NewTab=true>
+    <Acadebutton Color="@color.Error">Redirrect to google (new tab)</Acadebutton>
+</Redirector>
+
+
+<h3>Chips</h3>
+<Acadechip Color="@color.Success" TextColor="@color.Text.Primary" Highlightable=true>Success</Acadechip>
+<Acadechip Color="@color.Warning" TextColor="@color.Text.Primary">Warning</Acadechip>
+<Acadechip Color="@color.Error" TextColor="@color.Text.Primary">Error</Acadechip>
+<Acadechip Color="@color.Success" TextColor="@color.Success">Success</Acadechip>
+<Acadechip Color="@color.Warning" TextColor="@color.Warning">Warning</Acadechip>
+<Acadechip Color="@color.Error" TextColor="@color.Error">Error</Acadechip>
+
+<h3>Icons</h3>
+<Acadeicon Color="@color.Text.Primary" Icon="Acadeicon.IconType.Hashtag" />
+<Acadeicon Color="@color.Text.Primary" Icon="Acadeicon.IconType.Note" />
+<Acadeicon Color="@color.Text.Primary" Icon="Acadeicon.IconType.Search" />
+<Acadeicon Color="@color.Text.Primary" Icon="Acadeicon.IconType.List" />
+<Acadeicon Color="@color.Text.Primary" Icon="Acadeicon.IconType.Pencil" />
+<Acadeicon Color="@color.Text.Primary" Icon="Acadeicon.IconType.Book" />
+
+<h3>Latex View</h3>
+<LatexView Content="@sampleLatex" />
+
+<h3>Messagem de carregamento</h3>
+<LoadingMessage />
+
+<h3>Cards & Grid</h3>
+
+<Grid Width="20vw">
+    <Acadecard Footer="Sed fermentum turpis eu nisi ultrices">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elementum nulla at commodo placerat. Curabitur sagittis venenatis suscipit. Sed consequat neque non suscipit tincidunt. Quisque ut semper augue. Proin semper eros id nunc mollis accumsan. Aenean venenatis faucibus pellentesque.
+    </Acadecard>
+    <Acadecard Header="Lorem Ipsum" Footer="Integer pulvinar diam quis neque pretium">
+        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed malesuada tincidunt leo, eu fringilla urna lacinia nec. Phasellus varius, arcu nec aliquam accumsan, ligula orci pellentesque nulla, sit amet ultrices felis sem id leo.
+    </Acadecard>
+    <Acadecard Header="Fusce sit amet " Footer="Nam ullamcorper velit at libero gravida">
+        Fusce sit amet ex vel augue faucibus ultricies. Nulla sed pretium libero. Aliquam nec risus risus. Sed in augue maximus, efficitur enim at, vehicula leo. Cras in velit a magna venenatis consectetur. Suspendisse fringilla hendrerit felis, sed luctus velit elementum id.
+    </Acadecard>
+    <Acadecard Footer="Donec feugiat velit sed lacus scelerisque">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elementum nulla at commodo placerat. Curabitur sagittis venenatis suscipit. Sed consequat neque non suscipit tincidunt. Quisque ut semper augue. Proin semper eros id nunc mollis accumsan. Aenean venenatis faucibus pellentesque.
+    </Acadecard>
+    <Acadecard Header="Fusce sit amet ex vel augue faucibus ultricies" Footer="Fusce vel magna a mauris vehicula">
+        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed malesuada tincidunt leo, eu fringilla urna lacinia nec. Phasellus varius, arcu nec aliquam accumsan, ligula orci pellentesque nulla, sit amet ultrices felis sem id leo.
+    </Acadecard>
+    <Acadecard Footer="Phasellus in mi at est ullamcorper sagittis">
+        Fusce sit amet ex vel augue faucibus ultricies. Nulla sed pretium libero. Aliquam nec risus risus. Sed in augue maximus, efficitur enim at, vehicula leo. Cras in velit a magna venenatis consectetur. Suspendisse fringilla hendrerit felis, sed luctus velit elementum id.
+    </Acadecard>
+</Grid>
+
+<h3>Input Fields</h3>
+<h4>Text</h4>
+<InputText class="acadenote-input-text" @bind-Value="name" />
+<p>@name</p>
+
+<h4>Numbers</h4>
+<InputNumber class="acadenote-input-number" @bind-Value="number" />
+<p>@number</p>
+
+<h4>Checkbox</h4>
+<label class="checkbox-btn">
+    <label for="checkbox">Test</label>
+    <input id="checkbox" type="checkbox">
+    <span class="checkmark"></span>
+</label>
+<h4>Latex View</h4>
+<LatexView Content="@sampleLatex" />
+<h4>Text area</h4>
+<InputTextArea class="acadenote-textarea" style=@($"background-color: {color.BackgroundAccent}; color: {color.Text.Primary}") @bind-Value="sampleLatex" />
+
+
+@code {
+    private bool isChecked;
+    private string name = "";
+    private double number = 0;
+    private Dictionary<string, string> Colors;
+    private string sampleLatex = @"
+Dada a equação $ax^2 + bx + c = 0$, temos que a solução é dada por:
+
+$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$
+
+Por exemplo, para a equação $x^2 - 5x + 6 = 0$, temos que $a = 1$, $b = -5$ e $c = 6$. Substituindo na fórmula, temos:
+
+$$\begin{align*} x &= \frac{-(-5) \pm \sqrt{(-5)^2 - 4 \cdot 1 \cdot 6}}{2 \cdot 1} \\ &= \frac{5 \pm \sqrt{25 - 24}}{2}\\ &= \frac{5 \pm 1}{2}\\ x &= 3, x = 2 \end{align*}$$
+";
+
+    private User? user;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            theme.IsDarkMode = await theme.IsBrowserDarkMode();
+            await theme.ListenForThemeChanges();
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        user = await localStorage.GetItem<User>("user");
+    }
+
+    protected override void OnInitialized()
+    {
+        Colors = color.GetColors();
+        theme.OnChange += StateHasChanged;
+    }
+    private void ToggleTheme()
+    {
+        theme.IsDarkMode = !theme.IsDarkMode;
+        Colors = color.GetColors();
+    }
+}

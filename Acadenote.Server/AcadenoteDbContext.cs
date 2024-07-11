@@ -8,5 +8,6 @@ namespace Acadenote.Server
         public AcadenoteDbContext(DbContextOptions<AcadenoteDbContext> options) : base(options) { }
 
         public DbSet<Note> Notes { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

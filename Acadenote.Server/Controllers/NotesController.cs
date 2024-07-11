@@ -1,5 +1,6 @@
 ﻿using Acadenode.Core.Models;
 using Acadenode.Core.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -7,18 +8,22 @@ using System.Threading.Tasks;
 namespace Acadenote.Server.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("api/[controller]")]
     public class NotesController : ControllerBase
     {
         private readonly INoteRepository _noteRepository;
+        private readonly IUserRepository _userRepository;
         private readonly ILogger<NotesController> _logger;
 
-        public NotesController(INoteRepository noteRepository, ILogger<NotesController> logger)
+        public NotesController(INoteRepository noteRepository, IUserRepository userRepository, ILogger<NotesController> logger)
         {
+            _userRepository = userRepository;
             _noteRepository = noteRepository;
             _logger = logger;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Note>>> GetAllNotesAsync()
         {
@@ -34,6 +39,7 @@ namespace Acadenote.Server.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<ActionResult<Note>> GetNoteByIdAsync(string id)
         {
@@ -54,16 +60,23 @@ namespace Acadenote.Server.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddNoteAsync(Note note)
+        public async Task<ActionResult> AddNoteAsync([FromBody] Note note)
         {
+            
+            if(!Utils.TryGetJwtToken(Request , out string token) &&  !(await Utils.GetRoleFromJwtToken(token, _userRepository)).HasAnyRole(Role.Admin, Role.Writer))
+            {
+                return Unauthorized();
+            }
+
             try
             {
                 var response = await _noteRepository.AddNoteAsync(note);
                 if (!response.Success)
                 {
-                    _logger.LogError("Failed to add note: {Error}", response.ErrorMessage);
-                    return StatusCode(500, $"Failed to add note: {response.ErrorMessage}");
+                    _logger.LogError("Failed to add note: {Error}", response.Message);
+                    return BadRequest(response.Message);
                 }
+
                 return CreatedAtAction(nameof(GetNoteByIdAsync), new { id = note.Id }, note);
             }
             catch (Exception ex)
@@ -76,6 +89,11 @@ namespace Acadenote.Server.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateNoteAsync(string id, Note note)
         {
+
+            if (!Utils.TryGetJwtToken(Request, out string token) && !(await Utils.GetRoleFromJwtToken(token, _userRepository)).HasAnyRole(Role.Admin, Role.Writer))
+            {
+                return Unauthorized();
+            }
             try
             {
                 if (id != note.Id)
@@ -86,8 +104,8 @@ namespace Acadenote.Server.Controllers
                 var response = await _noteRepository.UpdateNoteAsync(note);
                 if (!response.Success)
                 {
-                    _logger.LogError("Failed to update note: {Error}", response.ErrorMessage);
-                    return NotFound(response.ErrorMessage);
+                    _logger.LogError("Failed to update note: {Error}", response.Message);
+                    return NotFound(response.Message);
                 }
 
                 return NoContent();
@@ -102,13 +120,18 @@ namespace Acadenote.Server.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteNoteAsync(string id)
         {
+
+            if (!Utils.TryGetJwtToken(Request, out string token) && !(await Utils.GetRoleFromJwtToken(token, _userRepository)).HasAnyRole(Role.Admin, Role.Writer))
+            {
+                return Unauthorized();
+            }
             try
             {
                 var response = await _noteRepository.DeleteNoteAsync(id);
                 if (!response.Success)
                 {
-                    _logger.LogError("Failed to delete note: {Error}", response.ErrorMessage);
-                    return NotFound(response.ErrorMessage);
+                    _logger.LogError("Failed to delete note: {Error}", response.Message);
+                    return NotFound(response.Message);
                 }
 
                 return NoContent();

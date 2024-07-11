@@ -1,0 +1,34 @@
+﻿<div class="container">
+    @for (int i = 1; i <= 5; i++)
+    {
+        <div class="orb orb@(i)" style="@GetOrbStyle(i)"></div>
+    }
+    <div class="center-text">@ChildContent</div>
+</div>
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public int ShadowSpreadRadius { get; set; } = 60;
+
+    private string GetOrbStyle(int orbIndex)
+    {
+        string color = GetOrbColor(orbIndex);
+        return $"background-color: {color}; box-shadow: 0 0 {ShadowSpreadRadius}px {ShadowSpreadRadius / 2}px {color};";
+    }
+
+    private string GetOrbColor(int index)
+    {
+        switch (index)
+        {
+            case 1: return "#f72585"; // Red
+            case 2: return "#7209b7"; // Purple
+            case 3: return "#3a0ca3"; // Indigo
+            case 4: return "#4361ee"; // Blue
+            case 5: return "#4cc9f0"; // Cyan
+            default: return "#000";    // Default black
+        }
+    }
+}

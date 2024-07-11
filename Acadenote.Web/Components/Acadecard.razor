@@ -1,21 +1,32 @@
-﻿@inherits ComponentBase
+﻿<!-- InfoCard.razor -->
 
-<div class="card" style="background: @Colors.BackgroundAccent; color: @Colors.Text.Primary">
-    <div class="card-body">
+<div class="info-card" style="background-color: @Colors.BackgroundAccent; border: 1px solid @Colors.Text.Hint;">
+    @if (!string.IsNullOrEmpty(Header))
+    {
+        <div class="info-header" style="color: @Colors.Text.Primary; font-weight: bold">
+            <h3>@Header</h3>
+        </div>
+    }
+    <div class="info-body" style="color: @bodyColor">
         @ChildContent
     </div>
-    <div class="card-footer" style="color: @Colors.Primary">
+    <div class="info-footer" style="color: @Colors.Primary; font-weight: bold">
         @Footer
     </div>
 </div>
 
 @code {
-    [Inject] private ColorUtility Colors { get; set; }
     [Parameter]
     public string Header { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
     [Parameter]
     public string Footer { get; set; }
 
+    [Inject]
+    private ColorUtility Colors { get; set; }
 
-    [Parameter] public RenderFragment ChildContent { get; set; }
+    private string bodyColor => string.IsNullOrWhiteSpace(Header) ? Colors.Text.Primary : Colors.Text.Secondary;
 }

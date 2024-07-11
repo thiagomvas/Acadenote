@@ -13,6 +13,8 @@ namespace Acadenode.Core.Models
         [Required]
         public string Content { get; set; }
 
+        public string[] Tags { get; set; }
+
         public static readonly Note NotFound = new Note { Id = "NotFound", Title = "Not Found", Content = "Note not found" };
     }
 }

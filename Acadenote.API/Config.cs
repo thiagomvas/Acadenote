@@ -2,7 +2,9 @@
 {
     internal static class Config
     {
-        public static string BaseApiAddress = @"https://acadenoteserver20240701134331.azurewebsites.net/api";
+        public static string BaseAddress = @"https://localhost:7026/";
+        public static string BaseApiAddress = Path.Combine(BaseAddress, "api");
         public static string NotesEndpoint => Path.Combine(BaseApiAddress, "notes");
+        public static string AuthEndpoint => Path.Combine(BaseAddress, "auth");
     }
 }

@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 *.db
 /Acadenote.Server/Secrets.cs
+/Acadenote.Server/Migrations/

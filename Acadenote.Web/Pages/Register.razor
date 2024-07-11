@@ -1,0 +1,112 @@
+﻿@page "/register"
+@using Acadenode.Core
+@using Acadenode.Core.Models
+@using Acadenode.Core.Services
+@inject IAuthService auth
+@inject ColorUtility Color
+@inject AppTheme theme
+
+<PageTitle>Register</PageTitle>
+
+<div class="centered-container">
+    <div class="form-container">
+        <h1>Create an account</h1>
+
+        <input type="text" class="acadenote-input-text" @bind="Name" placeholder="Name" />
+        <br />
+        <input type="text" class="acadenote-input-text" @bind="Username" placeholder="Username" />
+        <br />
+        <input type="email" class="acadenote-input-text" @bind="Email" placeholder="Email" />
+        <br />
+        <input type="password" class="acadenote-input-text" @bind="Password" placeholder="Password" />
+        <br />
+        <input type="password" class="acadenote-input-text" @bind="PasswordConfirmation" placeholder="Confirm Password" />
+        <br />
+
+        <Acadebutton OnClick="RegisterUser" Color="@Color.Primary">
+            Register
+        </Acadebutton>
+
+        <p>@Response</p>
+    </div>
+</div>
+@code {
+    private string Name, Username, Email, Password, PasswordConfirmation, Response = "";
+
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            theme.IsDarkMode = await theme.IsBrowserDarkMode();
+            await theme.ListenForThemeChanges();
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        theme.OnChange += StateHasChanged;
+    }
+
+    private async Task RegisterUser()
+    {
+        if (string.IsNullOrWhiteSpace(Name) || string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Email) || string.IsNullOrWhiteSpace(Password))
+        {
+            Response = "Please fill all fields";
+            return;
+        }
+
+        if (!Email.Contains("@"))
+        {
+            Response = "Invalid email";
+            return;
+        }
+
+        if (!Utils.IsValidPassword(Password))
+        {
+            Response = "Password must have at least 8 characters, letters and numbers";
+            return;
+        }
+        if (Password != PasswordConfirmation)
+        {
+            Response = "Passwords don't match";
+            return;
+        }
+
+
+
+        var user = new User
+            {
+                Name = Name,
+                UserName = Username,
+                Email = Email,
+                Password = Password,
+                Role = Roles.User
+            };
+
+        var model = new RegistrationModel
+            {
+                Name = Name,
+                Username = Username,
+                Email = Email,
+                Password = Password
+            };
+
+        var (code, message) = await auth.Registration(model);
+        Response = $"{code} - {message}";
+    }
+}
+
+<style>
+    .centered-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Make the container full height of viewport */
+    }
+
+    .form-container {
+        width: 300px; /* Adjust width as needed */
+        padding: 20px;
+    }
+</style>

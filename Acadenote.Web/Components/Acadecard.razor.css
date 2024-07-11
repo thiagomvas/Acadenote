@@ -1,34 +1,36 @@
-﻿.card {
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 10px;
-    padding: 0;
-    background-color: #fff;
-    width: 300px;
-    height: 150px; /* Set your desired fixed height */
-    display: flex;
-    flex-direction: column;
-    transition: 0.3s;
-    overflow: hidden; /* Hide any overflow to ensure constant height */
+﻿/* InfoCard.razor.css */
+.info-card {
+    border-radius: 6px;
+    padding: 10px;
+    height: 100%;
+    transition: all 0.3s ease;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    transition: all 0.1s ease-in-out;
 }
-
-    .card:hover {
-        transform: scale(1.05);
-        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    .info-card:hover {
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        transform: scale(1.1);
     }
 
-.card-footer {
-    padding: 10px;
-    flex-shrink: 0;
-    font-weight: bold;
+.info-header {
+    margin-bottom: 6px;
 }
 
-.card-body {
-    padding: 10px;
-    flex-grow: 1;
-    overflow: hidden; /* Hide any overflow */
-    text-overflow: ellipsis; /* Show ellipsis for overflow */
-    white-space: normal; /* Allow text to wrap */
-    font-size: 18px;
-    font-weight: bold;
+.info-header h3 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.info-body {
+    margin-bottom: 6px;
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.info-footer {
+    font-size: 0.8rem;
+    color: #888;
+    text-align: right;
 }
