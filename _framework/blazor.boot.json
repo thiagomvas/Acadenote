@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Acadenote.Web",
   "resources": {
-    "hash": "sha256-0bGcdDFXb2hRMJyQ/gInd4ibdJS26jdGK/jKTP2baPI=",
+    "hash": "sha256-B5qi526/9hMEcpsOa+G6N4Adx5zLkcwyRwv6yerEVHw=",
     "jsModuleNative": {
       "dotnet.native.8.0.7.h0ew5tj5hl.js": "sha256-nM1HEhb94+eYpKCiZ0bz7mCPPCpyw4/2fxoxuCDdt8Q="
     },
@@ -15,9 +15,9 @@
       "icudt.dat": "sha256-tO5O5YzMTVSaKBboxAqezOQL9ewmupzV2JrB5Rkc8a4="
     },
     "assembly": {
-      "Acadenode.Core.wasm": "sha256-H0ffwcm8zJAMZwgl4x4IMvyRr/VS3DVbH1/rAJm0z6g=",
-      "Acadenote.API.wasm": "sha256-xeWYkXneir95kWbK7Rf6hU2HbpHXt8IGgN3fd/ussjw=",
-      "Acadenote.Web.wasm": "sha256-PEBtGYHG5H465h8eHmXA1DeOST9MqygAKw24GRrnshA=",
+      "Acadenode.Core.wasm": "sha256-S6rwgZ2qIWF3KX7JvEmjOnGoruYRVax5+X/rnVCS3lI=",
+      "Acadenote.API.wasm": "sha256-Lyfzyf8+hlcdNNTvtQAGOre7HOQybln5fXzTKEQHuxY=",
+      "Acadenote.Web.wasm": "sha256-hQV/Ny/HgFQHQTX+kMTCYGcuB2jXghXkHZ7UnQ11V+k=",
       "MathJaxBlazor.wasm": "sha256-EXpYXqugNJtp1u5qnDKMDRhx03gSsum4RJdciSdjvh4=",
       "Microsoft.AspNetCore.Components.Forms.wasm": "sha256-PBCqQOgsXTMxgr3gJzvyQgLJZo4gre2r3OJp3tSsZ4Y=",
       "Microsoft.AspNetCore.Components.wasm": "sha256-sQ4tALAUslkTEz4OxHDsEIpny/bVR4PMlo4OqKtrXa4=",
