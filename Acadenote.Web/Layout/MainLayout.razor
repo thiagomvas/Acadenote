@@ -4,9 +4,12 @@
 
 <div class="container">
     <aside class="sidebar" style="@border">
-            <Acadebutton OnClick="@(() => NavigateTo("/anotacao"))" Color="@colors.BackgroundAccent">
+        <NavLink href="anotacao">
+
+            <Acadebutton Color="@colors.BackgroundAccent">
                 <div><Acadeicon Color="@colors.Text.Primary" Icon="Acadeicon.IconType.Note" /></div> Anotações & Resumos
             </Acadebutton>
+        </NavLink>
     </aside>
     <main class="content">
         @Body
