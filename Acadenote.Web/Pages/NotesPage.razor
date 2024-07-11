@@ -43,7 +43,7 @@ else
         @foreach (var note in filteredNotes)
         {
             <div style="cursor: pointer;">
-                <Redirector Destination="@($"/anotacao/{note.Id}")">
+                <Redirector Destination="@($"./{note.Id}")">
                     <Acadecard Footer="@(string.Join(", ", note.Tags))">
                         <h3>
                             @note.Title

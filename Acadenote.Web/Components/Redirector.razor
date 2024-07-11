@@ -1,4 +1,6 @@
-﻿@if (NewTab)
+﻿@inherits ComponentBase
+
+@if (NewTab)
 {
     <a href="@Destination" target="_blank">
             @ChildContent
@@ -20,13 +22,21 @@ else
 
     private void Navigate()
     {
+        string dest = Destination;
+
+        if(dest[0] == '.')
+        {
+            Console.WriteLine(NavigationManager.BaseUri);
+            dest = NavigationManager.Uri + dest.Substring(1);
+        }
+
         if (NewTab)
         {
-            NavigationManager.NavigateTo(Destination, forceLoad: true); // open in new tab
+            NavigationManager.NavigateTo(dest, forceLoad: true); // open in new tab
         }
         else
         {
-            NavigationManager.NavigateTo(Destination); // open in same tab
+            NavigationManager.NavigateTo(dest); // open in same tab
         }
     }
 }
