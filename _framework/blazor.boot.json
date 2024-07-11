@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Acadenote.Web",
   "resources": {
-    "hash": "sha256-VbBj0EB/JZJoHbVGeLmX2xOSAChbH+JyO/owNvnsVJI=",
+    "hash": "sha256-0bGcdDFXb2hRMJyQ/gInd4ibdJS26jdGK/jKTP2baPI=",
     "jsModuleNative": {
       "dotnet.native.8.0.7.h0ew5tj5hl.js": "sha256-nM1HEhb94+eYpKCiZ0bz7mCPPCpyw4/2fxoxuCDdt8Q="
     },
@@ -15,13 +15,13 @@
       "icudt.dat": "sha256-tO5O5YzMTVSaKBboxAqezOQL9ewmupzV2JrB5Rkc8a4="
     },
     "assembly": {
-      "Acadenode.Core.wasm": "sha256-+6CGa0httoFxpJ1lfI135CNBjY8byD2Hzn/ESYBd2dE=",
-      "Acadenote.API.wasm": "sha256-5YsbJBi8NISDLI7b9Qtokc8yrn+K5v45v8wkZgfSOHU=",
-      "Acadenote.Web.wasm": "sha256-Q69WbDtdU6MAU9hW8NRzg8qqPYhXdNjtUJNC9OJWPFI=",
+      "Acadenode.Core.wasm": "sha256-H0ffwcm8zJAMZwgl4x4IMvyRr/VS3DVbH1/rAJm0z6g=",
+      "Acadenote.API.wasm": "sha256-xeWYkXneir95kWbK7Rf6hU2HbpHXt8IGgN3fd/ussjw=",
+      "Acadenote.Web.wasm": "sha256-PEBtGYHG5H465h8eHmXA1DeOST9MqygAKw24GRrnshA=",
       "MathJaxBlazor.wasm": "sha256-EXpYXqugNJtp1u5qnDKMDRhx03gSsum4RJdciSdjvh4=",
       "Microsoft.AspNetCore.Components.Forms.wasm": "sha256-PBCqQOgsXTMxgr3gJzvyQgLJZo4gre2r3OJp3tSsZ4Y=",
-      "Microsoft.AspNetCore.Components.wasm": "sha256-7405b+U/TkWIBU5MPPyqR/ZscYAkFcekQVqMPMh+NAs=",
-      "Microsoft.AspNetCore.Components.Web.wasm": "sha256-8frCImACMYFjD3JyPCCGWrwDygIoIGtmnpefJENPmKc=",
+      "Microsoft.AspNetCore.Components.wasm": "sha256-sQ4tALAUslkTEz4OxHDsEIpny/bVR4PMlo4OqKtrXa4=",
+      "Microsoft.AspNetCore.Components.Web.wasm": "sha256-eqtKXh4Wx71tIejBlr8TvzpVIoJpDYELz220HUHx5vU=",
       "Microsoft.AspNetCore.Components.WebAssembly.wasm": "sha256-Lx3hm0lrkE4uOJE79pdZnKpYhH0HAaOXdsTupkOpFlg=",
       "Microsoft.CSharp.wasm": "sha256-u/qEy4Tlbh7oANUqlJ9BGCDG1rApm7WOZElp7Dy2kgk=",
       "Microsoft.Extensions.Configuration.Abstractions.wasm": "sha256-87sn2TYqgdZ95sXmavjKEzoEfMgHnYQ9LOvnMX+aZcI=",
