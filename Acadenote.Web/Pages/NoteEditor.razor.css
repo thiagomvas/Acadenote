@@ -1,0 +1,48 @@
+﻿/* Light mode styles */
+body {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Dark mode styles */
+body.dark {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+    body.dark table {
+        border-color: #666666;
+    }
+
+    body.dark th, body.dark td {
+        border: 1px solid #666666;
+    }
+
+    body.dark th {
+        background-color: #1a1a1a;
+    }
+
+    body.dark tr:nth-child(even) {
+        background-color: #1a1a1a;
+    }

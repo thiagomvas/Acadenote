@@ -2,6 +2,7 @@
 @using Acadenode.Core.Models
 @using Acadenode.Core.Repositories
 @using Acadenode.Core.Services
+@using MathJaxBlazor
 @using Newtonsoft.Json
 @inject INoteRepository _repo
 @inject ColorUtility Color
@@ -27,7 +28,7 @@ else
     </div>
     <div style="width: 100%; border-top: 2px dashed @Color.Primary; margin: 10px"></div>
 
-    @switch(tab)
+    @switch (tab)
     {
         case Tab.Edit:
             <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
@@ -38,11 +39,168 @@ else
                 </div>
                 <InputTextArea @bind-Value="Content" class="acadenote-textarea" style=@($"background-color: {Color.BackgroundAccent}; color: {Color.Text.Primary}; width: 100%;") />
             </div>
+            <p>Tags separadas por ','</p>
+            <InputText @bind-Value="TagsText" class="acadenote-input-text" style=@($"background-color: {Color.BackgroundAccent}; color: {Color.Text.Primary}; width: 100%;") />
+            <Acadebutton OnClick="SaveNote" Color="@Color.Primary">
+                Salvar
+            </Acadebutton>
+            <p>@Response</p>
             break;
         case Tab.Preview:
             <NoteView Note="note" />
             break;
         case Tab.Guide:
+            <h2>Guia de edição</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Grupo</th>
+                        <th>Sintaxe</th>
+                        <th>Resultado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>LaTeX</td>
+                        <td><code>$a^2 + b^2 = c^2$</code> <br /> <code>$$a^2 + b^2 = c^2$$</code></td>
+                        <td> Lorem Ipsum <Equation Value="a^2 + b^2 = c^2" TeXDisplay="false" /> <br /> Lorem Ipsum <Equation Value="a^2 + b^2 = c^2" TeXDisplay="true" /> </td>
+                    </tr>
+                    <tr>
+                        <td>Negrito</td>
+                        <td><code>&lt;strong&gt; Lorem Ipsum &lt;/strong&gt;</code> <br /> <code>**Lorem Ipsum**</code></td>
+                        <td><strong>Lorem Ipsum</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Italico</td>
+                        <td><code>&lt;em&gt; Lorem Ipsum &lt;/em&gt;</code> <br /> <code>*Lorem Ipsum*</code></td>
+                        <td><em>Lorem Ipsum</em></td>
+                    </tr>
+                    <tr>
+                        <td>Sublinhado</td>
+                        <td><code>&lt;u&gt; Lorem Ipsum &lt;/u&gt;</code> <br /> <code>__Lorem Ipsum__</code></td>
+                        <td><u>Lorem Ipsum</u></td>
+                    </tr>
+                    <tr>
+                        <td>Tachado</td>
+                        <td><code>&lt;s&gt; Lorem Ipsum &lt;/s&gt;</code> <br /> <code>~~Lorem Ipsum~~</code></td>
+                        <td><s>Lorem Ipsum</s></td>
+                    </tr>
+                    <tr>
+                        <td>Link</td>
+                        <td><code>&lt;a href="https://www.lipsum.com/"&gt;</code></td>
+                        <td><a href="https://www.lipsum.com/">Lorem Ipsum</a></td>
+                    </tr>
+                    <tr>
+                        <td>Imagem</td>
+                        <td><code>&lt;img src="https://t.ly/-5UqW"&gt;</code></td>
+                        <td><img style="max-height:64px; max-width:64px;" src="https://devblogs.microsoft.com/dotnet/wp-content/uploads/sites/16/2019/04/BrandBlazor_nohalo_1000x.png" alt="Lorem Ipsum" /></td>
+                    </tr>
+                    <tr>
+                        <td>Titulos</td>
+                        <td><code>&lt;h1&gt; &lt;h2&gt; &lt;h3&gt; &lt;h4&gt; &lt;h5&gt; &lt;h6&gt;</code> <br /> <code> # ## ### #### ##### ######</code></td>
+                        <td><h1>Titulo 1</h1> <h2>Titulo 2</h2> <h3>Titulo 3</h3> <h4>Titulo 4</h4> <h5>Titulo 5</h5> <h6>Titulo 6</h6></td>
+                    </tr>
+                    <tr>
+                        <td>Lista</td>
+                        <td><code>&lt;ul&gt; &lt;ol&gt; &lt;li&gt;</code></td>
+                        <td>
+                            <ul>
+                                <li>Item 1</li>
+                                <li>Item 2</li>
+                                <li>Item 3</li>
+                            </ul>
+                            <ol>
+                                <li>Item 1</li>
+                                <li>Item 2</li>
+                                <li>Item 3</li>
+                            </ol>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tabela</td>
+                        <td><code>&lt;table&gt;</code> <code>&lt;tr&gt;</code> <code>&lt;th&gt;</code> <code>&lt;td&gt;</code></td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <th>Header 1</th>
+                                    <th>Header 2</th>
+                                </tr>
+                                <tr>
+                                    <td>Linha 1, Célula 1</td>
+                                    <td>Linha 1, Célula 2</td>
+                                </tr>
+                                <tr>
+                                    <td>Linha 2, Célula 1</td>
+                                    <td>Linha 2, Célula 2</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>Guia de LaTeX</h2>
+            <table border="1">
+                <tr>
+                    <th>Propósito</th>
+                    <th>Texto LaTeX</th>
+                    <th>Resultado</th>
+                </tr>
+                <tr>
+                    <td>Matemática Inline</td>
+                    <td>$ x = y + 2 $</td>
+                    <td><Equation Value="x = y + 2" /></td>
+                </tr>
+                <tr>
+                    <td>Equação Exibida</td>
+                    <td>$$ E = mc^2 $$</td>
+                    <td><Equation Value="E = mc^2" /></td>
+                </tr>
+                <tr>
+                    <td>Fração</td>
+                    <td>$ \frac{a}{b} $</td>
+                    <td><Equation Value="\frac{a}{b}" /></td>
+                </tr>
+                <tr>
+                    <td>Raiz Quadrada</td>
+                    <td>$ \sqrt{x} $</td>
+                    <td><Equation Value="\sqrt{x}" /></td>
+                </tr>
+                <tr>
+                    <td>Subscrito</td>
+                    <td>$ a_i $</td>
+                    <td><Equation Value="a_i" /></td>
+                </tr>
+                <tr>
+                    <td>Superscrito</td>
+                    <td>$ x^n $</td>
+                    <td><Equation Value="x^n" /></td>
+                </tr>
+                <tr>
+                    <td>Soma</td>
+                    <td>$ \sum_{i=1}^n i $</td>
+                    <td><Equation Value="\sum_{i=1}^n i" /></td>
+                </tr>
+                <tr>
+                    <td>Integral</td>
+                    <td>$ \int_a^b f(x) \, dx $</td>
+                    <td><Equation Value="\int_a^b f(x) \, dx" /></td>
+                </tr>
+                <tr>
+                    <td>Derivada</td>
+                    <td>$ \frac{d}{dx} x^2 = 2x $</td>
+                    <td><Equation Value="\frac{d}{dx} x^2 = 2x" /></td>
+                </tr>
+                <tr>
+                    <td>Limite</td>
+                    <td>$ \lim_{{x \to \infty}} \frac{1}{x} = 0 $</td>
+                    <td><Equation Value="\lim_{{x \to \infty}} \frac{1}{x} = 0" /></td>
+                </tr>
+                <tr>
+                    <td>Matriz</td>
+                    <td>$$ \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} $$</td>
+                    <td><Equation Value="\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}" /></td>
+                </tr>
+            </table>
             break;
     }
 }
@@ -50,32 +208,32 @@ else
 {
     private Tab tab = Tab.Edit;
     private Note? note;
-    private string Title, Content;
+    private string Title = "", Content = "", TagsText = "";
     private IEnumerable<string> Tags;
     private string Response = "";
     [Parameter] public string Id { get; set; }
-    [Inject] private ILocalStorageService _storage { get; set; }
-    [Inject] private IAuthService _auth { get; set; }
+    //[Inject] private ILocalStorageService _storage { get; set; }
+    //[Inject] private IAuthService _auth { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        var cacheduser = await _storage.GetItem<User>("user");
-        if (cacheduser == null)
-        {
-            nav.NavigateTo("/404");
-            return;
-        }
-        if (!cacheduser.Role.HasFlag(Role.Writer))
-        {
-            nav.NavigateTo("/404");
-            return;
-        }
-        if (await _auth.Validate(cacheduser.Token) == false)
-        {
-            nav.NavigateTo("/404");
-            return;
-
-        }
+        //var cacheduser = await _storage.GetItem<User>("user");
+        //if (cacheduser == null)
+        //{
+        //    nav.NavigateTo("/404");
+        //    return;
+        //}
+        //if (!cacheduser.Role.HasFlag(Role.Writer))
+        //{
+        //    nav.NavigateTo("/404");
+        //    return;
+        //}
+        //if (await _auth.Validate(cacheduser.Token) == false)
+        //{
+        //    nav.NavigateTo("/404");
+        //    return;
+        //
+        //}
 
 
 
@@ -89,6 +247,15 @@ else
 
         Title = note.Title;
         Content = note.Content;
+        TagsText = string.Join(", ", note.Tags);
+
+    }
+
+    public void SaveNote()
+    {
+        // TO-DO: When hosting a proper server, use API to save notes instead.
+        Tags = TagsText.Split(',').Select(x => x.Trim());
+        Response = JsonConvert.SerializeObject(new Note() {Id = Title.ToLower().Trim().Replace(" ", "-"),Title = Title, Content = Content, Tags = Tags.ToArray()});
     }
 
     enum Tab
