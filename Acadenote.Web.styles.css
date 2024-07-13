@@ -280,3 +280,52 @@
         overflow-y: auto; /* Enable vertical scroll for sidebar content */
     }
 }
+/* /Pages/NoteEditor.razor.rz.scp.css */
+/* Light mode styles */
+body[b-bh622w7r3g] {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+table[b-bh622w7r3g] {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+}
+
+th[b-bh622w7r3g], td[b-bh622w7r3g] {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th[b-bh622w7r3g] {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even)[b-bh622w7r3g] {
+    background-color: #f9f9f9;
+}
+
+/* Dark mode styles */
+body.dark[b-bh622w7r3g] {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+    body.dark table[b-bh622w7r3g] {
+        border-color: #666666;
+    }
+
+    body.dark th[b-bh622w7r3g], body.dark td[b-bh622w7r3g] {
+        border: 1px solid #666666;
+    }
+
+    body.dark th[b-bh622w7r3g] {
+        background-color: #1a1a1a;
+    }
+
+    body.dark tr:nth-child(even)[b-bh622w7r3g] {
+        background-color: #1a1a1a;
+    }
